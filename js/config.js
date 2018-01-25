@@ -190,7 +190,7 @@ function showNotify(){
 					'SETTINGS'
 				);	
 				}else{
-					getLocation();
+					//getLocation();
 				}
 		});		
 		
