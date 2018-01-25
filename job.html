@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <a class="close col-2 donbtn gottoback" href="javascript:;">Done</a>
+            <div class="col-7 pop-title job-title"></div>
+            <div class="col-3 pop-hd-right"><a href="#" class="col-6"><i class="fa fa-camera"></i></a> <a class="col-6" href="#" data-toggle="modal" data-target="#myModal13"><i class="icon-plus"></i></a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="schedule-detail showjobstatus"> <span class="alp-badge"></span>
+            <div class="schedule-address">
+              <h3><span class="company_name"></span> <span class="infoicon"><a href="#" data-toggle="modal" data-target="#myModal20"><img src="images/info.png"/></a></span></h3>
+              <div class="sch-adr"></div>
+              <span class="grey-color"></span>
+            </div>
+          </div>
+		  <form id="editform" name="editform" action="" method="post">
+			<input type="hidden" id="recid" name="recid" value="" />
+			<input type="hidden" id="customer_id" name="customer_id" value="" />
+			<input type="hidden" id="old_status" name="old_status" value="" />
+			<input type="hidden" name="add_by" value="" />
+          <div class="Edit-job-bottom">
+            <div class="pop-edit-item">
+              <h1>ITEM FOR PICKUP</h1>
+              <div class="pickup-msg">
+                <textarea class="whitebase" placeholder="Collect CPU" name="description" id="job_description"></textarea>
+              </div>
+            </div>
+			<div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Status </span> 
+                  </a>
+                  <select class="onclick" name="status"></select>
+                </div>
+			<div class="pop-edit-item p-pic-req">
+              <h1>Pickup Requests</h1>
+              <div class="pop-multibox pulists"></div>
+            </div>
+			<div class="pop-edit-item p-pic-req">
+              <h1>Tasks</h1>
+              <div class="pop-multibox tasklists"></div>
+            </div>
+			<div class="pop-edit-item">
+              <h1>ADDRESS<span class="errorstk">*</span></h1>
+              <div class="pickup-msg">
+                <textarea class="whitebase required" placeholder="Collect CPU" name="address" id="job_address"></textarea>
+              </div>
+            </div>
+            <div class="pop-edit-item">
+              <h1>CONTACTS</h1>
+              <div class="pop-cnt client-addcnt">
+                <div class="pop-edit-item">
+					<h1>First Name<span class="errorstk">*</span></h1>
+					<input type="text" class="required" placeholder="First Name" name="contact_fname"/>
+				  </div>
+				  <div class="pop-edit-item">
+					<h1>Last Name<span class="errorstk">*</span></h1>
+					<input type="text" class="required" placeholder="Last Name" name="contact_lname"/>
+				  </div>
+				  <div class="pop-edit-item">
+					<h1>Email<span class="errorstk">*</span></h1>
+					<input type="email" class="required" placeholder="Email Address" name="contact_email"/>
+				  </div>
+				  <div class="pop-edit-item">
+					<h1>Phone</h1>
+					<input type="text" placeholder="Phone Number" name="contact_phone"/>
+				  </div>
+				  <div class="pop-edit-item">
+					<h1>Mobile</h1>
+					<input type="text" placeholder="Mobile Number" name="contact_mobile"/>
+				  </div>
+              </div>
+            </div>
+            
+            <div class="pop-edit-item p-pic-req jdtl">
+              <h1>JOB DETAILS</h1>
+              <div class="pop-multibox">
+                
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Category </span> 
+                  </a>
+                  <select class="onclick" name="category_id"></select>
+                </div>
+				
+              </div>
+			  <div class="clearfix"></div>
+			  <div class="col-12"><button class="nf-box-btn saverecords">Save</button></div>
+            </div>
+          </div>
+		  </form>
+        </div>
+      </div>
+    </div>
+<div id="myModal20" class="modal fade bottom-popup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-cnt">
+          <div class="pop-btm-cnt">
+            <ul>
+              <li><a href="javascript:;" data-id="0" class="navigate_to_job">Navigate to Job</a></li>
+              <li><a href="tel:" class="callclientto">Call Client</a></li>
+            </ul>
+          </div>
+          <div class="pop-btm-cnt pop-cancel">
+            <ul>
+              <li> <a data-dismiss="modal">Cancel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal13" class="modal fade moremenu" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Job Actions</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ul class="more-menu">
+          <li><a href="#" data-toggle="modal" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal10"><img src="images/task.png"><span>Task</span></a></li>
+          <li><a href="#"><img src="images/form.png"><span>Forms</span></a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
+		  <li><a href="#" data-toggle="modal" data-target="#myModal102"><img src="images/note.png"><span>Note</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal2" class="modal fade popupformats btm-toppopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Add PU Request</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="bookpurequest">Book</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="pop-edit-item p-pic-req jdtl">
+              <div class="pop-multibox">
+			  <form id="pu_jobform" name="pu_jobform" action="" method="post">
+				<input type="hidden" id="pu_job_id" name="pu_job_id" value="" />
+				<input type="hidden" name="add_by" value="" />
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Staff Member </span></a>
+                  <select name="assigned_to" id="assigned_to" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Duration </span> </a>
+                  <select name="duration" id="duration" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Date </span> </a>
+                  <input type="text" readonly="" class="onclick" name="pu_date" id="pu_date" placeholder="Enter Date" />
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Time </span></a>
+				  <select class="onclick" name="pu_time" id="pu_time">
+				  </select>
+                </div>
+				</form>
+              </div>
+              <!--<div class="pickup-msg cancelputext"><a class="whitebase" href="#" data-toggle="modal" data-target="#myModal3">Cancel PU Request</a></div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal21" class="modal fade popupformats" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Send Email</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="sendnewemails">Send</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="new-job">
+		  <form id="emailform" name="emailform" action="" method="post">
+			<input type="hidden" id="email_job_id" name="email_job_id" value="" />
+			<input type="hidden" name="add_by" value="" />
+            <div class="form-box">
+              <label>to<span class="errorstk">*</span></label>
+			  <input type="email" name="email_to" placeholder="Enter Email" />
+            </div>
+            <div class="form-box">
+              <label>cc</label>
+			  <input type="email" name="email_cc" placeholder="Enter Email" />
+            </div>
+            <div class="form-box">
+              <label>Subject<span class="errorstk">*</span></label>
+			  <input type="text" name="email_subject" placeholder="Enter Subject" />
+            </div>
+            <div class="form-box">
+              <label>Message</label>
+              <textarea placeholder="Email Content" rows="3" cols="40" name="email_content" id="email_content"></textarea>
+            </div>
+            <div class="form-box">
+              <label>Attachment(s)</label>
+              <div class="attachmentbox">
+                <input  class="attachfiledisplay" type="text" placeholder="Add Attachment">
+                <span><a href="#" data-toggle="modal" data-target="#myModal22"><img src="images/edit.png"></a></span> </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal22" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Select Form</div>
+          </div>
+        </div>
+        <div class="staff-cnt multipleattach">
+          <input type="file">
+          <ul class="staff-box">
+            <li><a data-toggle="modal" data-target="#myModal17"><img src="images/form.png"/><span>Missile Tag</span></a></li>
+            <li><a data-toggle="modal" data-target="#myModal19"><img src="images/form.png"/><span>Transfer of Responsibility</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal10" class="modal fade popupformats addtasknew" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Add Task</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="savenewtasks">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+		  <form id="newtask_jobform" name="newtask_jobform" action="" method="post">
+				<input type="hidden" id="newtask_job_id" name="newtask_job_id" value="" />
+				<input type="hidden" name="add_by" value="" />
+            <div class="form-box">
+              <input type="text" class="required" placeholder="Enter new task.." name="task_detail">
+            </div>
+            <div class="pop-edit-item p-pic-req jdtl">
+				<div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Due Date</h1>
+            <input type="text" class="required" placeholder="Due Date" id="task_due_date" name="due_date" />
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Assigned To</h1>
+            <select name="assigned_to" class="required onclick">
+				<option value="0">Anyone</option>
+			</select>
+          </div>
+          
+        </div>
+              
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal102" class="modal fade popupformats addtasknew" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Add Note</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="savenote">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+		  <form id="newnote_jobform" name="newnote_jobform" action="" method="post">
+            <div class="form-box">
+              <input type="text" class="required" placeholder="Enter note..." name="note_detail">
+            </div>
+            
+			</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal11" class="modal fade popupformats addtasknew" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Edit Task</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="updaterecord">Done</a></div>
+          </div>
+        </div>
+		<input type="hidden" name="task_id" value="0"/>
+		<input type="hidden" name="job_id" value="0">
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="form-box">
+              <input type="text" class="required" placeholder="Enter new task.." name="task_detail">
+            </div>
+			<div class="completetasklink"></div>
+            <div class="pop-edit-item p-pic-req jdtl">
+				<div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Due Date</h1>
+            <input type="text" class="required" placeholder="Due Date" name="due_date"/>
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Assigned To</h1>
+            <select name="assigned_to" class="required onclick">
+				<option value="0">Anyone</option>
+			</select>
+          </div>
+          
+          <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Created By </span>
+                  <p class="assign-name">John</p>
+                  </a> </div>
+        </div>
+			  
+            </div>
+			<div class="pickup-msg cancelputext deletetasklink"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal221" class="modal fade popupformats btm-toppopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Edit PU Request</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="updatepurequest">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="pop-edit-item p-pic-req jdtl">
+              <div class="pop-multibox">
+			  <form id="puedit_jobform" name="puedit_jobform" action="" method="post">
+				<input type="hidden" id="pu_id" name="pu_id" value="" />
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Staff Member </span></a>
+                  <select name="assigned_to" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Duration </span> </a>
+                  <select name="duration" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Date </span> </a>
+                  <input type="text" readonly="" class="onclick required" name="pu_date2" id="pu_date2" placeholder="Enter Date" />
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Time </span></a>
+				  <select class="onclick" name="pu_time">
+				  </select>
+                </div>
+				</form>
+              <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Created By </span>
+                  <p class="assign-name">John</p>
+                  </a> </div>
+        </div>
+              <div class="pickup-msg cancelputext deletepulink"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/jquery-ui.min.js" ></script>
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+function loadjob(job_id){
+	var url=siteurl+'/api/jobs/singlerecord';
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {job_id:job_id}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['record'])
+		{
+			var mobile=res['record']['contact_mobile'];
+			if(jQuery.trim(mobile)==''){
+				var mobile=res['record']['contact_phone'];
+			}
+			jQuery('#myModal20 .callclientto').attr('href','tel:'+mobile);
+			jQuery('#job_description').val(res['record']['description']);
+			jQuery('#job_address').val(res['record']['address']);
+			jQuery('.company_name').html(res['record']['customer_name']);
+			jQuery('.sch-adr').html(res['record']['address']);
+			jQuery('.grey-color').html(mobile);
+			jQuery('input[name="contact_fname"]').val(res['record']['contact_fname']);
+			jQuery('input[name="contact_lname"]').val(res['record']['contact_lname']);
+			jQuery('input[name="contact_email"]').val(res['record']['contact_email']);
+			jQuery('input[name="contact_mobile"]').val(res['record']['contact_mobile']);
+			jQuery('input[name="contact_phone"]').val(res['record']['contact_phone']);
+			jQuery('input[name="customer_id"]').val(res['record']['customer_id']);
+			if(res['record']['status']=='Assigned'){
+				jQuery('.showjobstatus').addClass('assigned-status');
+				jQuery('.showjobstatus .alp-badge').html('A');
+			}
+			else if(res['record']['status']=='Being Processed'){
+				jQuery('.showjobstatus').addClass('processing-status');
+				jQuery('.showjobstatus .alp-badge').html('P');
+			}
+			else if(res['record']['status']=='Completed'){
+				jQuery('.showjobstatus').addClass('completed-status');
+				jQuery('.showjobstatus .alp-badge').html('C');
+			}
+			jQuery('.tasklists').html('');
+			if(res['record']['tasks']!=''){
+				var html='';
+				jQuery(res['record']['tasks']).each(function(index){
+					html+='<div class="pickup-msg"><a class="whitebase taskdetail" href="javascript:;" data-id="'+res['record']['tasks'][index]['ID']+'"><span  class="left-block">'+res['record']['tasks'][index]['task']+' </span><p class="assign-name">'+res['record']['tasks'][index]['assinto']+'</p></a></div>';
+				  
+				});
+				jQuery('.tasklists').html(html);
+			}
+			jQuery('.pulists').html('');
+			if(res['record']['pus']!=''){
+				var html='';
+				jQuery(res['record']['pus']).each(function(index){
+					html+='<div class="pickup-msg"><a class="whitebase pudetail" href="javascript:;" data-id="'+res['record']['pus'][index]['ID']+'"><span  class="left-block">'+res['record']['pus'][index]['task']+' </span><p class="assign-name">'+res['record']['pus'][index]['assinto']+'</p></a></div>';
+				  
+				});
+				jQuery('.pulists').html(html);
+			}
+			
+			setTimeout(function(){
+				jQuery('select[name="status"]').val(res['record']['status']);
+				jQuery('select[name="category_id"]').val(res['record']['category_id']);
+			},1000);
+			
+			jQuery('a.pudetail').click(function(){
+				var url2=siteurl+'/api/jobs/pudetail';
+				var pu_id=jQuery(this).attr('data-id');
+				jQuery('#pu_id').val(pu_id);
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url2,           
+					dataType: 'json',  
+					crossDomain: true,
+					data: {pu_id:pu_id}, 
+					beforeSend: function() {
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) { 
+						if(res['data'])
+						{
+							jQuery('#myModal221 input[name="pu_date2"]').val(res['data']['pu_date']);
+							jQuery('#myModal221 select[name="assigned_to"]').val(res['data']['assigned_to']);
+							jQuery('#myModal221 select[name="pu_time"]').val(res['data']['pu_time']);
+							jQuery('#myModal221 .assign-name').html(res['data']['by']);
+							jQuery('.deletepulink').html('<a href="javascript:;" class="whitebase" onclick="return deletepu('+pu_id+','+res['data']['job_id']+')">Cancel PU Request</a>');
+							jQuery('#myModal221').modal();
+						}
+						
+						
+					},  
+					error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+					return false; 
+					}
+				});
+			});
+			
+			jQuery('a.taskdetail').click(function(){
+				var url2=siteurl+'/api/jobs/taskdetail';
+				var task_id=jQuery(this).attr('data-id');
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url2,           
+					dataType: 'json',  
+					crossDomain: true,
+					data: {task_id:task_id}, 
+					beforeSend: function() {
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) { 
+						if(res['data'])
+						{
+							jQuery('input[name="task_id"]').val(task_id);
+							jQuery('#myModal11 input[name="task_detail"]').val(res['data']['task']);
+							jQuery('#myModal11 input[name="due_date"]').val(res['data']['due_date']);
+							jQuery('#myModal11 select[name="assigned_to"]').val(res['data']['assigned_to']);
+							jQuery('#myModal11 input[name="job_id"]').val(res['data']['job_id']);
+							jQuery('#myModal11 .assign-name').html(res['data']['by']);
+							
+							jQuery('.completetasklink').html('<a href="javascript:;" class="whitebase" onclick="return completetask('+task_id+',1,'+res['data']['job_id']+')">Complete Task</a>');
+							jQuery('.deletetasklink').html('<a href="javascript:;" class="whitebase" onclick="return deletetask('+task_id+','+res['data']['job_id']+')">Delete Task</a>');
+							jQuery('#myModal11').modal();
+						}
+						
+						
+					},  
+					error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+					return false; 
+					}
+				});
+			});
+			var newjob=gup('newjob');
+			if(newjob=='1'){
+				jQuery('#myModal2').modal();
+				setTimeout(function(){jQuery('#myModal2 #assigned_to').val(uid);},1000);
+			}
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+}
+function deletetask(task_id,job_id)
+{
+	var url2=siteurl+'/api/jobs/deletetask';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {task_id:task_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Task deleted.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+			jQuery('#myModal11').modal('hide');
+			loadjob(job_id);
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
+function deletepu(pu_id,job_id)
+{
+	var url2=siteurl+'/api/jobs/deletepurequest';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {job_pu_id:pu_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			loadjob(job_id);
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">PU Requested cancelled.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+			jQuery('#myModal221').modal('hide');
+			
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
+function completetask(task_id, shownotification,job_id)
+{
+	var uid=localStorage.getItem('Staff_ID');
+	var url2=siteurl+'/api/jobs/completetask';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {task_id:task_id,uid:uid}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			if(shownotification=='1'){
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Task completed.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				jQuery('#myModal11').modal('hide');
+			}
+			loadjob(job_id);
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	
+	
+	var job_id=gup('job_id');
+	jQuery('.job-title').html('JOB#'+job_id);
+	jQuery('input[name="recid"]').val(job_id);
+	jQuery('input[name="email_job_id"]').val(job_id);
+	jQuery('input[name="pu_job_id"]').val(job_id);
+	jQuery('input[name="newtask_job_id"]').val(job_id);
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery('input[name="add_by"]').val(uid);
+	
+	jQuery('#myModal20 .view_job_detail').attr('href','job.html?job_id='+job_id);
+	jQuery('#myModal20 .navigate_to_job').attr('href','navigate_job.html?job_id='+job_id+'&backurl=job.html');
+	
+	var gottoback=localStorage.getItem('gotopage');
+	jQuery('a.gottoback').attr('href',gottoback);
+	loadjob(job_id);
+	
+	url=siteurl+'/api/jobs/jobrelatedthings';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {job_id:job_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+			if(res['job_status']){
+				jQuery(res['job_status']).each(function(key){
+					jQuery('select[name="status"]').append('<option value="'+res['job_status'][key]+'">'+res['job_status'][key]+'</option>');
+				});
+			}
+			if(res['categories']){
+				jQuery(res['categories']).each(function(key){
+					jQuery('select[name="category_id"]').append('<option value="'+res['categories'][key]['ID']+'">'+res['categories'][key]['name']+'</option>');
+				});
+			}
+			if(res['job_times']){
+				for (var i in res['job_times']) {
+					jQuery('select[name="pu_time"]').append('<option value="'+i+'">'+res['job_times'][i]+'</option>');
+				}
+			}
+			if(res['job_durations']){
+				for (var i in res['job_durations']) {
+					jQuery('select[name="duration"]').append('<option value="'+res['job_durations'][i]+'">'+i+'</option>');
+				}
+			}
+			if(res['staffmembers']){
+				jQuery(res['staffmembers']).each(function(key){
+					jQuery('select[name="assigned_to"]').append('<option value="'+res['staffmembers'][key]['id']+'">'+res['staffmembers'][key]['fname']+' '+res['staffmembers'][key]['lname']+'</option>');
+				});
+			}
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	jQuery("#editform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/updaterecord';
+		var noerror=true;
+		var customer_id=jQuery('input[name="customer_id"]').val();
+		if(customer_id==''){
+			var customer_full_name=jQuery('input[name="customer_full_name"]').val();
+			if(jQuery.trim(customer_full_name)==''){
+				jQuery('input[name="customer_full_name"]').addClass('error');
+				noerror=false;
+			}
+		}
+		var contact_fname=jQuery('input[name="contact_fname"]').val();
+		if(jQuery.trim(contact_fname)==''){
+			jQuery('input[name="contact_fname"]').addClass('error');
+			noerror=false;
+		}
+		var contact_lname=jQuery('input[name="contact_lname"]').val();
+		if(jQuery.trim(contact_lname)==''){
+			jQuery('input[name="contact_lname"]').addClass('error');
+			noerror=false;
+		}
+		var contact_email=jQuery('input[name="contact_email"]').val();
+		if(jQuery.trim(contact_email)==''){
+			jQuery('input[name="contact_email"]').addClass('error');
+			noerror=false;
+		}
+		var address=jQuery('textarea[name="address"]').val();
+		if(jQuery.trim(address)==''){
+			jQuery('textarea[name="address"]').addClass('error');
+			noerror=false;
+		}
+		e.preventDefault();
+		if(noerror){
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data:  new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{
+					if(data=='1'){
+						loadjob(job_id);
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Save the job successfully</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+					}
+					else{
+						jQuery('.errormsg').html(data);
+					}
+				},
+				error: function() 
+				{
+				} 	        
+		   });
+		}
+	}));
+	jQuery('.saverecords').click(function(){
+		jQuery('#editform').submit();
+	});
+	jQuery("#emailform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/sendjobemail';
+		var email=jQuery('input[name="email_to"]').val();
+		if(jQuery.trim(email)!=''){
+			var chkemail=ValidateEmail(email);
+			if(!chkemail){
+				jQuery('input[name="email_to"]').addClass('error');
+				return false;
+			}
+		}
+		
+		e.preventDefault();
+		jQuery.ajax({
+        	url: url,
+			type: "POST",
+			data:  jQuery("#emailform").serialize(),
+			success: function(data)
+		    {
+				jQuery('#myModal21').modal('hide');
+				jQuery('#emailform')[0].reset();
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Email sent</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+		    },
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+	}));
+	jQuery('.sendnewemails').click(function(){
+		var emailto=jQuery('input[name="email_to"]').val();
+		if(jQuery.trim(emailto)==''){
+			jQuery('input[name="email_to"]').addClass('error');
+			return false;
+		}
+		var email_subject=jQuery('input[name="email_subject"]').val();
+		if(jQuery.trim(email_subject)==''){
+			jQuery('input[name="email_subject"]').addClass('error');
+			return false;
+		}
+		jQuery('#emailform').submit();
+	});
+	jQuery('#task_due_date, #pu_date, #pu_date2, #pu_date3, #pu_date4').datepicker({
+			showButtonPanel: true,
+			changeMonth: true,
+      		changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+	jQuery("#pu_jobform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/savepurequest';
+		e.preventDefault();
+		var pu_date=jQuery('#pu_date').val();
+		if(jQuery.trim(pu_date)==''){
+			jQuery('#pu_date').addClass('error');
+			return false;
+		}
+		jQuery.ajax({
+        	url: url,
+			type: "POST",
+			data:  jQuery("#pu_jobform").serialize(),
+			success: function(data)
+		    {	
+				jQuery("#pu_jobform")[0].reset();
+				jQuery('#myModal2').modal('hide');
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">PU request save successfully</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				
+		    },
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+	}));
+	  jQuery('.bookpurequest').click(function(){
+	  	jQuery("#pu_jobform").submit();
+	  });
+	  jQuery("#newtask_jobform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/savenewtask';
+		e.preventDefault();
+		var task_detail=jQuery('input[name="task_detail"]').val();
+		if(jQuery.trim(task_detail)==''){
+			jQuery('input[name="task_detail"]').addClass('error');
+			return false;
+		}
+		jQuery.ajax({
+        	url: url,
+			type: "POST",
+			data:  jQuery("#newtask_jobform").serialize(),
+			success: function(data)
+		    {	
+				
+				jQuery("#newtask_jobform")[0].reset();
+				jQuery('#myModal10').modal('hide');
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Task assigned successfully</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				
+		    },
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+	}));
+	  jQuery('.savenewtasks').click(function(){
+	  	jQuery("#newtask_jobform").submit();
+	  });
+	  jQuery('#myModal11 input[name="due_date"]').datepicker({
+			showButtonPanel: true,
+			changeMonth: true,
+      		changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+	 jQuery('#myModal11 a.updaterecord').click(function(){
+		var noerror=true;
+		jQuery('#myModal11 input.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+			var task_detail=jQuery('#myModal11 input[name="task_detail"]').val();
+			var due_date=jQuery('#myModal11 input[name="due_date"]').val();
+			var assigned_to=jQuery('#myModal11 select[name="assigned_to"]').val();
+			var newtask_job_id=jQuery('#myModal11 input[name="job_id"]').val();
+			var task_id=jQuery('#myModal11 input[name="task_id"]').val();
+			var url=siteurl+'/api/jobs/updatetask';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {task_detail:task_detail,due_date:due_date,assigned_to:assigned_to,newtask_job_id:newtask_job_id,task_id:task_id}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					loadjob(newtask_job_id);
+					jQuery('#myModal11').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Task updated successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('#myModal221 a.updatepurequest').click(function(){
+		var noerror=true;
+		jQuery('#myModal221 input.required, #myModal221 select.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+		
+			var duration2=jQuery('#myModal221 select[name="duration"]').val();
+			var pu_date2=jQuery('#myModal221 input[name="pu_date2"]').val();
+			var assigned_to=jQuery('#myModal221 select[name="assigned_to"]').val();
+			var pu_time2=jQuery('#myModal221 select[name="pu_time"]').val();
+			var pu_id=jQuery('#myModal221 input[name="pu_id"]').val();
+			var url=siteurl+'/api/jobs/saveeditpurequest';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {duration2:duration2,pu_date2:pu_date2,assigned_to2:assigned_to,pu_time2:pu_time2,pu_id:pu_id}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					loadjob(job_id);
+					jQuery('#myModal221').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">PU Request updated successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('#myModal102 a.savenote').click(function(){
+		var noerror=true;
+		jQuery('#myModal102 input.required, #myModal102 textarea.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+		
+			var note_detail=jQuery('#myModal102 input[name="note_detail"]').val();
+			var url=siteurl+'/api/jobs/addnotes';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {note:note_detail,job_id:job_id,add_by:uid}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					loadjob(job_id);
+					jQuery('#myModal102').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Note added successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	
+});
+
+</script>
+</body>
+</html>

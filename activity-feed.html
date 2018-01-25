@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+<div class="container">
+  <div class="header-top">
+    <!--<div class="row  align-items-center">
+      <div class="col header-left-col"><a href="#">My Shift</a></div>
+      <div class="col header-right-col"><a href="#"><i class="icon-edit"></i></a></div>
+    </div>-->
+    <h1 class="myschle">Activity Feed</h1>
+  </div>
+</div>
+<!----- /Header Top ----->
+
+<div class="container">
+  <div class="activity-map-wrap"></div>
+</div>
+
+<!----- Bottom Nav Bar ----->
+<div class="bottom-nav-bar"></div>
+<!----- /Bottom Nav Bar -----> 
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+
+<div id="myModal20" class="modal fade bottom-popup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-cnt">
+          <div class="pop-btm-cnt">
+            <ul>
+              <li><a href="javascript:;" data-id="0" class="view_job_detail">View Job</a></li>
+              <li><a href="javascript:;" data-id="0" class="navigate_to_job">Navigate to Job</a></li>
+              <li><a href="tel:3454544545" class="callclientto">Call Client</a></li>
+            </ul>
+          </div>
+          <div class="pop-btm-cnt pop-cancel">
+            <ul>
+              <li> <a data-dismiss="modal">Cancel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	var Staff_Lat= localStorage.getItem('Staff_Lat');
+	var Staff_Long= localStorage.getItem('Staff_Long');
+	var our_address=localStorage.getItem('Staff_Address');
+	var Staff_photo=localStorage.getItem('Staff_photo');
+	
+	var setgooglepath=function(joblati,joblongi, jobaddress,jobstatus,our_address, mapid) {
+        var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
+        var directionsService = new google.maps.DirectionsService;
+		var latit=Staff_Lat;
+		var longit=Staff_Long;
+        var map = new google.maps.Map(document.getElementById(mapid), {
+          zoom: 12,
+          center: {lat: latit, lng: longit}
+        });
+        directionsDisplay.setMap(map);
+		
+		
+		
+		var geocoder = new google.maps.Geocoder;
+		var infowindow = new google.maps.InfoWindow;
+		var latlng = {lat: parseFloat(latit), lng: parseFloat(longit)};
+		var ourphoto='images/icon/mapicon.png';
+		if(jQuery.trim(Staff_photo)!=''){
+			ourphoto=siteurl+'/uploads/profile/'+Staff_photo;
+		}
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: ourphoto
+		});
+	  marker.setPosition( latlng );
+	   google.maps.event.addListener(marker, "click", function (e) {
+			var infoWindow = new google.maps.InfoWindow();
+			infoWindow.setContent(our_address);
+			infoWindow.open(map, marker);
+		});
+		var imgommap='images/mapicon.png';
+		if(jobstatus=='Assigned'){imgommap='images/icon/A.png';}
+		else if(jobstatus=='Being Processed'){imgommap='images/icon/B.png';}
+		else if(jobstatus=='Completed'){imgommap='images/icon/C.png';}
+		var latlng2={lat: parseFloat(joblati), lng: parseFloat(joblongi)};
+		var marker2 = new google.maps.Marker({
+			position: latlng2,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: imgommap
+		});
+	  marker2.setPosition( latlng2 );
+	  google.maps.event.addListener(marker2, "click", function (e) {
+			var infoWindow = new google.maps.InfoWindow();
+			infoWindow.setContent(jobaddress);
+			infoWindow.open(map, marker2);
+		});
+	  marker2.setAnimation(google.maps.Animation.BOUNCE);
+
+		directionsService.route({
+          origin: our_address,  
+          destination: jobaddress,  
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            //window.alert('Directions request failed due to ' + status);
+          }
+        });
+        
+      }
+	
+	var uid=localStorage.getItem('Staff_ID');
+	var url=siteurl+'/api/jobs/myjobs';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {assigned_to:uid}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['data'])
+		{
+			var html='';
+			jQuery(res['data']).each(function(index){
+				html='<div class="acivity-map"><a href="javascript:;" data-id="'+res['data'][index]['ID']+'" data-job_id="'+res['data'][index]['job_id']+'" data-mobile="'+res['data'][index]['contact_mobile']+'" data-phone="'+res['data'][index]['contact_phone']+'" class="openmodal20"><div class="row  align-items-center"><div class="col-9 schedule-time">Your Next Job</div><div class="col-3 schedule-hashtag">#'+res['data'][index]['job_id']+'</div></div><span class="grey-color">Scheduled for '+res['data'][index]['pu_time']+'</span><div class="mapbox" id="map-'+res['data'][index]['ID']+'"> <img src="images/map.png"> </div><div class="map-btm row"><div class="map-lft-btm col-7"><h1>'+res['data'][index]['address']+'</h1></div><div class="map-rt-btm col-5"><h2>Leave Within</h2><h1>'+res['data'][index]['duration']+'</h1></div></div></a></div>';
+				jQuery('.activity-map-wrap').append(html);
+				setTimeout(function(){
+				var lati=res['data'][index]['lati'], longi=res['data'][index]['longi'],address=res['data'][index]['address'], status=res['data'][index]['status'], mapid='map-'+res['data'][index]['ID'];
+				setgooglepath(lati,longi, address,status,our_address, mapid);
+				},500);
+			});
+			jQuery('a.openmodal20').click(function(){
+				var mobile=jQuery(this).attr('data-mobile');
+				var job_id=jQuery(this).attr('data-job_id');
+				if(mobile==''){mobile=jQuery(this).attr('data-phone');}
+				jQuery('#myModal20 .callclientto').attr('href','tel:'+mobile);
+				jQuery('#myModal20 .view_job_detail').attr('href','job.html?job_id='+job_id);
+				jQuery('#myModal20 .navigate_to_job').attr('href','navigate_job.html?job_id='+job_id);
+				jQuery('#myModal20').modal();
+			});
+		}else if(res['nodata']){				
+			jQuery('.activity-map-wrap').append(res['nodata']);
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	jQuery('#myModal20 .pop-btm-cnt a').click(function(){
+		jQuery('#myModal20').modal('hide');
+	});
+	localStorage.setItem('gotopage', 'activity-feed.html');
+});
+
+</script>
+</body>
+</html>

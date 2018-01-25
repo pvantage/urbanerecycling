@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="launchpage">
+      <div class="logobox"><img src="images/1.png"/></div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('.logobox img').css({'min-height':jQuery(window).height()+'px'});
+	});
+	
+	var uid=localStorage.getItem('Staff_ID');
+		
+	if(typeof uid!='undefine' && uid!='' && uid!=null){
+		checkloggedin(uid);
+	}
+	else
+	{
+		setTimeout(function(){
+			window.location='login.html';
+		},1000);
+	}
+		
+	</script>
+</body>
+</html>

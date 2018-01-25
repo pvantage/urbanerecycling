@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css">
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+<div class="popupformats taskpopup">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="taskpopheader">
+          <div class="taskback">
+            <div class="backbox"><a href="more.html"><i class="fa fa-angle-left" aria-hidden="true"></i> More</a></div>
+            <!--<div class="pop-hd-right bkbtn"><a href="#" data-toggle="modal" data-target="#myModal12">invite</a></div>-->
+          </div>
+          <h4 class="modal-title">Staff</h4>
+        </div>
+        <div class="staff-cnt">
+          <ul class="staff-box"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----- Bottom Nav Bar ----->
+<div class="bottom-nav-bar"></div>
+<div id="myModa23" class="modal fade bottom-popup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-cnt">
+          <div class="pop-btm-cnt">
+            <ul>
+              <li class="staff_mem_name">Cameron</li>
+              <li><a href="tel:3454544545" class="callclientto">Call</a></li>
+            </ul>
+          </div>
+          <div class="pop-btm-cnt pop-cancel">
+            <ul>
+              <li> <a data-dismiss="modal">Cancel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----- /Bottom Nav Bar -----> 
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	
+	
+	var uid=localStorage.getItem('Staff_ID');
+	var url=siteurl+'/api/staff';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {uid:uid}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['data'])
+		{
+			var html='';
+			jQuery(res['data']).each(function(index){
+				html='<li><a href="javascript:;" data-id="'+res['data'][index]['id']+'" data-name="'+res['data'][index]['fname']+' '+res['data'][index]['lname']+'" data-phone="'+res['data'][index]['phone']+'" class="openmodal20"><img src="'+res['data'][index]['photo']+'"/><span>'+res['data'][index]['fname']+' '+res['data'][index]['lname']+'</span></a></li>';
+				jQuery('.staff-box').append(html);
+				
+			});
+			jQuery('a.openmodal20').click(function(){
+				var phone=jQuery(this).attr('data-phone');
+				jQuery('#myModa23 .staff_mem_name').html(jQuery(this).attr('data-name'));
+				jQuery('#myModa23 .callclientto').attr('href','tel:'+phone);
+				jQuery('#myModa23').modal();
+			});
+		}else if(res['nodata']){				
+			jQuery('.staff-box').append('<li>'+res['nodata']+'</li>');
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	
+});
+
+</script>
+</body>
+</html>

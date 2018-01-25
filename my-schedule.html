@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css">
+</head>
+<body class="light-grey-bg after-login">
+<!----- Header Top ----->
+
+<div class="container">
+  <div class="header-top">
+    <div class="row  align-items-center">
+      <div class="col-2 header-left-col"><a href="#" data-toggle="modal" data-target="#myModal15"><i class="icon-glass"></i></a></div>
+      <div class="col header-center-col">
+        <div class="top-header-links">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home" class="active">List</a></li>
+            <li><a data-toggle="tab" href="#menu1">Calendar</a></li>
+            <li><a data-toggle="tab" href="#menu2">Map</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-2 header-right-col"><a href="#" data-toggle="modal" data-target="#myModal5"><i class="icon-plus"></i></a></div>
+    </div>
+  </div>
+</div>
+<!----- /Header Top ----->
+
+<div class="container cntbox tab-content">
+  <div id="home" class="tab-pane fade in active show">
+    <h1 class="myschle">My Schedule</h1>
+    <div class="srchmainss"><img src="images/srch.png"/>
+      <input class="sch-srch" type="search" placeholder="search">
+    </div>
+	<div class="job_list"></div>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+<div class="cl-wrap cal_joblist"></div>
+  </div>
+  <div id="menu2" class="tab-pane fade map-maincnt">
+    <div class="map-cnt"> <div id="ourgmap" style="width:100%; height:300px;"></div></div>
+	<div class="map_joblist"></div>
+    
+  </div>
+</div>
+<!----- Bottom Nav Bar ----->
+<div class="bottom-nav-bar"></div>
+<!----- /Bottom Nav Bar -----> 
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+
+<div id="myModal1" class="modal fade bottom-popup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-cnt">
+          <div class="pop-btm-cnt">
+            <ul>
+              <li class="caljob_title">Job #101</li>
+              <li><a href="#" class="caljob_link">View Job</a></li>
+              <li><a href="javascript:;" class="caljob_reschedule">Reschedule Job</a></li>
+            </ul>
+          </div>
+          <div class="pop-btm-cnt pop-cancel">
+            <ul>
+              <li> <a data-dismiss="modal">Cancel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myModal3" class="modal fade cancelmidpop" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="cencelpureq">
+          <h1>Cancel PU Request</h1>
+          <h2>Are you sure you want to cancel?</h2>
+          <a class="whitebase" href="#">Remove PU Request</a>
+          <button type="button" class="close col-3 donbtn" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal5" class="modal fade bottom-popup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-cnt">
+          <div class="pop-btm-cnt">
+            <ul>
+              <li><a href="javascript:;" class="addnewjob">New Job</a></li>
+            </ul>
+          </div>
+          <div class="pop-btm-cnt pop-cancel">
+            <ul>
+              <li> <a data-dismiss="modal">Cancel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal6" class="modal fade popupformats" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title job-title"></div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="savejob">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="new-job">
+		  	<div class="errormsg"></div>
+		  	<form id="editform" name="editform" action="" method="post">
+			<input type="hidden" id="recid" name="recid" value="" />
+			<input type="hidden" id="customer_id" name="customer_id" value="" />
+			<input type="hidden" id="old_status" name="old_status" value="Unassigned" />
+			<input type="hidden" name="add_by" value="" />
+            <div class="form-box">
+              <label>CLIENT NAME</label>
+			  <div style="position:relative;">
+			  	<input type="text" name="customer_full_name" id="customer_full_name" placeholder="Enter Client Name" /><div class="suggestion_box"></div>
+			  </div>
+            </div>
+            <div class="form-box">
+              <label>ADDRESS</label>
+              <input type="text" name="address" id="address" placeholder="Enter Address">
+            </div>
+            <div class="form-box">
+              <label>CONTACT DETAILS</label>
+              <div class="multiinput">
+                <input type="text" placeholder="Contact First Name" id="contact_fname" name="contact_fname">
+				<input type="text" placeholder="Contact Last Name" id="contact_lname" name="contact_lname">
+                <input type="text" placeholder="Email" id="contact_email" name="contact_email">
+                <input type="text" placeholder="Phone" id="contact_phone" name="contact_phone">
+                <input type="text" placeholder="Mobile" id="contact_mobile" name="contact_mobile">
+              </div>
+            </div>
+            <div class="form-box">
+              <label>ITEMS FOR PICKUP</label>
+              <textarea placeholder="Enter Detail" rows="3" cols="40" name="description" id="description"></textarea>
+            </div>
+			</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div id="myModal15" class="modal fade popupformats filterjobs" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Filters Jobs</div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="pop-edit-item p-pic-req jdtl">
+            <div class="form-box">
+              <label>
+              <div class="checkbox">
+                <label>My Schedule
+                  <input type="checkbox" id="myschedule" checked="checked" value="yes" />
+                </label>
+              </div>
+              </label>
+              <select class="onclick" id="fileter-status">
+			  	<option value="">All Jobs</option> 
+				<optgroup label="Jobs">
+                <option value="job-unassigned">Unassigned Jobs</option>
+				<option value="job-assigned">Assigned Jobs</option>
+				<option value="job-beingprocessed">Being Processed Jobs</option>
+                <option value="job-completed">Completed Jobs</option>
+                </optgroup>
+                <optgroup label="Staff"></optgroup>
+               
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal16" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Select Form</div>
+          </div>
+        </div>
+        <div class="staff-cnt">
+          <ul class="staff-box">
+            <li><a  data-toggle="modal" data-target="#myModal17"><img src="images/form.png"/><span>Missile Tag</span></a></li>
+            <li><a data-toggle="modal" data-target="#myModal19"><img src="images/form.png"/><span>Transfer of Responsibility</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal17" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Missile Tag</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+          <div class="nf-box">
+            <label>Missile Tag #'s*</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Send Certification to?*</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Customer E-Mail*</label>
+            <input class="forminput" type="email" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Certification Requested?*</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="checkbox" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="checkbox" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Certification Type?</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input name="Requested1" type="checkbox" value="General Recycling">
+                General Recycling</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Recycling w/ Inventory">
+                Recycling w/ Inventory</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Data Destruction">
+                Data Destruction</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Data Destruction with Video">
+                Data Destruction with Video</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Were there any loose HDD's?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested2" type="radio" value="Yes1">
+                Yes</label>
+              <label>
+                <input name="Requested2" type="radio" value="No2">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>How many loose HDD's?</label>
+            <input class="forminput" type="number" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Notes/Special Instructions</label>
+            <textarea class="forminput"></textarea>
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Photo 2</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Photo 3</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn">Done</button>
+          </div>
+          <div class="nf-box" style="display:none">
+            <button class="nf-box-btn nfbtn2" >View Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal19" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-10 pop-title">Transfer of Responsibility</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+          <div class="nf-box">
+            <label>Certification Requested</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input name="Recycling" type="checkbox" value="General Recycling">
+                None</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Recycling w/ Inventory">
+                General Recycling</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction">
+                Recycling with Inventory</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                Data Destruction</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                Data Destruction with Video</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Were there any loose hard drives collected?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="radio" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="radio" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Customer E-Mail*</label>
+            <input class="forminput" type="email" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Total number of loose hard drives?</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Was customer present at pickup?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="radio" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="radio" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Customer Authorization</label>
+            <input class="forminput" type="text" placeholder="Sign"/>
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn">Done</button>
+          </div>
+          <div class="nf-box" style="display:none">
+            <button class="nf-box-btn nfbtn2" >View Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal221" class="modal fade popupformats btm-toppopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Edit PU Request</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="updatepurequest">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="pop-edit-item p-pic-req jdtl">
+              <div class="pop-multibox">
+			  <form id="puedit_jobform" name="puedit_jobform" action="" method="post">
+				<input type="hidden" id="pu_id" name="pu_id" value="" />
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Staff Member </span></a>
+                  <select name="assigned_to" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Duration </span> </a>
+                  <select name="duration" class="onclick"></select>
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Date </span> </a>
+                  <input type="text" readonly="" class="onclick required" name="pu_date2" id="pu_date2" placeholder="Enter Date" />
+                </div>
+                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Time </span></a>
+				  <select class="onclick" name="pu_time">
+				  </select>
+                </div>
+				</form>
+              <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Created By </span>
+                  <p class="assign-name">John</p>
+                  </a> </div>
+        </div>
+              <div class="pickup-msg cancelputext deletepulink"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+function initalgmap(jobs){
+	var markers=[];
+	var latit= parseFloat(localStorage.getItem('Staff_Lat'));
+	var longit= parseFloat(localStorage.getItem('Staff_Long'));
+	var our_address=localStorage.getItem('Staff_Address');
+	var Staff_photo=localStorage.getItem('Staff_photo');
+	var map = new google.maps.Map(document.getElementById('ourgmap'), {
+	  center: {lat: latit, lng: longit},
+	  zoom: 12,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	
+	var geocoder = new google.maps.Geocoder;
+	var infowindow = new google.maps.InfoWindow;
+	var latlng = {lat: latit, lng: longit};
+	geocoder.geocode({'location': latlng}, function(results, status) {
+	  if (status === 'OK') {
+		if (results[0]) {
+		var ourphoto='images/icon/mapicon.png';
+		if(jQuery.trim(Staff_photo)!=''){
+			ourphoto=siteurl+'/uploads/profile/'+Staff_photo;
+		}
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: ourphoto
+		});
+		  marker.setPosition( latlng );
+		   google.maps.event.addListener(marker, "click", function (e) {
+				var infoWindow = new google.maps.InfoWindow();
+				infoWindow.setContent(results[0].formatted_address);
+				infoWindow.open(map, marker);
+			});
+			//markers.push(marker);
+			if(jobs){
+			 jQuery(jobs).each(function(index){
+			 	 if(jobs[index]['records'])
+				 {
+						jQuery(jobs[index]['records']).each(function(index2){
+						 if(jQuery.trim(jobs[index]['records'][index2]['lati'])!='' && jQuery.trim(jobs[index]['records'][index2]['longi'])!=''){
+						 	var jobstatus=jobs[index]['records'][index2]['status'];
+							var imgommap='images/mapicon.png';
+							if(jobstatus=='Assigned'){imgommap='images/icon/A.png';}
+							else if(jobstatus=='Being Processed'){imgommap='images/icon/B.png';}
+							else if(jobstatus=='Completed'){imgommap='images/icon/C.png';}
+							var latlng2={lat: parseFloat(jobs[index]['records'][index2]['lati']), lng: parseFloat(jobs[index]['records'][index2]['longi'])};
+							var $thismarker=marker+jobs[index]['records'][index2]['job_id'];
+							   var $thismarker = new google.maps.Marker({
+								position: latlng2,
+								map: map,
+								animation: google.maps.Animation.DROP,
+								icon: imgommap
+							});
+						  $thismarker.setPosition( latlng2 );
+						   google.maps.event.addListener($thismarker, "click", function (e) {
+								//window.location='job.html?job_id='+jobs[index]['records'][index2]['job_id'];
+							});
+						}
+					});
+				 }
+				});
+			}
+		} else {
+		  //window.alert('No results found');
+		}
+	  } else {
+		//window.alert('Geocoder failed due to: ' + status);
+	  }
+	});
+}
+function showonmap($this,latit,longit,jobstatus,job_id)
+{
+	jQuery('.schedule-detail').removeClass('selected-schedule');
+	jQuery($this).parent('.schedule-detail').addClass('selected-schedule');
+	var Staff_photo=localStorage.getItem('Staff_photo');
+	var map = new google.maps.Map(document.getElementById('ourgmap'), {
+	  center: {lat: latit, lng: longit},
+	  zoom: 14,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	
+	var geocoder = new google.maps.Geocoder;
+	var infowindow = new google.maps.InfoWindow;
+	var latlng = {lat: latit, lng: longit};
+	geocoder.geocode({'location': latlng}, function(results, status) {
+	  if (status === 'OK') {
+		if (results[0]) {
+		
+		var imgommap='images/mapicon.png';
+		if(jobstatus=='Assigned'){imgommap='images/icon/A.png';}
+		else if(jobstatus=='Being Processed'){imgommap='images/icon/B.png';}
+		else if(jobstatus=='Completed'){imgommap='images/icon/C.png';}
+		if(jQuery.trim(Staff_photo)!=''){
+			ourphoto=siteurl+'/uploads/profile/'+Staff_photo;
+		}
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: imgommap
+		});
+		  marker.setPosition( latlng );
+		   google.maps.event.addListener(marker, "click", function (e) {
+				var infoWindow = new google.maps.InfoWindow();
+				var popp='<a href="job.html?job_id='+job_id+'">Job #'+job_id+'</a>';
+				infoWindow.setContent(popp);
+				infoWindow.open(map, marker);
+			});
+		} else {
+		  //window.alert('No results found');
+		}
+	  } else {
+		//window.alert('Geocoder failed due to: ' + status);
+	  }
+	});
+
+}
+function listschedules(){
+	var uid=localStorage.getItem('Staff_ID');
+	var url=siteurl+'/api/jobs/myschedulejobs';
+	if(!jQuery('#myschedule').is(':checked'))
+	{
+		uid='';	
+	}
+	var fileterstatus=jQuery('#fileter-status').val();
+	var searchtext=jQuery('input.sch-srch').val();
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {assigned_to:uid, status:fileterstatus, searchtext:searchtext}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+			if(res['list'])
+			{
+				var html='';
+				jQuery('.map_joblist, .job_list').html('');
+				jQuery(res['list']).each(function(index){
+					if(typeof res['list'][index]!='undefined'){
+						html='<div class="schedule-wrap">';
+						if(res['list'][index]['pu_day']=='Today'){html+='<div class="schedule-day">Today</div>';}
+						else{html+='<div class="schedule-day"><div class="row"><div class="col-5"> '+res['list'][index]['pu_day']+'</div><div class="col text-right"> '+res['list'][index]['pu_date']+'</div></div></div>';}
+						if(res['list'][index]['records'])
+						{
+							jQuery(res['list'][index]['records']).each(function(index2){
+								if(res['list'][index]['records'][index2]['status']=='Assigned'){
+									html+='<div class="schedule-detail assigned-status"> <a href="job.html?job_id='+res['list'][index]['records'][index2]['job_id']+'"> <span class="alp-badge">A</span> <span class="schedule-circle"></span>';
+								}
+								else if(res['list'][index]['records'][index2]['status']=='Being Processed'){
+									html+='<div class="schedule-detail processing-status"> <a href="job.html?job_id='+res['list'][index]['records'][index2]['job_id']+'"> <span class="alp-badge">P</span> <span class="schedule-circle"></span>';
+								}
+								else if(res['list'][index]['records'][index2]['status']=='Completed'){
+									html+='<div class="schedule-detail completed-status"> <a href="job.html?job_id='+res['list'][index]['records'][index2]['job_id']+'"> <span class="alp-badge">C</span> <span class="schedule-circle"></span>';
+								}
+								html+='<div class="row align-items-center"><div class="col-9 schedule-time">'+res['list'][index]['records'][index2]['pu_time']+'</div><div class="col-3 schedule-hashtag">#'+res['list'][index]['records'][index2]['job_id']+'</div></div><div class="schedule-address"><h3>'+res['list'][index]['records'][index2]['contact_fname']+' '+res['list'][index]['records'][index2]['contact_lname']+'</h3><div class="sch-adr">'+res['list'][index]['records'][index2]['address']+'</div><span class="grey-color">'+res['list'][index]['records'][index2]['description']+'</span></div></a> </div>';
+							});
+							
+							jQuery(res['list'][index]['records']).each(function(index2){
+								var maplist='';
+								var linkj='job.html?job_id='+res['list'][index]['records'][index2]['job_id'];
+								var onclickfn='';
+								if(jQuery.trim(res['list'][index]['records'][index2]['lati'])!='' && jQuery.trim(res['list'][index]['records'][index2]['longi'])!='')
+								{
+									linkj='javascript:;';
+									var jstatus=res['list'][index]['records'][index2]['status'];
+									onclickfn=' onclick="return showonmap(this,'+parseFloat(res['list'][index]['records'][index2]['lati'])+','+parseFloat(res['list'][index]['records'][index2]['longi'])+',\''+jstatus+'\','+res['list'][index]['records'][index2]['job_id']+')"';
+								}
+								if(res['list'][index]['records'][index2]['status']=='Assigned'){
+									maplist+='<div class="schedule-detail assigned-status"> <a href="'+linkj+'"'+onclickfn+'> <span class="alp-badge">A</span> <span class="schedule-circle"></span>';
+								}
+								else if(res['list'][index]['records'][index2]['status']=='Being Processed'){
+									maplist+='<div class="schedule-detail processing-status"> <a href="'+linkj+'"'+onclickfn+'> <span class="alp-badge">P</span> <span class="schedule-circle"></span>';
+								}
+								else if(res['list'][index]['records'][index2]['status']=='Completed'){
+									maplist+='<div class="schedule-detail completed-status"> <a href="'+linkj+'"'+onclickfn+'> <span class="alp-badge">C</span> <span class="schedule-circle"></span>';
+								}
+								maplist+='<div class="row align-items-center"><div class="col-9 schedule-time">'+res['list'][index]['records'][index2]['pu_time']+'</div><div class="col-3 schedule-hashtag">#'+res['list'][index]['records'][index2]['job_id']+'</div></div><div class="schedule-address"><h3>'+res['list'][index]['records'][index2]['contact_fname']+' '+res['list'][index]['records'][index2]['contact_lname']+'</h3><div class="sch-adr">'+res['list'][index]['records'][index2]['address']+'</div><span class="grey-color">'+res['list'][index]['records'][index2]['description']+'</span></div></a> </div>';
+								
+								jQuery('.map_joblist').append(maplist);
+							});
+						}
+						html+='</div>';
+		 /* html+='
+			  <span class="grey-color">Replace sink in staff break room</span> </div>;*/
+						jQuery('.job_list').append(html);
+					}
+				});
+				
+				jQuery('.nav-tabs li a').click(function(){
+					var tagret=jQuery(this).attr('href');
+					if(tagret=='#menu2' && !jQuery(this).hasClass('active')){
+						setTimeout(function(){
+							initalgmap(res['list']);
+						},500);
+					}
+					localStorage.setItem('openedtab', tagret);
+				});
+			}
+			if(res['cal'])
+			{
+				jQuery('.cal_joblist').html('');
+				jQuery(res['cal']).each(function(index){
+					if(typeof res['cal'][index]!='undefined'){
+						html2='';
+						if(res['cal'][index]['pu_today']=='Yes'){html2+='<div class="cl-heading red'+res['cal'][index]['pu_calnav']+'">'+res['cal'][index]['pu_day']+'</div>';}
+						else{html2+='<div class="cl-heading'+res['cal'][index]['pu_calnav']+'">'+res['cal'][index]['pu_day']+'</div>';}
+						html2+='<div class="cl-detail cal-details"><div class="row">';
+						if(res['cal'][index]['records'])
+						{
+							jQuery(res['cal'][index]['records']).each(function(index2){
+								if(typeof res['cal'][index]['records'][index2]['start_hour']!='undefined' && typeof res['cal'][index]['records'][index2]['end_hour']!='undefined'){
+									html2+='<div class="col-2">';
+									for(i=parseInt(res['cal'][index]['records'][index2]['start_hour']);i<=parseInt(res['cal'][index]['records'][index2]['end_hour']);i++){
+										if(i<12){var tm=i+' AM';}
+										else if(i==12){var tm=i+' PM';}
+										else if(i==24){var tm=i+' AM';}
+										else if(i>12){var tm=(i-12)+' PM';}
+										
+										html2+='<div class="col-12 cl-time">'+tm+'</div>';
+									}
+									html2+='</div>';
+								}
+								cls='';
+								if(res['cal'][index]['records'][index2]['status']=='Assigned'){
+									cls=' orange';
+								}
+								else if(res['cal'][index]['records'][index2]['status']=='Completed'){
+									cls=' completed-status';
+								}
+								html2+='<div class="cal-rightbx col-10"><div class="col" style="height:'+res['cal'][index]['records'][index2]['averageheight']+'px;top:'+res['cal'][index]['records'][index2]['averagetop']+'px;"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['cal'][index]['records'][index2]['ID']+'" data-jobid="'+res['cal'][index]['records'][index2]['job_id']+'" href="javascript:;">'+res['cal'][index]['records'][index2]['contact_fname']+' '+res['cal'][index]['records'][index2]['contact_lname']+'<br><span class="cl-city">'+res['cal'][index]['records'][index2]['address']+'</span> </a> </div></div>';
+							});
+							
+						}
+						html2+='</div></div>';
+		 /* html+='
+			  <span class="grey-color">Replace sink in staff break room</span> </div>;*/
+						jQuery('.cal_joblist').append(html2);
+					}
+				});
+				
+				jQuery('.nav-tabs li a').click(function(){
+					var tagret=jQuery(this).attr('href');
+					if(tagret=='#menu1' && !jQuery(this).hasClass('active')){
+						setTimeout(function(){
+							jQuery('html, body').animate({scrollTop:jQuery('.calnavigate').position().top}, 'slow');
+						},500);
+					}
+					localStorage.setItem('openedtab', tagret);
+				});
+				jQuery('a.openmyModal1').click(function(){
+					var jid=jQuery(this).attr('data-jobid');
+					var resid=jQuery(this).attr('data-id');
+					jQuery('#myModal1 .caljob_title').html('Job #'+jid);
+					jQuery('#myModal1 .caljob_link').attr('href','job.html?job_id='+jid);
+					jQuery('#myModal1 .caljob_reschedule').attr('data-id',resid);
+					jQuery('#myModal1').modal();
+				});
+			}
+			var openedtab=localStorage.getItem('openedtab');
+			if(typeof openedtab!='undefine' && openedtab!='' && openedtab!=null){
+				jQuery('.nav-tabs li a').each(function(){
+					var target=jQuery(this).attr('href');
+					if(target==openedtab){
+						jQuery(this).trigger('click');
+					}
+				});
+			}
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+}
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery('input[name="add_by"]').val(uid);
+	jQuery.support.cors = true;
+	url=siteurl+'/api/jobs/jobrelatedthings';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+			/*if(res['job_status']){
+				jQuery(res['job_status']).each(function(key){
+					jQuery('select[name="status"]').append('<option value="'+res['job_status'][key]+'">'+res['job_status'][key]+'</option>');
+				});
+			}
+			if(res['categories']){
+				jQuery(res['categories']).each(function(key){
+					jQuery('select[name="category_id"]').append('<option value="'+res['categories'][key]['ID']+'">'+res['categories'][key]['name']+'</option>');
+				});
+			}*/
+			if(res['job_times']){
+				for (var i in res['job_times']) {
+					jQuery('select[name="pu_time"]').append('<option value="'+i+'">'+res['job_times'][i]+'</option>');
+				}
+			}
+			if(res['job_durations']){
+				for (var i in res['job_durations']) {
+					jQuery('select[name="duration"]').append('<option value="'+res['job_durations'][i]+'">'+i+'</option>');
+				}
+			}
+			if(res['staffmembers']){
+				jQuery(res['staffmembers']).each(function(key){
+					jQuery('select#fileter-status optgroup[label="Staff"]').append('<option value="job-assigned-to-'+res['staffmembers'][key]['id']+'">'+res['staffmembers'][key]['fname']+' '+res['staffmembers'][key]['lname']+'</option>');
+					jQuery('select[name="assigned_to"]').append('<option value="'+res['staffmembers'][key]['id']+'">'+res['staffmembers'][key]['fname']+' '+res['staffmembers'][key]['lname']+'</option>');
+					
+				});
+			}
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	
+	listschedules();
+	jQuery('#fileter-status').change(function(){
+		listschedules();
+		jQuery('#myModal15').modal('hide');
+	});
+	jQuery('input.sch-srch').keyup(function(){
+		listschedules();
+	});
+	jQuery('#myschedule').change(function(){
+		listschedules();
+		jQuery('#myModal15').modal('hide');
+	});
+	jQuery('a.caljob_reschedule').click(function(){
+		var url2=siteurl+'/api/jobs/pudetail';
+		var pu_id=jQuery(this).attr('data-id');
+		jQuery('#pu_id').val(pu_id);
+		jQuery.ajax({  
+			type: 'POST',  
+			url: url2,           
+			dataType: 'json',  
+			crossDomain: true,
+			data: {pu_id:pu_id}, 
+			beforeSend: function() {
+			},		
+			complete: function() {
+			}, 
+			crossDomain: true,  
+			success: function(res) { 
+				if(res['data'])
+				{
+					jQuery('#myModal221 input[name="pu_date2"]').val(res['data']['pu_date']);
+					jQuery('#myModal221 select[name="assigned_to"]').val(res['data']['assigned_to']);
+					jQuery('#myModal221 select[name="pu_time"]').val(res['data']['pu_time']);
+					jQuery('#myModal221 .assign-name').html(res['data']['by']);
+					jQuery('.deletepulink').html('<a href="javascript:;" class="whitebase" onclick="return deletepu('+pu_id+','+res['data']['job_id']+')">Cancel PU Request</a>');
+					jQuery('#myModal221').modal();
+				}
+				
+				
+			},  
+			error: function(response, d, a){
+			
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+			}
+		});
+	});
+	jQuery('#myModal221 a.updatepurequest').click(function(){
+		var noerror=true;
+		jQuery('#myModal221 input.required, #myModal221 select.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+		
+			var duration2=jQuery('#myModal221 select[name="duration"]').val();
+			var pu_date2=jQuery('#myModal221 input[name="pu_date2"]').val();
+			var assigned_to=jQuery('#myModal221 select[name="assigned_to"]').val();
+			var pu_time2=jQuery('#myModal221 select[name="pu_time"]').val();
+			var pu_id=jQuery('#myModal221 input[name="pu_id"]').val();
+			var url=siteurl+'/api/jobs/saveeditpurequest';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {duration2:duration2,pu_date2:pu_date2,assigned_to2:assigned_to,pu_time2:pu_time2,pu_id:pu_id}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					listschedules();
+					jQuery('#myModal221').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">PU Request updated successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('a.addnewjob').click(function(){
+		
+		var url=siteurl+'/api/jobs/startnewjob';
+		jQuery.ajax({  
+			type: 'POST',  
+			url: url,           
+			crossDomain: true,
+			data: {add_by:uid}, 
+			beforeSend: function() {
+				
+			},		
+			complete: function() {
+			}, 
+			crossDomain: true,  
+			success: function(res) {
+				if(parseInt(res)>0){ 
+					jQuery('#myModal6 .job-title').html('New JOB #'+res);
+					jQuery('#myModal6 #recid').val(res);
+					jQuery('#myModal6').modal();
+				}
+			},  
+			error: function(response, d, a){
+			
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+			}
+		});
+		
+	});
+	jQuery('#customer_full_name').keyup(function(){
+		var full_name=jQuery(this).val();
+		if(jQuery.trim(full_name)==''){
+			jQuery('.suggestion_box').html('');
+			jQuery('.suggestion_box').hide();
+		}
+		else
+		{
+			jQuery('.suggestion_box').show();
+			var url=siteurl+'/api/jobs/searchcustomers';
+				jQuery.ajax({ 
+				 type: 'POST',  
+				 url: url,  
+				 //contentType: contentType,  
+				 dataType: 'json',  
+				 data: {full_name:full_name},  
+				 beforeSend: function() {
+				 },		
+				 complete: function() {
+				 },
+				 success: function(res) { 
+				   if(res['record']){
+						var html='<ul>';
+						jQuery(res['record']).each(function(index){
+							html+='<li><a href="javascript:;" class="select_customer" data-id="'+res['record'][index]['id']+'" data-name="'+res['record'][index]['full_name']+'" data-address="'+res['record'][index]['address']+'"><span class="cust_f_name">'+res['record'][index]['full_name']+'</span><span class="cust_addres">'+res['record'][index]['address']+'</span></a></li>';
+						});
+						html+='</ul>';
+						jQuery('.suggestion_box').css({'height':'200px'});
+						
+						jQuery('.suggestion_box').html(html);
+						if(res['record'].length==0){
+							jQuery('.suggestion_box').html('');
+							jQuery('.suggestion_box').css({'height':'0px'});
+						}
+						jQuery('.select_customer').click(function(){
+							var dataid=jQuery(this).attr('data-id');
+							jQuery('#customer_id').val(dataid);
+							var dataname=jQuery(this).attr('data-name');
+							jQuery('#customer_full_name').val(dataname);
+							var dataaddress=jQuery(this).attr('data-address');
+							jQuery('#address').val(dataaddress);
+							jQuery('.suggestion_box').html('');
+							jQuery('.suggestion_box').css({'height':'0px'});
+						});
+				   }
+				 },  
+				 error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},5000); 
+				 } 
+			   });
+		}
+	});
+	jQuery("#editform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/updaterecord2';
+		var noerror=true;
+		var customer_id=jQuery('#customer_id').val();
+		var customer_full_name=jQuery('#customer_full_name').val();
+		if(jQuery.trim(customer_full_name)==''){
+			jQuery('#customer_full_name').addClass('error');
+			noerror=false;
+		}
+		var contact_fname=jQuery('#contact_fname').val();
+		if(jQuery.trim(contact_fname)==''){
+			jQuery('#contact_fname').addClass('error');
+			noerror=false;
+		}
+		var contact_lname=jQuery('#contact_lname').val();
+		if(jQuery.trim(contact_lname)==''){
+			jQuery('#contact_lname').addClass('error');
+			noerror=false;
+		}
+		var contact_email=jQuery('#contact_email').val();
+		if(jQuery.trim(contact_email)==''){
+			jQuery('#contact_email').addClass('error');
+			noerror=false;
+		}
+		var address=jQuery('#address').val();
+		if(jQuery.trim(address)==''){
+			jQuery('#address').addClass('error');
+			noerror=false;
+		}
+		e.preventDefault();
+		if(noerror){
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data:  new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{
+					if(parseInt(data)){
+						window.location='job.html?job_id='+data+'&newjob=1';
+					}
+					else{
+						jQuery('.errormsg').html(data);
+					}
+				},
+				error: function() 
+				{
+				} 	        
+		   });
+		}
+	}));
+	jQuery('.savejob').click(function(){
+		jQuery("#editform").submit();
+	});
+	localStorage.setItem('gotopage', 'my-schedule.html');
+	
+});
+
+</script>
+</body>
+</html>

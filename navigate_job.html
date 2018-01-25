@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+<div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <a class="close col-2 donbtn gottoback" href="#">Back</a>
+            <div class="col-7 pop-title"></div>
+            <div class="col-3 pop-hd-right"></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          
+          <div id="gmap" style="width:100%;"></div>
+        </div>
+      </div>
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	var Staff_Lat= localStorage.getItem('Staff_Lat');
+	var Staff_Long= localStorage.getItem('Staff_Long');
+	var our_address=localStorage.getItem('Staff_Address');
+	var Staff_photo=localStorage.getItem('Staff_photo');
+	var ht=jQuery(window).height();
+	jQuery('#gmap').css({'height':ht+'px'});
+	var setgooglepath=function(joblati,joblongi, jobaddress,jobstatus,our_address) {
+		var mapid='gmap';
+        var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
+        var directionsService = new google.maps.DirectionsService;
+		var latit=Staff_Lat;
+		var longit=Staff_Long;
+        var map = new google.maps.Map(document.getElementById(mapid), {
+          zoom: 12,
+          center: {lat: latit, lng: longit}
+        });
+        directionsDisplay.setMap(map);
+		
+		
+		
+		var geocoder = new google.maps.Geocoder;
+		var infowindow = new google.maps.InfoWindow;
+		var latlng = {lat: parseFloat(latit), lng: parseFloat(longit)};
+		var ourphoto='images/icon/mapicon.png';
+		if(jQuery.trim(Staff_photo)!=''){
+			ourphoto=siteurl+'/uploads/profile/'+Staff_photo;
+		}
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: ourphoto
+		});
+	  marker.setPosition( latlng );
+	   google.maps.event.addListener(marker, "click", function (e) {
+			var infoWindow = new google.maps.InfoWindow();
+			infoWindow.setContent(our_address);
+			infoWindow.open(map, marker);
+		});
+		var imgommap='images/mapicon.png';
+		if(jobstatus=='Assigned'){imgommap='images/icon/A.png';}
+		else if(jobstatus=='Being Processed'){imgommap='images/icon/B.png';}
+		else if(jobstatus=='Completed'){imgommap='images/icon/C.png';}
+		var latlng2={lat: parseFloat(joblati), lng: parseFloat(joblongi)};
+		var marker2 = new google.maps.Marker({
+			position: latlng2,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			icon: imgommap
+		});
+	  marker2.setPosition( latlng2 );
+	  google.maps.event.addListener(marker2, "click", function (e) {
+			var infoWindow = new google.maps.InfoWindow();
+			infoWindow.setContent(jobaddress);
+			infoWindow.open(map, marker2);
+		});
+	  marker2.setAnimation(google.maps.Animation.BOUNCE);
+
+		directionsService.route({
+          origin: our_address,  
+          destination: jobaddress,  
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            //window.alert('Directions request failed due to ' + status);
+          }
+        });
+        
+      }
+	
+	var uid=localStorage.getItem('Staff_ID');
+	var url=siteurl+'/api/jobs/singlerecord';
+	var job_id=gup('job_id');
+	var gottoback=localStorage.getItem('gotopage');
+	jQuery('a.gottoback').attr('href',gottoback);
+	var backurl=gup('backurl');
+	if(backurl=='job.html'){jQuery('a.gottoback').attr('href',backurl+'?job_id='+job_id);}
+	jQuery('.pop-title').html('JOB#'+job_id);
+	
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {job_id:job_id}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['record'])
+		{
+			var html='';
+				
+				setTimeout(function(){
+				var lati=res['record']['lati'], longi=res['record']['longi'],address=res['record']['address'], status=res['record']['status'];
+				setgooglepath(lati,longi, address,status,our_address);
+				},500);
+			
+		}else if(res['nodata']){				
+			jQuery('.activity-map-wrap').append(res['nodata']);
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	
+});
+
+</script>
+</body>
+</html>

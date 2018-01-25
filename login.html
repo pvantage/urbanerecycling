@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 full-height center">
+      <div class="loginbox">
+        <div class="form-logo"> <img src="images/login-logo.png"/></div>
+        <form id="loginuser" action="" method="post">
+          <div class="login-box"> <img src="images/em.png"/>
+            <input type="email" id="email" name="email" required="" class="email required" placeholder="Email Addresss"/>
+          </div>
+          <div class="login-box paswd"> <img src="images/pe.png"/>
+            <input type="password" id="pwd" name="pwd" required="" class="required" placeholder="Password"/>
+          </div>
+          <div class="login-box">
+            <button class="submit">Sign In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/validate.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	jQuery('#loginuser').validate();
+	/*if(localStorage.getItem('UserRedirect')!=null){
+		window.location=localStorage.getItem('UserRedirect');
+	}*/
+	jQuery('#loginuser').submit( function(){	
+		var error=false;
+		jQuery('#loginuser input').each(function(){
+			if(jQuery(this).hasClass('error')){
+				error=true;
+			}
+		});
+		
+		var email=jQuery('#email').val();
+		var pwd=jQuery('#pwd').val();
+		var url=siteurl+'/api/login';
+		if(email=='' || pwd=='' || error)
+		{
+			return false;
+		}
+		else
+		{
+			 jQuery.ajax({  
+			 type: 'POST',  
+			 url: url,           
+			 dataType: 'json',  
+			 data: {email:email,pwd:pwd}, 
+			 beforeSend: function() {
+			 	
+			 },		
+			 complete: function() {
+			 }, 
+			 crossDomain: true,  
+			 success: function(res) { 
+				if(res['checklogin']['udetail'])
+				{
+					localStorage.setItem('Staff_ID', res['checklogin']['udetail']['userid']);
+					localStorage.setItem('Staff_email', res['checklogin']['udetail']['email']);
+					localStorage.setItem('Staff_phone', res['checklogin']['udetail']['phone']);
+					localStorage.setItem('Staff_fname', res['checklogin']['udetail']['fname']);
+					localStorage.setItem('Staff_lname', res['checklogin']['udetail']['lname']);
+					localStorage.setItem('Staff_photo', res['checklogin']['udetail']['photo']);
+					localStorage.setItem('Staff_job_title', res['checklogin']['udetail']['job_title']);
+					localStorage.setItem('Staff_user_type', res['checklogin']['udetail']['user_type']);
+					window.location ='activity-feed.html';
+				
+				}else if(res['checklogin']['error']){				
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">'+res['checklogin']['error']+'</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				}
+				else
+				{
+					alert('Server error');
+				}
+				return false; 
+			 },  
+			 error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+			 }
+			        
+		   });
+		 }	
+		 return false;   
+	});
+	
+	
+	
+});
+
+</script>
+</body>
+</html>

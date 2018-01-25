@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css">
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+<div class="popupformats taskpopup">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="taskpopheader">
+          <div class="taskback">
+            <div class="backbox"><a href="more.html"><i class="fa fa-angle-left" aria-hidden="true"></i> More</a></div>
+            <div class="task-plus"><a href="#" data-toggle="modal" data-target="#myModal11"><i class="icon-plus"></i></a></div>
+          </div>
+          <h4 class="modal-title">Clients</h4>
+        </div>
+        <div class="client-cnt">
+          <div class="client-srch">
+            <input type="search" placeholder="Search" id="srchtext"/>
+          </div>
+          <div class="client-listing">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----- Bottom Nav Bar ----->
+<div class="bottom-nav-bar"></div>
+<!----- /Bottom Nav Bar -----> 
+<div id="myModal11" class="modal fade popupformats" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Add Client</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="addrecord">Save</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Client Name</h1>
+            <input type="text" class="required" placeholder="Client Name" name="client_name"/>
+          </div>
+          <div class="pop-edit-item">
+            <h1>Job Address</h1>
+            <input type="text" class="required" placeholder="No job address" name="client_address"/>
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Email</h1>
+            <input type="text" placeholder="Email Address" name="client_email"/>
+          </div>
+          <div class="pop-edit-item">
+            <h1>Mobile</h1>
+            <input type="text" placeholder="Mobile Number" name="client_mobile"/>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal14" class="modal fade popupformats" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Edit Client</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="updaterecord">Save</a></div>
+          </div>
+        </div>
+		<input type="hidden" name="client_id" value="0"/>
+        <div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Client Name</h1>
+            <input type="text" class="required" placeholder="Client Name" name="client_name"/>
+          </div>
+          <div class="pop-edit-item">
+            <h1>Job Address</h1>
+            <input type="text" class="required" placeholder="No job address" name="client_address"/>
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Email</h1>
+            <input type="text" placeholder="Email Address" name="client_email"/>
+          </div>
+          <div class="pop-edit-item">
+            <h1>Mobile</h1>
+            <input type="text" placeholder="Mobile Number" name="client_mobile"/>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input type="hidden" id="totalpages" value="0" />
+<input type="hidden" id="nextpage" value="1" />
+<input type="hidden" id="activesearch" value="1" />
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+function showrecords(){
+	var url=siteurl+'/api/clients';
+	var totalpages=jQuery('#totalpages').val();
+	var pageid=parseInt(jQuery('#nextpage').val());
+	var activesearch=jQuery('#activesearch').val();
+	var srchtext=jQuery('#srchtext').val();
+	if(activesearch=='1'){
+		jQuery.ajax({  
+			type: 'POST',  
+			url: url,           
+			dataType: 'json',  
+			crossDomain: true,
+			data: {pageid:pageid,srchtext:srchtext}, 
+			beforeSend: function() {
+				jQuery('#activesearch').val(0);
+			},		
+			complete: function() {
+			}, 
+			crossDomain: true,  
+			success: function(res) { 
+			if(res['data'])
+			{
+				var html='';
+				jQuery(res['data']).each(function(index){
+					html+='<li style="cursor:pointer;" data-id="'+res['data'][index]['id']+'" data-name="'+res['data'][index]['full_name']+'" data-mobile="'+res['data'][index]['mobile']+'" data-address="'+res['data'][index]['address']+'" data-email="'+res['data'][index]['email']+'" class="openmodal20 updateme_'+res['data'][index]['id']+'">'+res['data'][index]['full_name']+'</li>';
+					
+				});
+				jQuery('#activesearch').val(1);
+				if(pageid==1){
+					jQuery('#totalpages').val(res['total']);
+					if(res['total']==1){jQuery('#activesearch').val(0);}
+					
+			   }
+			  else if(parseInt(totalpages)>=pageid){
+					if(totalpages==1){jQuery('#activesearch').val(0);}
+			   }
+			   else
+			   {
+					jQuery('#activesearch').val(0);
+			   }
+			   if(pageid==1){
+				
+					jQuery('.client-listing ul').html(html);
+				}
+				else{
+				   jQuery('.client-listing ul').append(html);
+				 } 
+			   pageid=parseInt(pageid)+1;
+			   jQuery('#nextpage').val(pageid);
+			   jQuery('li.openmodal20').click(function(){
+					jQuery('#myModal14 input[name="client_name"]').val(jQuery(this).attr('data-name'));
+					jQuery('#myModal14 input[name="client_address"]').val(jQuery(this).attr('data-address'));
+					jQuery('#myModal14 input[name="client_email"]').val(jQuery(this).attr('data-email'));
+					jQuery('#myModal14 input[name="client_mobile"]').val(jQuery(this).attr('data-mobile'));
+					jQuery('#myModal14 input[name="client_id"]').val(jQuery(this).attr('data-id'));
+					
+					jQuery('#myModal14').modal();
+				});
+			}
+			
+			},  
+			error: function(response, d, a){
+			
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+			}
+		});
+	}
+}
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	var uid=localStorage.getItem('Staff_ID');
+	showrecords();
+	jQuery(window).scroll(function() {
+	   if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 150) {
+			showrecords();
+	   }
+	});
+	jQuery('#srchtext').keyup(function(){
+		jQuery('#totalpages').val(0);
+		jQuery('#nextpage').val(1);
+		jQuery('#activesearch').val(1);
+		showrecords();
+	});
+	jQuery('#myModal14 a.updaterecord').click(function(){
+		var noerror=true;
+		jQuery('#myModal14 input.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+			var full_name=jQuery('#myModal14 input[name="client_name"]').val();
+			var address=jQuery('#myModal14 input[name="client_address"]').val();
+			var email=jQuery('#myModal14 input[name="client_email"]').val();
+			var mobile=jQuery('#myModal14 input[name="client_mobile"]').val();
+			var recid=jQuery('#myModal14 input[name="client_id"]').val();
+			var url=siteurl+'/api/clients/updaterecord';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {full_name:full_name,address:address,email:email,mobile:mobile,recid:recid}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					jQuery('.client-listing ul .updateme_'+recid).html(full_name);
+					jQuery('.client-listing ul .updateme_'+recid).attr('data-name',full_name);
+					jQuery('.client-listing ul .updateme_'+recid).attr('data-address',address);
+					jQuery('.client-listing ul .updateme_'+recid).attr('data-email',email);
+					jQuery('.client-listing ul .updateme_'+recid).attr('data-mobile',mobile);
+					
+					jQuery('#myModal14').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Client updated successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('#myModal11 a.addrecord').click(function(){
+		var noerror=true;
+		jQuery('#myModal11 input.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+			var full_name=jQuery('#myModal11 input[name="client_name"]').val();
+			var address=jQuery('#myModal11 input[name="client_address"]').val();
+			var email=jQuery('#myModal11 input[name="client_email"]').val();
+			var mobile=jQuery('#myModal11 input[name="client_mobile"]').val();
+			var url=siteurl+'/api/clients/add';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {full_name:full_name,address:address,email:email,mobile:mobile,add_by:uid}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					if(parseInt(res)>0){
+						
+						var html='<li style="cursor:pointer;" data-id="'+res+'" data-name="'+full_name+'" data-mobile="'+mobile+'" data-address="'+address+'" data-email="'+email+'" class="openmodal20 updateme_'+res+'">'+full_name+'</li>';
+						jQuery('.client-listing ul').prepend(html);
+						jQuery('li.openmodal20').click(function(){
+							jQuery('#myModal14 input[name="client_name"]').val(full_name);
+							jQuery('#myModal14 input[name="client_address"]').val(address);
+							jQuery('#myModal14 input[name="client_email"]').val(email);
+							jQuery('#myModal14 input[name="client_mobile"]').val(mobile);
+							jQuery('#myModal14 input[name="client_id"]').val(res);
+							
+							jQuery('#myModal14').modal();
+						});
+						jQuery('#myModal11').modal('hide');
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Client added successfully.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+					}
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	
+});
+
+</script>
+</body>
+</html>

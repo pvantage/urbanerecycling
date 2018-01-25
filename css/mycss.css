@@ -1,0 +1,29 @@
+.showmessage{width:287px; background:#29a03f; color:#FFFFFF; height:40px; line-height:40px; font-size:16px; text-align:center; position:fixed; bottom:10px; left:10px; z-index:999999; border:1px solid #FFFFFF;}
+.showpopmessage {
+    width: 100%;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 999999;
+    box-shadow: 2px 3px 3px #c8c8c8;
+    padding: 10px;
+}
+#ourgmap{width:100%; height:500px;}
+.mapbox{width:100%; height:330px;}
+ul.not-box label.processed-job{background:#4289ff;}
+ul.not-box label.assigned-job{background:#f79e34;}
+ul.not-box label.completed-job{background:#3cbc3c;}
+.schedule-detail.processing-status:before,.schedule-detail.processing-status .alp-badge{background-color:#4289ff;}
+.schedule-detail.assigned-status:before,.schedule-detail.assigned-status .alp-badge{background-color:#f79e34;}
+.schedule-detail.completed-status:before,.schedule-detail.completed-status .alp-badge{background-color:#3cbc3c;}
+.map-maincnt .schedule-detail.selected-schedule { background: #ddd;}
+.cl-wrap .cl-address a{overflow:hidden;}
+.cl-wrap .cl-address a.completed-status{background-color:#b8ffb8;border-color:#3cbc3c;}
+.cl-wrap .cl-address a.completed-status:hover{color:#FFFFFF;background-color:#3cbc3c;}
+.suggestion_box{position:absolute; top:80px; left:0px; height:0px; overflow:auto; width:350px; z-index:99999999; background:#FFFFFF;}
+.suggestion_box ul li{list-style:none; display:block; width:100%;}
+.suggestion_box ul{margin:0px; padding:0px;}
+.suggestion_box a{color:#000000; text-decoration:none;}
+.suggestion_box .cust_f_name{float:left; display:block; width:35%;}
+.suggestion_box .cust_addres{float:right; display:block; width:65%;}

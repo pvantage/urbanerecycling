@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css">
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+<div class="popupformats taskpopup">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="taskpopheader">
+          <div class="taskback">
+            <div class="backbox"><a href="more.html"><i class="fa fa-angle-left" aria-hidden="true"></i> More</a></div>
+            <div class="task-plus"><a href="#" data-toggle="modal" data-target="#myModal10"><i class="icon-plus"></i></a></div>
+          </div>
+          <h4 class="modal-title">Tasks</h4>
+        </div>
+        <div class="pop-cnt">
+          <div class="new-job">
+            <div class="form-box">
+              <input type="text" placeholder="Search task.." id="srchtext">
+            </div>
+            <div class="form-box">
+              <label>CURRENT TASKS</label>
+              <div class="multiinput assigned_task_list">
+              </div>
+            </div>
+            <div class="form-box">
+              <label>COMPLETED TASKS</label>
+              <div class="multiinput completed_task_list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----- Bottom Nav Bar ----->
+<div class="bottom-nav-bar"></div>
+<!----- /Bottom Nav Bar -----> 
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+
+
+<div id="myModal10" class="modal fade popupformats addtasknew" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Add Task</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="addrecord">Done</a></div>
+          </div>
+        </div>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="form-box">
+              <input type="text" placeholder="Enter new task.." name="task_detail">
+            </div>
+            <div class="pop-edit-item p-pic-req jdtl">
+				<div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Due Date</h1>
+            <input type="text" class="required" placeholder="Due Date" name="due_date" />
+          </div>
+          <div class="pop-edit-item">
+            <h1>Job</h1>
+            <select name="job_id" class="required onclick">
+				<option value="">Select job</option>
+			</select>
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Assigned To</h1>
+            <select name="assigned_to" class="required onclick">
+				<option value="0">Anyone</option>
+			</select>
+          </div>
+          
+          <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Created By </span>
+                  <p class="assign-name"></p>
+                  </a> </div>
+        </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal11" class="modal fade popupformats addtasknew" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Edit Task</div>
+            <div class="col-3 pop-hd-right bkbtn"><a href="javascript:;" class="updaterecord">Done</a></div>
+          </div>
+        </div>
+		<input type="hidden" name="task_id" value="0"/>
+        <div class="pop-cnt">
+          <div class="Edit-job-bottom">
+            <div class="form-box">
+              <input type="text" placeholder="Enter new task.." name="task_detail">
+            </div>
+			<div class="completetasklink"></div>
+            <div class="pop-edit-item p-pic-req jdtl">
+				<div class="pop-cnt client-addcnt">
+          <div class="pop-edit-item">
+            <h1>Due Date</h1>
+            <input type="text" class="required" placeholder="Due Date" name="due_date"/>
+          </div>
+          <div class="pop-edit-item">
+            <h1>Job</h1>
+            <select name="job_id" class="required onclick">
+				<option value="">Select job</option>
+			</select>
+          </div>
+		  <div class="pop-edit-item">
+            <h1>Assigned To</h1>
+            <select name="assigned_to" class="required onclick">
+				<option value="0">Anyone</option>
+			</select>
+          </div>
+          
+          <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Created By </span>
+                  <p class="assign-name">John</p>
+                  </a> </div>
+        </div>
+              
+            </div>
+			<div class="pickup-msg cancelputext deletetasklink"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/jquery-ui.min.js" ></script>
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+function deletetask(task_id)
+{
+	var url2=siteurl+'/api/jobs/deletetask';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {task_id:task_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Task deleted.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+			jQuery('#myModal11').modal('hide');
+			showrecords();
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
+function completetask(task_id, shownotification)
+{
+	var uid=localStorage.getItem('Staff_ID');
+	var url2=siteurl+'/api/jobs/completetask';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {task_id:task_id,uid:uid}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			if(shownotification=='1'){
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Task completed.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				jQuery('#myModal11').modal('hide');
+			}
+			showrecords();
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
+function showrecords(){
+	var url=siteurl+'/api/jobs/mytasks';
+	var srchtext=jQuery('#srchtext').val();
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {srchtext:srchtext,assigned_to:uid}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+			if(res['data'])
+			{
+				if(res['data']['assigned']){
+					var html='';
+					jQuery(res['data']['assigned']).each(function(index){
+						html+='<div class="form-radio"><a href="javascript:;" onclick="return completetask('+res['data']['assigned'][index]['ID']+',0)"><img src="images/radio.png"/></a><a href="javascript:;" data-id="'+res['data']['assigned'][index]['ID']+'" class="taskdetail"><span>'+res['data']['assigned'][index]['task']+'</span></a></div>';
+						
+					});
+					jQuery('.assigned_task_list').html(html);
+				}
+				
+				if(res['data']['completed']){
+					var html='';
+					jQuery(res['data']['completed']).each(function(index){
+						html+='<div class="form-radio"><a href="javascript:;" data-id="'+res['data']['completed'][index]['ID']+'" class="pending_thistask"><img src="images/tick.png"/></a><a href="javascript:;" data-id="'+res['data']['completed'][index]['ID']+'"><span>'+res['data']['completed'][index]['task']+'</span></a><br><span>Completed on '+res['data']['completed'][index]['completeon']+'</span></div>';
+						
+					});
+					jQuery('.completed_task_list').html(html);
+				}
+			}
+			if(res['nodata'])
+			{
+				if(res['nodata']['assigned']){
+					jQuery('.assigned_task_list').html(res['nodata']['assigned']);
+				}
+				
+				if(res['nodata']['completed']){
+					jQuery('.completed_task_list').html(res['nodata']['completed']);
+				}
+			}
+			jQuery('.pending_thistask').click(function(){
+				var url2=siteurl+'/api/jobs/pendingtask';
+				var task_id=jQuery(this).attr('data-id');
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url2,           
+					crossDomain: true,
+					data: {task_id:task_id,uid:uid}, 
+					beforeSend: function() {
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) {
+						showrecords();
+					},  
+					error: function(response, d, a){
+					
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Server Error.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+						return false; 
+					}
+				});
+			});
+			jQuery('.complete_thistask').click(function(){
+				
+			});
+			jQuery('a.taskdetail').click(function(){
+				var url2=siteurl+'/api/jobs/taskdetail';
+				var task_id=jQuery(this).attr('data-id');
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url2,           
+					dataType: 'json',  
+					crossDomain: true,
+					data: {task_id:task_id}, 
+					beforeSend: function() {
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) { 
+						if(res['data'])
+						{
+							jQuery('input[name="task_id"]').val(task_id);
+							jQuery('#myModal11 input[name="task_detail"]').val(res['data']['task']);
+							jQuery('#myModal11 input[name="due_date"]').val(res['data']['due_date']);
+							jQuery('#myModal11 select[name="assigned_to"]').val(res['data']['assigned_to']);
+							jQuery('#myModal11 select[name="job_id"]').val(res['data']['job_id']);
+							jQuery('#myModal11 .assign-name').html(res['data']['by']);
+							
+							jQuery('.completetasklink').html('<a href="javascript:;" onclick="return completetask('+task_id+',1)">Complete Task</a>');
+							jQuery('.deletetasklink').html('<a href="javascript:;" onclick="return deletetask('+task_id+')">Delete Task</a>');
+							jQuery('#myModal11').modal();
+						}
+						
+						
+					},  
+					error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+					return false; 
+					}
+				});
+			});
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+}
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	var uid=localStorage.getItem('Staff_ID');
+	showrecords();
+	
+	jQuery('#srchtext').keyup(function(){
+		showrecords();
+	});
+	
+	var url=siteurl+'/api/jobs/jobsstaffs';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+			if(res['data'])
+			{
+				if(res['data']['jobs']){
+					var html='';
+					jQuery(res['data']['jobs']).each(function(index){
+						html+='<option value="'+res['data']['jobs'][index]['ID']+'">Job #'+res['data']['jobs'][index]['ID']+'</option>';
+						
+					});
+					jQuery('select[name="job_id"]').html(html);
+				}
+				
+				if(res['data']['staffmembers']){
+					var html='';
+					jQuery(res['data']['staffmembers']).each(function(index){
+						html='<option value="'+res['data']['staffmembers'][index]['id']+'">'+res['data']['staffmembers'][index]['fname']+' '+res['data']['staffmembers'][index]['lname']+'</option>';
+						jQuery('select[name="assigned_to"]').append(html);
+						
+					});
+					
+				}
+			}
+			
+			
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+	
+	jQuery('#myModal10 input[name="due_date"]').datepicker({
+			showButtonPanel: true,
+			changeMonth: true,
+      		changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+	jQuery('#myModal11 input[name="due_date"]').datepicker({
+			showButtonPanel: true,
+			changeMonth: true,
+      		changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+	jQuery('#myModal11 a.updaterecord').click(function(){
+		var noerror=true;
+		jQuery('#myModal11 input.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+			var task_detail=jQuery('#myModal11 input[name="task_detail"]').val();
+			var due_date=jQuery('#myModal11 input[name="due_date"]').val();
+			var assigned_to=jQuery('#myModal11 select[name="assigned_to"]').val();
+			var newtask_job_id=jQuery('#myModal11 select[name="job_id"]').val();
+			var task_id=jQuery('#myModal11 input[name="task_id"]').val();
+			var url=siteurl+'/api/jobs/updatetask';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {task_detail:task_detail,due_date:due_date,assigned_to:assigned_to,newtask_job_id:newtask_job_id,task_id:task_id}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					showrecords();
+					jQuery('#myModal11').modal('hide');
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Task updated successfully.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('#myModal10 a.addrecord').click(function(){
+		var noerror=true;
+		jQuery('#myModal10 input.required, #myModal10 select.required').each(function(){
+			var v=jQuery(this).val();
+			if(jQuery.trim(v)==''){
+				noerror=false;
+				jQuery(this).addClass('error');
+			}
+			else{
+				jQuery(this).removeClass('error');
+			}
+		});
+		if(noerror){
+			var task_detail=jQuery('#myModal10 input[name="task_detail"]').val();
+			var due_date=jQuery('#myModal10 input[name="due_date"]').val();
+			var assigned_to=jQuery('#myModal10 select[name="assigned_to"]').val();
+			var newtask_job_id=jQuery('#myModal10 select[name="job_id"]').val();
+			var url=siteurl+'/api/jobs/savenewtask';
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				crossDomain: true,
+				data: {task_detail:task_detail,due_date:due_date,assigned_to:assigned_to,newtask_job_id:newtask_job_id,add_by:uid}, 
+				beforeSend: function() {
+					
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					if(parseInt(res)>0){
+						
+						showrecords();
+						jQuery('#myModal10').modal('hide');
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Task added successfully.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+					}
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	});
+	jQuery('.assign-name').html(localStorage.getItem('Staff_fname')+' '+localStorage.getItem('Staff_lname'));
+});
+
+</script>
+</body>
+</html>
