@@ -1240,8 +1240,38 @@ var image='';
 function selPic() {
 	//alert('Pick a pic');
 	navigator.camera.getPicture(function(f) {
-        image=f;
-		alert(image);
+        var filetrasfer=f;
+		if(filetrasfer!=''){	
+			resolveLocalFileSystemURL(filetrasfer, function(entry) {
+			var filetrasfer2= entry.toURL();
+			var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?uid="+uid+'&attachfile_for=job');
+			var options = new FileUploadOptions();
+			options.fileKey="file";
+			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+			options.mimeType="image/jpeg";
+			var params = new Object();
+			 params.value1 = "test";
+			 params.value2 = "param";
+			 options.params = params;
+			 options.chunkedMode = false;
+			var headers={'headerParam':'headerValue'};
+			options.headers = headers;
+			
+			var ft = new FileTransfer();
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Start uploading... <span class="progressbar"></span></div>';
+			jQuery('body').append(html);
+			ft.onprogress = function(progressEvent) {
+				if (progressEvent.lengthComputable) {
+					loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+					jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
+				} else {
+					loadingStatus.increment();
+				}
+			};
+			var t=ft.upload(filetrasfer2, uri, win, fail, options);
+			});
+		}
     }, function(e) {
     }, { 
         quality: 1,
@@ -1251,7 +1281,10 @@ function selPic() {
     
 }
 function win(r) {
-	uploadPics();
+	jQuery('body .showmessage').remove();
+	var html='<div class="showmessage">File uploaded successfully</div>';
+	jQuery('body').append(html);
+	setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
 }
 
 function fail(error) {
@@ -1261,42 +1294,7 @@ function fail(error) {
 	setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
 }
 
-function uploadPics() {
-	if(image!=''){	
-        var filetrasfer=image;
-		resolveLocalFileSystemURL(filetrasfer, function(entry) {
-		var filetrasfer2= entry.toURL();
-        var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?uid="+uid+'&attachfile_for=job');
-        var options = new FileUploadOptions();
-        options.fileKey="file";
-        options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
-        options.mimeType="image/jpeg";
-		var params = new Object();
-		 params.value1 = "test";
-		 params.value2 = "param";
-		 options.params = params;
-		 options.chunkedMode = false;
-		var headers={'headerParam':'headerValue'};
-		options.headers = headers;
-		
-        var ft = new FileTransfer();
-		jQuery('body .showmessage').remove();
-		var html='<div class="showmessage">Start uploading... <span class="progressbar"></span></div>';
-		jQuery('body').append(html);
-		ft.onprogress = function(progressEvent) {
-			if (progressEvent.lengthComputable) {
-				loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-				jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
-			} else {
-				loadingStatus.increment();
-			}
-		};
-		var t=ft.upload(filetrasfer2, uri, win, fail, options);
-		});
-    }
-   
 
-}
 document.addEventListener("deviceready", init, false);
 function init() {
 	platform=device.platform;
