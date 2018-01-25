@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "805176602195",
+    "firebase_url": "https://urbane-recycling.firebaseio.com",
+    "project_id": "urbane-recycling",
+    "storage_bucket": "urbane-recycling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805176602195:android:db6426a9c4bcd5d0",
+        "android_client_info": {
+          "package_name": "urbanerecycling.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805176602195-shjfh01g3eddljcg1aps6gnom66n67mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxpjjks3MptgRfvGGJPTHZKGWWn8KJsrM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
