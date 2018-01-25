@@ -69,11 +69,11 @@
           </div>
 		  <div class="pop-edit-item">
             <h1>Email</h1>
-            <input type="text" placeholder="Email Address" name="client_email"/>
+            <input type="email" placeholder="Email Address" name="client_email"/>
           </div>
           <div class="pop-edit-item">
             <h1>Mobile</h1>
-            <input type="text" placeholder="Mobile Number" name="client_mobile"/>
+            <input type="number" placeholder="Mobile Number" name="client_mobile"/>
           </div>
           
         </div>
@@ -106,13 +106,13 @@
           </div>
 		  <div class="pop-edit-item">
             <h1>Email</h1>
-            <input type="text" placeholder="Email Address" name="client_email"/>
+            <input type="email" placeholder="Email Address" name="client_email"/>
           </div>
           <div class="pop-edit-item">
             <h1>Mobile</h1>
-            <input type="text" placeholder="Mobile Number" name="client_mobile"/>
+            <input type="number" placeholder="Mobile Number" name="client_mobile"/>
           </div>
-          
+          <div class="pickup-msg cancelputext deletepulink"></div>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@ function showrecords(){
 					jQuery('#myModal14 input[name="client_email"]').val(jQuery(this).attr('data-email'));
 					jQuery('#myModal14 input[name="client_mobile"]').val(jQuery(this).attr('data-mobile'));
 					jQuery('#myModal14 input[name="client_id"]').val(jQuery(this).attr('data-id'));
-					
+					jQuery('.deletepulink').html('<a href="javascript:;" class="whitebase" onclick="return deleteclient('+jQuery(this).attr('data-id')+')">Delete Client</a>');
 					jQuery('#myModal14').modal();
 				});
 			}
@@ -201,6 +201,42 @@ function showrecords(){
 			}
 		});
 	}
+}
+function deleteclient(client_id)
+{
+	var url2=siteurl+'/api/clients/deleterecords';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {client_id:client_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			jQuery('#totalpages').val(0);
+			jQuery('#nextpage').val(1);
+			jQuery('#activesearch').val(1);
+			jQuery('#activesearch').val(1);
+			showrecords();
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Client deleted successfully.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+			jQuery('#myModal14').modal('hide');
+			
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
 }
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {

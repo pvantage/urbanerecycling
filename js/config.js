@@ -197,9 +197,9 @@ function showNotify(){
 	};
 var uid=localStorage.getItem('Staff_ID');
 		
-/*if(typeof uid!='undefine' && uid!='' && uid!=null){
+if(typeof uid!='undefine' && uid!='' && uid!=null){
 	getLocation();
-}*/
+}
 function ValidateEmail(inputText)  
 {  
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  

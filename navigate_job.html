@@ -67,8 +67,8 @@ jQuery(document).ready(function(){
 		var geocoder = new google.maps.Geocoder;
 		var infowindow = new google.maps.InfoWindow;
 		var latlng = {lat: parseFloat(latit), lng: parseFloat(longit)};
-		var ourphoto='images/icon/mapicon.png';
-		if(jQuery.trim(Staff_photo)!=''){
+		var ourphoto='images/mapicon.png';
+		if(jQuery.trim(Staff_photo)!='' && Staff_photo!='null'){
 			ourphoto=siteurl+'/uploads/profile/'+Staff_photo;
 		}
 		var marker = new google.maps.Marker({
@@ -85,6 +85,7 @@ jQuery(document).ready(function(){
 		});
 		var imgommap='images/mapicon.png';
 		if(jobstatus=='Assigned'){imgommap='images/icon/A.png';}
+		else if(jobstatus=='Unassigned'){imgommap='images/icon/U.png';}
 		else if(jobstatus=='Being Processed'){imgommap='images/icon/B.png';}
 		else if(jobstatus=='Completed'){imgommap='images/icon/C.png';}
 		var latlng2={lat: parseFloat(joblati), lng: parseFloat(joblongi)};

@@ -147,7 +147,8 @@
         <ul class="more-menu">
           <li><a href="#" data-toggle="modal" class="opennewemail" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal10"><img src="images/task.png"><span>Task</span></a></li>
-          <li><a href="#"><img src="images/form.png"><span>Forms</span></a></li>
+          <!--<li><a href="#" data-toggle="modal" data-target="#myModal16"><img src="images/form.png"><span>Forms</span></a></li>-->
+		  <li><a href="#"><img src="images/form.png"><span>Forms</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
 		  <li><a href="#" data-toggle="modal" data-target="#myModal102"><img src="images/note.png"><span>Note</span></a></li>
         </ul>
@@ -430,6 +431,203 @@
     </div>
   </div>
 </div>
+<div id="myModal16" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Select Form</div>
+          </div>
+        </div>
+        <div class="staff-cnt">
+          <ul class="staff-box">
+            <li><a href="javascript:;" data-toggle="modal" data-target="#myModal17"><img src="images/form.png"/><span>Missile Tag</span></a></li>
+            <li><a href="javascript:;" data-toggle="modal" data-target="#myModal19"><img src="images/form.png"/><span>Transfer of Responsibility</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal17" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-7 pop-title">Missile Tag</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+          <div class="nf-box">
+            <label>Missile Tag #'s*</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Send Certification to?*</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Customer E-Mail*</label>
+            <input class="forminput" type="email" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Certification Requested?*</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="checkbox" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="checkbox" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Certification Type?</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input name="Requested1" type="checkbox" value="General Recycling">
+                General Recycling</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Recycling w/ Inventory">
+                Recycling w/ Inventory</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Data Destruction">
+                Data Destruction</label>
+              <label>
+                <input name="Requested1" type="checkbox" value="Data Destruction with Video">
+                Data Destruction with Video</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Were there any loose HDD's?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested2" type="radio" value="Yes1">
+                Yes</label>
+              <label>
+                <input name="Requested2" type="radio" value="No2">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>How many loose HDD's?</label>
+            <input class="forminput" type="number" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Notes/Special Instructions</label>
+            <textarea class="forminput"></textarea>
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Photo 2</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Photo 3</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn">Done</button>
+          </div>
+          <div class="nf-box" style="display:none">
+            <button class="nf-box-btn nfbtn2" >View Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal19" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <div class="col-10 pop-title">Transfer of Responsibility</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+          <div class="nf-box">
+            <label>Certification Requested</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input name="Recycling" type="checkbox" value="General Recycling">
+                None</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Recycling w/ Inventory">
+                General Recycling</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction">
+                Recycling with Inventory</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                Data Destruction</label>
+              <label>
+                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                Data Destruction with Video</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Were there any loose hard drives collected?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="radio" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="radio" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Customer E-Mail*</label>
+            <input class="forminput" type="email" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Total number of loose hard drives?</label>
+            <input class="forminput" type="text" placeholder=""/>
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+            <input type="file">
+          </div>
+          <div class="nf-box">
+            <label>Was customer present at pickup?</label>
+            <div class="form-radios">
+              <label>
+                <input name="Requested" type="radio" value="Yes">
+                Yes</label>
+              <label>
+                <input name="Requested" type="radio" value="No">
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box">
+            <label>Customer Authorization</label>
+            <input class="forminput" type="text" placeholder="Sign"/>
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn">Done</button>
+          </div>
+          <div class="nf-box" style="display:none">
+            <button class="nf-box-btn nfbtn2" >View Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="js/jquery-3.2.1.min.js" ></script> 
 <script src="js/jquery-ui.min.js" ></script>
 <script src="js/popper.min.js" ></script> 
@@ -472,7 +670,11 @@ function loadjob(job_id){
 			jQuery('input[name="contact_mobile"]').val(res['record']['contact_mobile']);
 			jQuery('input[name="contact_phone"]').val(res['record']['contact_phone']);
 			jQuery('input[name="customer_id"]').val(res['record']['customer_id']);
-			if(res['record']['status']=='Assigned'){
+			if(res['record']['status']=='Unassigned'){
+				jQuery('.showjobstatus').addClass('assigned-status');
+				jQuery('.showjobstatus .alp-badge').html('U');
+			}
+			else if(res['record']['status']=='Assigned'){
 				jQuery('.showjobstatus').addClass('assigned-status');
 				jQuery('.showjobstatus .alp-badge').html('A');
 			}
@@ -976,7 +1178,14 @@ jQuery(document).ready(function(){
 			data:  jQuery("#pu_jobform").serialize(),
 			success: function(data)
 		    {	
-				loadjob(job_id);
+				
+				var newjob=gup('newjob');
+				if(newjob=='1'){
+					window.location='job.html?job_id='+job_id;
+				}
+				else{
+					loadjob(job_id);
+				}
 				jQuery("#pu_jobform")[0].reset();
 				jQuery('#myModal2').modal('hide');
 				jQuery('body .showmessage').remove();
