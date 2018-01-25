@@ -691,21 +691,7 @@ function loadjob(job_id){
 				jQuery('.showjobstatus').addClass('completed-status');
 				jQuery('.showjobstatus .alp-badge').html('C');
 			}
-			if(res['record']['status']=='Completed' || res['record']['status']=='Unassigned'){
-				jQuery('.str-job').hide();
-			}
-			else if(res['record']['status']=='Being Processed'){
-				jQuery('.str-job').show();
-				jQuery('.str-job').html('End Job');
-				jQuery('.str-job').addClass('endjob');
-				jQuery('.str-job').removeClass('start-job');
-			}
-			else if(res['record']['status']=='Assigned'){
-				jQuery('.str-job').show();
-				jQuery('.str-job').html('Start Job');
-				jQuery('.str-job').addClass('start-job');
-				jQuery('.str-job').removeClass('endjob');
-			}
+			
 			jQuery('.str-job').hide();
 			jQuery('.tasklists').html('');
 			if(res['record']['tasks']!=''){
@@ -717,13 +703,14 @@ function loadjob(job_id){
 				jQuery('.tasklists').html(html);
 			}
 			jQuery('.pulists').html('');
+			var showstartbtn=false;
 			if(res['record']['pus']!=''){
 				var html='';
 				jQuery(res['record']['pus']).each(function(index){
 					html+='<div class="pickup-msg"><a class="whitebase pudetail" href="javascript:;" data-id="'+res['record']['pus'][index]['ID']+'"><span  class="left-block">'+res['record']['pus'][index]['task']+' </span><p class="assign-name">'+res['record']['pus'][index]['assinto']+'</p></a></div>';
 				  if(uid==res['record']['pus'][index]['assigned_to'])
 				  {
-				  	jQuery('.str-job').show();
+				  	showstartbtn=true;
 				  }
 				});
 				jQuery('.pulists').html(html);
@@ -737,7 +724,21 @@ function loadjob(job_id){
 				});
 				jQuery('.notelists').html(html);
 			}
-			
+			if(res['record']['status']=='Completed' || res['record']['status']=='Unassigned'){
+				jQuery('.str-job').hide();
+			}
+			else if(res['record']['status']=='Being Processed' && showstartbtn){
+				jQuery('.str-job').show();
+				jQuery('.str-job').html('End Job');
+				jQuery('.str-job').addClass('endjob');
+				jQuery('.str-job').removeClass('start-job');
+			}
+			else if(res['record']['status']=='Assigned' && showstartbtn){
+				jQuery('.str-job').show();
+				jQuery('.str-job').html('Start Job');
+				jQuery('.str-job').addClass('start-job');
+				jQuery('.str-job').removeClass('endjob');
+			}
 			
 			setTimeout(function(){
 				jQuery('select[name="status"]').val(res['record']['status']);
