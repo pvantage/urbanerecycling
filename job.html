@@ -57,9 +57,14 @@
               <h1>Pickup Requests</h1>
               <div class="pop-multibox pulists"></div>
             </div>
+			
 			<div class="pop-edit-item p-pic-req">
               <h1>Tasks</h1>
               <div class="pop-multibox tasklists"></div>
+            </div>
+			<div class="pop-edit-item p-pic-req">
+              <h1>Notes</h1>
+              <div class="pop-multibox notelists" style="padding-top:10px;"></div>
             </div>
 			<div class="pop-edit-item">
               <h1>ADDRESS<span class="errorstk">*</span></h1>
@@ -686,24 +691,6 @@ function loadjob(job_id){
 				jQuery('.showjobstatus').addClass('completed-status');
 				jQuery('.showjobstatus .alp-badge').html('C');
 			}
-			jQuery('.tasklists').html('');
-			if(res['record']['tasks']!=''){
-				var html='';
-				jQuery(res['record']['tasks']).each(function(index){
-					html+='<div class="pickup-msg"><a class="whitebase taskdetail" href="javascript:;" data-id="'+res['record']['tasks'][index]['ID']+'"><span  class="left-block">'+res['record']['tasks'][index]['task']+' </span><p class="assign-name">'+res['record']['tasks'][index]['assinto']+'</p></a></div>';
-				  
-				});
-				jQuery('.tasklists').html(html);
-			}
-			jQuery('.pulists').html('');
-			if(res['record']['pus']!=''){
-				var html='';
-				jQuery(res['record']['pus']).each(function(index){
-					html+='<div class="pickup-msg"><a class="whitebase pudetail" href="javascript:;" data-id="'+res['record']['pus'][index]['ID']+'"><span  class="left-block">'+res['record']['pus'][index]['task']+' </span><p class="assign-name">'+res['record']['pus'][index]['assinto']+'</p></a></div>';
-				  
-				});
-				jQuery('.pulists').html(html);
-			}
 			if(res['record']['status']=='Completed' || res['record']['status']=='Unassigned'){
 				jQuery('.str-job').hide();
 			}
@@ -719,6 +706,38 @@ function loadjob(job_id){
 				jQuery('.str-job').addClass('start-job');
 				jQuery('.str-job').removeClass('endjob');
 			}
+			jQuery('.str-job').hide();
+			jQuery('.tasklists').html('');
+			if(res['record']['tasks']!=''){
+				var html='';
+				jQuery(res['record']['tasks']).each(function(index){
+					html+='<div class="pickup-msg"><a class="whitebase taskdetail" href="javascript:;" data-id="'+res['record']['tasks'][index]['ID']+'"><span  class="left-block">'+res['record']['tasks'][index]['task']+' </span><p class="assign-name">'+res['record']['tasks'][index]['assinto']+'</p></a></div>';
+				  
+				});
+				jQuery('.tasklists').html(html);
+			}
+			jQuery('.pulists').html('');
+			if(res['record']['pus']!=''){
+				var html='';
+				jQuery(res['record']['pus']).each(function(index){
+					html+='<div class="pickup-msg"><a class="whitebase pudetail" href="javascript:;" data-id="'+res['record']['pus'][index]['ID']+'"><span  class="left-block">'+res['record']['pus'][index]['task']+' </span><p class="assign-name">'+res['record']['pus'][index]['assinto']+'</p></a></div>';
+				  if(uid==res['record']['pus'][index]['assigned_to'])
+				  {
+				  	jQuery('.str-job').show();
+				  }
+				});
+				jQuery('.pulists').html(html);
+			}
+			jQuery('.notelists').html('');
+			if(res['record']['notes']!=''){
+				var html='';
+				jQuery(res['record']['notes']).each(function(index){
+					html+='<div class="pickup-msg"><span  class="left-block">'+res['record']['notes'][index]['task']+' </span><p class="assign-name">'+res['record']['notes'][index]['assinto']+'</p></div>';
+				  
+				});
+				jQuery('.notelists').html(html);
+			}
+			
 			
 			setTimeout(function(){
 				jQuery('select[name="status"]').val(res['record']['status']);
