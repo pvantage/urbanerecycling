@@ -25,6 +25,7 @@
 	<plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
 	<plugin name="cordova.plugins.diagnostic" source="npm" />
 	<plugin name="cordova-plugin-dialogs" source="npm" />
+	
 	<!--<platform name="android">
 	  <resource-file src="google-services.json" target="google-services.json" />
 	</platform>
@@ -36,7 +37,9 @@
 	  <resource-file src="GoogleService-Info.plist" />
 	  <icon src="res/icon/icon-60@3x.png" platform="ios" width="180" height="180" />
 	</platform>-->
-	
+	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+		<string>need location access to find things nearby</string>
+	</edit-config>
 	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />	
 	<plugin name="cordova-plugin-splashscreen" />
 	
