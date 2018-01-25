@@ -1455,6 +1455,10 @@ function moveattachfile(id){
 	if(jQuery.trim(html)==''){
 		jQuery('.attachment-areas').hide();
 	}
+	html=jQuery('.list_attachfiles .staff-box').html();
+	if(jQuery.trim(html)==''){
+		jQuery('#myModal22').modal('hide');
+	}
 }
 function removeattachfile(id){
 	jQuery(id).remove();
