@@ -1241,10 +1241,11 @@ function selPic() {
 	//alert('Pick a pic');
 	navigator.camera.getPicture(function(f) {
         var filetrasfer=f;
-		if(filetrasfer!=''){	
+		if(filetrasfer!=''){
+			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
 			var filetrasfer2= entry.toURL();
-			var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?uid="+uid+'&attachfile_for=job');
+			var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?add_by="+uid+'&attachfile_for=job');
 			var options = new FileUploadOptions();
 			options.fileKey="file";
 			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
