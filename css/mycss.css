@@ -27,3 +27,5 @@ ul.not-box label.completed-job{background:#3cbc3c;}
 .suggestion_box a{color:#000000; text-decoration:none;}
 .suggestion_box .cust_f_name{float:left; display:block; width:35%;}
 .suggestion_box .cust_addres{float:right; display:block; width:65%;}
+.str-job.endjob{background:#FF0000;}
+input.error, textarea.error, select.error{border:1px solid #FF0000 !important;}

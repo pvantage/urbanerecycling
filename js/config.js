@@ -135,7 +135,7 @@ function showPosition(position) {
 	var uid=localStorage.getItem('Staff_ID');
 	
 	//alert(uid);
-	if(typeof uid!='undefine' && uid!='' && uid!=null){
+	if(typeof uid!='undefine' && uid!='' && uid!=null && (position.coords.latitude!='' || position.coords.longitude!='')){
 		var url=siteurl+'/api/account/updatelatilongi';
 		jQuery.ajax({  
 		 type: 'POST',  
@@ -159,7 +159,7 @@ function showPosition(position) {
 			
 		 } 
 	   });
-		
+		setTimeout(getLocation,30000);
 	}
     
 }
@@ -197,9 +197,9 @@ function showNotify(){
 	};
 var uid=localStorage.getItem('Staff_ID');
 		
-if(typeof uid!='undefine' && uid!='' && uid!=null){
+/*if(typeof uid!='undefine' && uid!='' && uid!=null){
 	getLocation();
-}
+}*/
 function ValidateEmail(inputText)  
 {  
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  

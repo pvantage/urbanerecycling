@@ -25,7 +25,7 @@
           <div class="row">
             <a class="close col-2 donbtn gottoback" href="javascript:;">Done</a>
             <div class="col-7 pop-title job-title"></div>
-            <div class="col-3 pop-hd-right"><a href="#" class="col-6"><i class="fa fa-camera"></i></a> <a class="col-6" href="#" data-toggle="modal" data-target="#myModal13"><i class="icon-plus"></i></a></div>
+            <div class="col-3 pop-hd-right"><a href="javascript:;" id="uploadphoto" class="col-6"><i class="fa fa-camera"></i></a> <a class="col-6" href="#" data-toggle="modal" data-target="#myModal13"><i class="icon-plus"></i></a></div>
           </div>
         </div>
         <div class="pop-cnt">
@@ -34,6 +34,7 @@
               <h3><span class="company_name"></span> <span class="infoicon"><a href="#" data-toggle="modal" data-target="#myModal20"><img src="images/info.png"/></a></span></h3>
               <div class="sch-adr"></div>
               <span class="grey-color"></span>
+			  <button class="str-job" style="display:none;">Start Job</button>
             </div>
           </div>
 		  <form id="editform" name="editform" action="" method="post">
@@ -83,11 +84,11 @@
 				  </div>
 				  <div class="pop-edit-item">
 					<h1>Phone</h1>
-					<input type="text" placeholder="Phone Number" name="contact_phone"/>
+					<input type="number" placeholder="Phone Number" name="contact_phone"/>
 				  </div>
 				  <div class="pop-edit-item">
 					<h1>Mobile</h1>
-					<input type="text" placeholder="Mobile Number" name="contact_mobile"/>
+					<input type="number" placeholder="Mobile Number" name="contact_mobile"/>
 				  </div>
               </div>
             </div>
@@ -144,7 +145,7 @@
       </div>
       <div class="modal-body">
         <ul class="more-menu">
-          <li><a href="#" data-toggle="modal" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
+          <li><a href="#" data-toggle="modal" class="opennewemail" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal10"><img src="images/task.png"><span>Task</span></a></li>
           <li><a href="#"><img src="images/form.png"><span>Forms</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
@@ -235,8 +236,10 @@
             <div class="form-box">
               <label>Attachment(s)</label>
               <div class="attachmentbox">
-                <input  class="attachfiledisplay" type="text" placeholder="Add Attachment">
-                <span><a href="#" data-toggle="modal" data-target="#myModal22"><img src="images/edit.png"></a></span> </div>
+                
+                <span><a href="javascript:;" class="listattachfiles"><img src="images/edit.png"></a></span> 
+				<ul class="attachment-areas"></ul>
+				</div>
             </div>
             </form>
           </div>
@@ -257,12 +260,8 @@
             <div class="col-7 pop-title">Select Form</div>
           </div>
         </div>
-        <div class="staff-cnt multipleattach">
-          <input type="file">
-          <ul class="staff-box">
-            <li><a data-toggle="modal" data-target="#myModal17"><img src="images/form.png"/><span>Missile Tag</span></a></li>
-            <li><a data-toggle="modal" data-target="#myModal19"><img src="images/form.png"/><span>Transfer of Responsibility</span></a></li>
-          </ul>
+        <div class="staff-cnt multipleattach list_attachfiles">
+          <ul class="staff-box"></ul>
         </div>
       </div>
     </div>
@@ -503,6 +502,21 @@ function loadjob(job_id){
 				});
 				jQuery('.pulists').html(html);
 			}
+			if(res['record']['status']=='Completed' || res['record']['status']=='Unassigned'){
+				jQuery('.str-job').hide();
+			}
+			else if(res['record']['status']=='Being Processed'){
+				jQuery('.str-job').show();
+				jQuery('.str-job').html('End Job');
+				jQuery('.str-job').addClass('endjob');
+				jQuery('.str-job').removeClass('start-job');
+			}
+			else if(res['record']['status']=='Assigned'){
+				jQuery('.str-job').show();
+				jQuery('.str-job').html('Start Job');
+				jQuery('.str-job').addClass('start-job');
+				jQuery('.str-job').removeClass('endjob');
+			}
 			
 			setTimeout(function(){
 				jQuery('select[name="status"]').val(res['record']['status']);
@@ -594,6 +608,65 @@ function loadjob(job_id){
 				jQuery('#myModal2').modal();
 				setTimeout(function(){jQuery('#myModal2 #assigned_to').val(uid);},1000);
 			}
+			jQuery('.endjob').click(function(){
+				var url=siteurl+'/api/jobs/updatejobstatus';
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url,           
+					crossDomain: true,
+					data: {status:'Completed',job_id:job_id}, 
+					beforeSend: function() {
+						
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) { 
+						loadjob(job_id);
+						var html='<div class="showmessage">Job is completed.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+						jQuery('.str-job').remove();
+					},  
+					error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+					return false; 
+					}
+				});
+			});
+			jQuery('.start-job').click(function(){
+				var url=siteurl+'/api/jobs/updatejobstatus';
+				jQuery.ajax({  
+					type: 'POST',  
+					url: url,           
+					crossDomain: true,
+					data: {status:'Being Processed',job_id:job_id}, 
+					beforeSend: function() {
+						
+					},		
+					complete: function() {
+					}, 
+					crossDomain: true,  
+					success: function(res) { 
+						loadjob(job_id);
+						var html='<div class="showmessage">Job is being processed.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+					},  
+					error: function(response, d, a){
+					
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Server Error.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+					return false; 
+					}
+				});
+			});
 		}
 		
 		},  
@@ -903,6 +976,7 @@ jQuery(document).ready(function(){
 			data:  jQuery("#pu_jobform").serialize(),
 			success: function(data)
 		    {	
+				loadjob(job_id);
 				jQuery("#pu_jobform")[0].reset();
 				jQuery('#myModal2').modal('hide');
 				jQuery('body .showmessage').remove();
@@ -933,7 +1007,7 @@ jQuery(document).ready(function(){
 			data:  jQuery("#newtask_jobform").serialize(),
 			success: function(data)
 		    {	
-				
+				loadjob(job_id);
 				jQuery("#newtask_jobform")[0].reset();
 				jQuery('#myModal10').modal('hide');
 				
@@ -1103,7 +1177,131 @@ jQuery(document).ready(function(){
 		}
 	});
 	
+	jQuery('a.listattachfiles').click(function(){
+		
+		var url=siteurl+'/api/jobs/listattachfiles';
+		jQuery.ajax({  
+			type: 'POST',  
+			url: url,           
+			crossDomain: true,
+			data: {job_id:job_id}, 
+			beforeSend: function() {
+				
+			},		
+			complete: function() {
+			}, 
+			crossDomain: true,  
+			success: function(res) { 
+				jQuery('.list_attachfiles .staff-box').html(res);
+				jQuery('#myModal22').modal();
+			},  
+			error: function(response, d, a){
+			
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+			}
+		});
+	});
+	jQuery('a.opennewemail').click(function(){
+		jQuery('.attachment-areas').html('');
+	});
 });
+function moveattachfile(id){
+	if(jQuery('input',id).hasClass('attachinemail')){
+		jQuery('input',id).removeClass('attachinemail');
+		var ahtml=jQuery(id).html();
+		jQuery('.attachment-areas').append('<li><a href="javascript:;" onclick="return moveattachfile(this)">'+ahtml+'</a></li>');
+		jQuery('.attachment-areas').show();
+		jQuery(id).parent('li').remove();
+	}
+	else{
+		jQuery('input',id).addClass('attachinemail');
+		var ahtml=jQuery(id).html();
+		jQuery('.list_attachment').append('<li><a href="javascript:;" onclick="return moveattachfile(this)">'+ahtml+'</a></li>');
+		jQuery(id).parent('li').remove();
+	}
+	var html=jQuery('.attachment-areas').html();
+	if(jQuery.trim(html)==''){
+		jQuery('.attachment-areas').hide();
+	}
+}
+function removeattachfile(id){
+	jQuery(id).remove();
+	var html=jQuery('.form-box-attachment .attachment-areas').html();
+	if(jQuery.trim(html)==''){
+		jQuery('.form-box-attachment').hide();
+	}
+}
+var platform='';
+var image='';
+function selPic() {
+	//alert('Pick a pic');
+	navigator.camera.getPicture(function(f) {
+        image=f;
+		alert(image);
+    }, function(e) {
+    }, { 
+        quality: 1,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: Camera.DestinationType.FILE_URI
+    });
+    
+}
+function win(r) {
+	uploadPics();
+}
+
+function fail(error) {
+	jQuery('body .showmessage').remove();
+	var html='<div class="showmessage">Uploading error: Code = ' + error.code+', upload error source ' + error.source+', upload error target ' + error.target+'</div>';
+	jQuery('body').append(html);
+	setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+}
+
+function uploadPics() {
+	if(image!=''){	
+        var filetrasfer=image;
+		resolveLocalFileSystemURL(filetrasfer, function(entry) {
+		var filetrasfer2= entry.toURL();
+        var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?uid="+uid+'&attachfile_for=job');
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+		var params = new Object();
+		 params.value1 = "test";
+		 params.value2 = "param";
+		 options.params = params;
+		 options.chunkedMode = false;
+		var headers={'headerParam':'headerValue'};
+		options.headers = headers;
+		
+        var ft = new FileTransfer();
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Start uploading... <span class="progressbar"></span></div>';
+		jQuery('body').append(html);
+		ft.onprogress = function(progressEvent) {
+			if (progressEvent.lengthComputable) {
+				loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+				jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
+			} else {
+				loadingStatus.increment();
+			}
+		};
+		var t=ft.upload(filetrasfer2, uri, win, fail, options);
+		});
+    }
+   
+
+}
+document.addEventListener("deviceready", init, false);
+function init() {
+	platform=device.platform;
+	jQuery("#uploadphoto").on("touchend", selPic);
+}
 
 </script>
 </body>
