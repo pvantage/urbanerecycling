@@ -214,7 +214,8 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
-var uploadfile1=0,uploadfile2=0,uploadfile3=0;
+var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0;
+
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
 		jQuery.mobile.allowCrossDomainPages = true;
@@ -238,8 +239,13 @@ jQuery(document).ready(function(){
 	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
 	
 	jQuery("#newmissiletagform").on('submit',(function(e) {
-		alert(uploadfile1+','+uploadfile2+','+uploadfile3);
-		return false;
+		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
+		{
+			alert('files still uploading');
+			formuploading=1
+			return false;
+		}
+		//return false;
 		var url=siteurl+'/api/jobs/savejobform';
 		var noerror=true;
 		var job_id=jQuery('#recid').val();
@@ -387,6 +393,10 @@ function selPic1(img) {
 					else if(img=='photo_material_3'){
 						jQuery('#photo_material_1').val(r.response);
 						uploadfile3=0;
+					}
+					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+					{
+						jQuery('.savenewmissiletag').trigger('click');
 					}
 				}
 			}, fail, options);
