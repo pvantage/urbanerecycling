@@ -237,9 +237,8 @@ jQuery(document).ready(function(){
 	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
 	
 	jQuery("#newmissiletagform").on('submit',(function(e) {
-		alert(uploadfile1);
-		alert(uploadfile2);
-		alert(uploadfile3);
+		alert(uploadfile1+','+uploadfile2+','+uploadfile3);
+		return false;
 		/*var url=siteurl+'jobs/savejobform';
 		var noerror=true;
 		var job_id=jQuery('#recid').val();
