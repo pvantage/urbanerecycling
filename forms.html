@@ -214,6 +214,41 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
+function loadjob(job_id){
+	var url=siteurl+'/api/jobs/singlerecord';
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {job_id:job_id}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['record'])
+		{
+			
+			jQuery('#newmissiletagform input[name="certification_name"],#newtransferresponseform input[name="certification_name"]').val(res['record']['contact_fname']+' '+res['record']['contact_lname']);
+			jQuery('#newmissiletagform input[name="certification_email"],#newtransferresponseform input[name="certification_email"]').val(res['record']['contact_email']);
+			
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+}
 var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0;
 
 jQuery(document).ready(function(){
@@ -226,6 +261,7 @@ jQuery(document).ready(function(){
 	
 	
 	var job_id=gup('job_id');
+	loadjob(job_id);
 	var vform=gup('vform');
 	jQuery('.job-title').html('JOB#'+job_id);
 	jQuery('input[name="form_job_id"]').val(job_id);
@@ -245,7 +281,9 @@ jQuery(document).ready(function(){
 		var noerror=true;
 		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
 		{
-			alert('files still uploading');
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Form uploading please wait..</div>';
+			jQuery('body').append(html);
 			formuploading=1
 			noerror=false;
 		}
@@ -425,7 +463,7 @@ function selPic1(img) {
 					}
 					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
 					{
-						jQuery('.savenewmissiletag').trigger('click');
+						jQuery("#newmissiletagform").submit();
 					}
 				}
 			}, fail, options);
