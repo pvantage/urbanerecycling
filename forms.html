@@ -213,7 +213,7 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
-
+var uploadfile1=0,uploadfile2=0,uploadfile3=0;
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
 		jQuery.mobile.allowCrossDomainPages = true;
@@ -237,7 +237,10 @@ jQuery(document).ready(function(){
 	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
 	
 	jQuery("#newmissiletagform").on('submit',(function(e) {
-		var url=siteurl+'jobs/savejobform';
+		alert(uploadfile1);
+		alert(uploadfile2);
+		alert(uploadfile3);
+		/*var url=siteurl+'jobs/savejobform';
 		var noerror=true;
 		var job_id=jQuery('#recid').val();
 		jQuery('#newmissiletagform .required_certification_requested').removeClass('error');
@@ -314,12 +317,13 @@ jQuery(document).ready(function(){
 	    	{
 	    	} 	        
 	   });
-		}
+		}*/
 	}));
 	  jQuery('.savenewmissiletag').click(function(){
 	  	jQuery("#newmissiletagform").submit();
 	  });
 });
+
 function selPic1(img) {
 	//alert('Pick a pic');
 	var job_id=gup('job_id');
@@ -328,16 +332,20 @@ function selPic1(img) {
 		if(img=='photo_material_1'){
 			jQuery('#image_material_1').attr('src',f);
 			jQuery('#image_material_1').show();
+			uploadfile1=1;
 		}
 		else if(img=='photo_material_2'){
 			jQuery('#image_material_2').attr('src',f);
 			jQuery('#image_material_2').show();
+			uploadfile2=1;
 		}
 		else if(img=='photo_material_3'){
 			jQuery('#image_material_3').attr('src',f);
 			jQuery('#image_material_3').show();
+			uploadfile3=1;
 		}
 		if(filetrasfer!=''){
+			uploadfiles=parseInt(uploadfiles)+1;
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
 			var filetrasfer2= entry.toURL();
@@ -367,15 +375,18 @@ function selPic1(img) {
 				}
 			};
 			var t=ft.upload(filetrasfer2, uri, function(r){
-				alert(r);
+				alert(r.response);
 				if(img=='photo_material_1'){
-					
+					jQuery('#photo_material_1').val(r.response);
+					uploadfile1=0;
 				}
 				else if(img=='photo_material_2'){
-					
+					jQuery('#photo_material_1').val(r.response);
+					uploadfile2=0;
 				}
 				else if(img=='photo_material_3'){
-					
+					jQuery('#photo_material_1').val(r.response);
+					uploadfile3=0;
 				}
 			}, fail, options);
 			});

@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/mycss.css">
 </head>
-<body class="light-grey-bg after-login">
+<body class="light-grey-bg after-login schlbody">
 <!----- Header Top ----->
 
-<div class="container">
+<div class="container mysch-fix-hdr">
   <div class="header-top">
     <div class="row  align-items-center">
       <div class="col-2 header-left-col"><a href="#" data-toggle="modal" data-target="#myModal15"><i class="icon-glass"></i></a></div>
@@ -515,7 +515,7 @@ function listschedules(){
 								else if(res['cal'][index]['records'][index2]['status']=='Completed'){
 									cls=' completed-status';
 								}
-								html2+='<div class="cal-rightbx col-10"><div class="col" style="height:'+res['cal'][index]['records'][index2]['averageheight']+'px;top:'+res['cal'][index]['records'][index2]['averagetop']+'px;"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['cal'][index]['records'][index2]['ID']+'" data-jobid="'+res['cal'][index]['records'][index2]['job_id']+'" href="javascript:;">'+res['cal'][index]['records'][index2]['contact_fname']+' '+res['cal'][index]['records'][index2]['contact_lname']+'<br><span class="cl-city">'+res['cal'][index]['records'][index2]['address']+'</span> </a> </div></div>';
+								html2+='<div class="cal-rightbx col-10"><div class="col" style="height:'+res['cal'][index]['records'][index2]['averageheight']+'px;top:'+res['cal'][index]['records'][index2]['averagetop']+'px;"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['cal'][index]['records'][index2]['ID']+'" data-jobid="'+res['cal'][index]['records'][index2]['job_id']+'" href="javascript:;">'+res['cal'][index]['records'][index2]['contact_fname']+' '+res['cal'][index]['records'][index2]['contact_lname']+'<br><span class="cl-city">'+res['cal'][index]['records'][index2]['address']+'</span> </a> </div></div></div>';
 							});
 							
 						}

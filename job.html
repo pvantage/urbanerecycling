@@ -19,6 +19,7 @@
 
     
     <!-- Modal content-->
+	<div class="popupformats">
     <div class="modal-content">
       <div class="modal-body">
         <div class="pop-head">
@@ -49,10 +50,15 @@
                 <textarea class="whitebase" placeholder="Collect CPU" name="description" id="job_description"></textarea>
               </div>
             </div>
-			<div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Status </span> 
-                  </a>
-                  <select class="onclick" name="status"></select>
-                </div>
+			
+			  <div class="pop-edit-item">
+              <h1>Status</h1>
+              <div class="pickup-msg">
+          <select class="onclick" name="status"></select>
+              </div>
+            </div>
+			
+		
 			<div class="pop-edit-item p-pic-req">
               <h1>Pickup Requests</h1>
               <div class="pop-multibox pulists"></div>
@@ -116,6 +122,7 @@
         </div>
       </div>
     </div>
+	</div>
 <div id="myModal20" class="modal fade bottom-popup" role="dialog">
   <div class="modal-dialog"> 
     
@@ -238,9 +245,9 @@
               <label>Message</label>
               <textarea placeholder="Email Content" rows="3" cols="40" name="email_content" id="email_content"></textarea>
             </div>
-            <div class="form-box">
+            <div class="form-box attchstc">
               <label>Attachment(s)</label>
-              <div class="attachmentbox">
+              <div class="attachmentbox attmds">
                 
                 <span><a href="javascript:;" class="listattachfiles"><img src="images/edit.png"></a></span> 
 				<ul class="attachment-areas"></ul>
