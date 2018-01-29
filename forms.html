@@ -116,7 +116,7 @@
 				  <img id="image_material_3" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
-            <button class="nf-box-btn savenewmissiletag">Done</button>
+            <button class="nf-box-btn savenewmissiletag" type="button">Done</button>
           </div>
 		  </form>
 		  <div class="successsavejobform"></div>
@@ -239,16 +239,17 @@ jQuery(document).ready(function(){
 	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
 	
 	jQuery("#newmissiletagform").on('submit',(function(e) {
+		
+		//return false;
+		var url=siteurl+'/api/jobs/savejobform';
+		var noerror=true;
 		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
 		{
 			alert('files still uploading');
 			formuploading=1
-			return false;
+			noerror=false;
 		}
-		//return false;
-		var url=siteurl+'/api/jobs/savejobform';
-		var noerror=true;
-		var job_id=jQuery('#recid').val();
+		var job_id=gup('job_id');
 		jQuery('#newmissiletagform .required_certification_requested').removeClass('error');
 		jQuery('#newmissiletagform .required_certification_type').removeClass('error');
 		jQuery('#newmissiletagform .required_loose_hdd').removeClass('error');
@@ -305,7 +306,6 @@ jQuery(document).ready(function(){
 			success: function(data)
 		    {	
 				jQuery('.savenewmissiletag').prev('img').hide();
-				show_job_notifications(job_id);
 				jQuery("#newmissiletagform")[0].reset();
 				jQuery('.savenewmissiletag').hide();
 				jQuery('#newjobformmissiletag form').hide();
@@ -325,6 +325,37 @@ jQuery(document).ready(function(){
 	}));
 	  jQuery('.savenewmissiletag').click(function(){
 	  	jQuery("#newmissiletagform").submit();
+	  });
+	  jQuery('#newtransferresponseform input[name="loose_hdd"], #edittransferresponseform input[name="loose_hdd"], #newmissiletagform input[name="loose_hdd"], #editmissiletagform input[name="loose_hdd"]').change(function(){
+			var $this=jQuery(this).parents('form');																	 
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_how_many',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_how_many',$this).hide();
+			}
+	  });
+	  jQuery('#newtransferresponseform input[name="customer_present"], #edittransferresponseform input[name="customer_present"]').change(function(){
+			var $this=jQuery(this).parents('form');	
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_signature',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_signature',$this).hide();
+			}
+	  });
+	  jQuery('#newmissiletagform input[name="certification_requested[]"], #editmissiletagform input[name="certification_requested[]"]').change(function(){
+			var $this=jQuery(this).parents('form');	
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_certification_type',$this).show();
+				jQuery('.showhide_loose_hdd',$this).show();
+				jQuery('.showhide_how_many',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_certification_type',$this).hide();
+				jQuery('.showhide_loose_hdd',$this).hide();
+				jQuery('.showhide_how_many',$this).show();
+			}
 	  });
 });
 
