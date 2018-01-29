@@ -320,8 +320,7 @@ jQuery(document).ready(function(){
 	  	jQuery("#newmissiletagform").submit();
 	  });
 });
-var image1='',image2='',image3='';
-function selPic(img) {
+function selPic1(img) {
 	//alert('Pick a pic');
 	var job_id=gup('job_id');
 	navigator.camera.getPicture(function(f) {
@@ -338,11 +337,11 @@ function selPic(img) {
 			jQuery('#image_material_3').attr('src',f);
 			jQuery('#image_material_3').show();
 		}
-		/*if(filetrasfer!=''){
+		if(filetrasfer!=''){
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
 			var filetrasfer2= entry.toURL();
-			var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=missiletag&job_id='+job_id+'&img='+img);
+			var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=missiletag&job_id='+job_id);
 			var options = new FileUploadOptions();
 			options.fileKey="file";
 			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
@@ -367,9 +366,20 @@ function selPic(img) {
 					loadingStatus.increment();
 				}
 			};
-			var t=ft.upload(filetrasfer2, uri, win, fail, options);
+			var t=ft.upload(filetrasfer2, uri, function(r){
+				alert(r);
+				if(img=='photo_material_1'){
+					
+				}
+				else if(img=='photo_material_2'){
+					
+				}
+				else if(img=='photo_material_3'){
+					
+				}
+			}, fail, options);
 			});
-		}*/
+		}
     }, function(e) {
     }, { 
         quality: 1,
@@ -396,9 +406,9 @@ function fail(error) {
 
 document.addEventListener("deviceready", init, false);
 function init() {
-	jQuery("#uploadphoto1").on("touchend", function(){selPic('photo_material_1');});
-	jQuery("#uploadphoto2").on("touchend", function(){selPic('photo_material_2');});
-	jQuery("#uploadphoto3").on("touchend", function(){selPic('photo_material_3');});
+	jQuery("#uploadphoto1").on("touchend", function(){selPic1('photo_material_1');});
+	jQuery("#uploadphoto2").on("touchend", function(){selPic1('photo_material_2');});
+	jQuery("#uploadphoto3").on("touchend", function(){selPic1('photo_material_3');});
 }
 
 </script>
