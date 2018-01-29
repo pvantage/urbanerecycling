@@ -363,7 +363,7 @@ function selPic1(img) {
 			
 			var ft = new FileTransfer();
 			jQuery('body .showmessage').remove();
-			var html='<div class="showmessage">Start uploading...</div>';
+			var html='<div class="showmessage">Start uploading...<span class="progressbar"></span></div>';
 			jQuery('body').append(html);
 			ft.onprogress = function(progressEvent) {
 				if (progressEvent.lengthComputable) {
@@ -374,7 +374,10 @@ function selPic1(img) {
 				}
 			};
 			var t=ft.upload(filetrasfer2, uri, function(r){
-				if(typeof r['response']!='undefined'){
+				alert("Code = " + r.responseCode);
+				alert("Response = " + r.response);
+				alert("Sent = " + r.bytesSent);
+				/*if(typeof r['response']!='undefined'){
 					alert('1'+r['response']);
 				}
 				if(typeof r.response!='undefined'){
@@ -393,7 +396,7 @@ function selPic1(img) {
 						jQuery('#photo_material_1').val(r.response);
 						uploadfile3=0;
 					}
-				}
+				}*/
 			}, fail, options);
 			});
 		}
