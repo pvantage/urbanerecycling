@@ -331,17 +331,17 @@ function selPic1(img) {
 		if(img=='photo_material_1'){
 			jQuery('#image_material_1').attr('src',f);
 			jQuery('#image_material_1').show();
-			uploadfile1=1;
+			var uploadfile1=1;
 		}
 		else if(img=='photo_material_2'){
 			jQuery('#image_material_2').attr('src',f);
 			jQuery('#image_material_2').show();
-			uploadfile2=1;
+			var uploadfile2=1;
 		}
 		else if(img=='photo_material_3'){
 			jQuery('#image_material_3').attr('src',f);
 			jQuery('#image_material_3').show();
-			uploadfile3=1;
+			var uploadfile3=1;
 		}
 		if(filetrasfer!=''){
 			uploadfiles=parseInt(uploadfiles)+1;
