@@ -363,7 +363,7 @@ function selPic1(img) {
 			
 			var ft = new FileTransfer();
 			jQuery('body .showmessage').remove();
-			var html='<div class="showmessage">Start uploading... <span class="progressbar"></span></div>';
+			var html='<div class="showmessage">Start uploading...</div>';
 			jQuery('body').append(html);
 			ft.onprogress = function(progressEvent) {
 				if (progressEvent.lengthComputable) {
@@ -374,18 +374,25 @@ function selPic1(img) {
 				}
 			};
 			var t=ft.upload(filetrasfer2, uri, function(r){
-				alert(r.response);
-				if(img=='photo_material_1'){
-					jQuery('#photo_material_1').val(r.response);
-					uploadfile1=0;
+				if(typeof r['response']!='undefined'){
+					alert('1'+r['response']);
 				}
-				else if(img=='photo_material_2'){
-					jQuery('#photo_material_1').val(r.response);
-					uploadfile2=0;
+				if(typeof r.response!='undefined'){
+					alert('2'+r.response);
 				}
-				else if(img=='photo_material_3'){
-					jQuery('#photo_material_1').val(r.response);
-					uploadfile3=0;
+				if(typeof img!='undefined'){
+					if(img=='photo_material_1'){
+						jQuery('#photo_material_1').val(r.response);
+						uploadfile1=0;
+					}
+					else if(img=='photo_material_2'){
+						jQuery('#photo_material_1').val(r.response);
+						uploadfile2=0;
+					}
+					else if(img=='photo_material_3'){
+						jQuery('#photo_material_1').val(r.response);
+						uploadfile3=0;
+					}
 				}
 			}, fail, options);
 			});
