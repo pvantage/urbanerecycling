@@ -314,10 +314,8 @@ jQuery(document).ready(function(){
 				jQuery('body .showmessage').remove();
 				var html='<div class="showmessage">Job form save successfully</div>';
 				jQuery('body').append(html);
-				setTimeout(function(){jQuery('.showmessage').slideUp();},5000);
-				jQuery('.closeviewjobform').click(function(){
-					jQuery('#newjobformmissiletag').modal('hide');
-				});
+				setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+				
 		    },
 		  	error: function() 
 	    	{
