@@ -15,6 +15,7 @@ a {
 a:hover {
 	text-decoration: none;
 }
+*{ outline:none;}
 img {
 	height: auto;
 	max-width: 100%;
@@ -24,6 +25,53 @@ h1 {
 	font-weight: 600;
 	color: #000;
 	margin-bottom: 15px;
+}
+.notelists, .tasklists {
+    min-height: 35px;
+}
+body .notopborder h1 {
+    border-bottom: none;
+}
+.notopborder1 a.whitebase {
+    border-bottom: none;
+}
+input#pu_date {
+    padding-left: 8px;
+}
+.error {
+    color: red;
+}
+.indexlogo {
+    text-align: center;
+}
+.saverecords {
+    margin-top: 20px;
+}
+.mysch-fix-hdr {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f9f9f9;
+    z-index: 999;
+}
+.schlbody .tab-content {
+    margin-top: 46px;
+    float: left;
+    width: 100%;
+}
+.attachmentbox.attmds {
+    min-height: 36px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 10px;
+}
+.attachmentbox.attmds img {
+    float: left;
+    width: 18px;
+}
+.pickup-msg select {
+    padding-left: 10px;
 }
 .cal-details .cl-time {
     min-height: 76px;
@@ -343,7 +391,8 @@ input.sch-srch {
 .cl-wrap .cl-time {
 	text-align: right;
 	padding-right: 0px;
-	font-size: 14px
+	font-size: 14px;
+	padding-left:0px;
 }
 .cl-wrap .cl-address {
     /* margin-top: 10px; */
@@ -702,6 +751,9 @@ a{ outline:none;}
     padding: 8px;
         color: #535353;
     font-size: 15px;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .new-job input::placeholder {
@@ -775,8 +827,21 @@ a{ outline:none;}
 .new-job .form-box label {
     font-size: 15px;
     color: #5f5e5e;
+	text-transform:capitalize;
 }
 
+select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	background-color:#fff;
+}
+body select {
+    padding-left: 10px !important;
+    background: url(../images/droparrow.png) no-repeat right;
+	background-color: #fff;
+	height:40px;
+}
 .moremenu {
     background: #fff;
 }
@@ -915,6 +980,7 @@ ul.not-box span p {
     float: left;
     font-size: 14px;
     padding-left: 10px;
+	color: #212529;
 }
 .form-radio{ position:relative;}
 .taskpopup .form-radio:after {
@@ -987,6 +1053,12 @@ ul.not-box span p {
     padding: 8px;
     color: #535353;
     font-size: 17px;
+
+}
+input, textarea{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;	
 }
 .addtasknew .form-box {
     margin-top: 0px;
@@ -1097,9 +1169,9 @@ ul.staff-box li a{ color:#000;}
 
 
 .onclick {
-    width: 99%;
+    width: 100%;
     padding: 6px 0px;
-    border: 1px solid #ddd;
+    border: 1px solid #ebebeb;
     color: #3b3b3b;
     /* padding-right: 10px; */
     border-radius: 0;
@@ -1111,6 +1183,7 @@ textarea.whitebase {
     border-left: none;
     border-right: none;
 	font-size: 14px;
+	border-top:none;
 }
 .filterjobs .form-box {
     padding: 0px 10px;

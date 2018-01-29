@@ -4,7 +4,8 @@
 <title>Urbane Recycling</title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -51,7 +52,7 @@
               </div>
             </div>
 			
-			  <div class="pop-edit-item">
+			  <div class="pop-edit-item notopborder">
               <h1>Status</h1>
               <div class="pickup-msg">
           <select class="onclick" name="status"></select>
@@ -188,13 +189,13 @@
 			  <form id="pu_jobform" name="pu_jobform" action="" method="post">
 				<input type="hidden" id="pu_job_id" name="pu_job_id" value="" />
 				<input type="hidden" name="add_by" value="" />
-                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Staff Member </span></a>
+                <div class="pickup-msg notopborder1"><a class="whitebase" href="javascript:;"><span  class="left-block"> Staff Member </span></a>
                   <select name="assigned_to" id="assigned_to" class="onclick"></select>
                 </div>
-                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Duration </span> </a>
+                <div class="pickup-msg notopborder1"><a class="whitebase" href="javascript:;"><span  class="left-block"> Duration </span> </a>
                   <select name="duration" id="duration" class="onclick"></select>
                 </div>
-                <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Date </span> </a>
+                <div class="pickup-msg notopborder1"><a class="whitebase" href="javascript:;"><span  class="left-block"> Date </span> </a>
                   <input type="text" readonly="" class="onclick" name="pu_date" id="pu_date" placeholder="Enter Date" />
                 </div>
                 <div class="pickup-msg"><a class="whitebase" href="javascript:;"><span  class="left-block"> Time </span></a>
@@ -306,7 +307,7 @@
             <h1>Due Date</h1>
             <input type="text" class="required" placeholder="Due Date" id="task_due_date" name="due_date" />
           </div>
-		  <div class="pop-edit-item">
+		  <div class="pop-edit-item notopborder">
             <h1>Assigned To</h1>
             <select name="assigned_to" class="required onclick">
 				<option value="0">Anyone</option>
