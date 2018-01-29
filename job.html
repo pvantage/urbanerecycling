@@ -70,6 +70,10 @@
               <div class="pop-multibox tasklists"></div>
             </div>
 			<div class="pop-edit-item p-pic-req">
+              <h1>Forms</h1>
+              <div class="pop-multibox formlists" style="padding-top:10px;"></div>
+            </div>
+			<div class="pop-edit-item p-pic-req">
               <h1>Notes</h1>
               <div class="pop-multibox notelists" style="padding-top:10px;"></div>
             </div>
@@ -465,7 +469,28 @@
     </div>
   </div>
 </div>
-
+<div id="jobopenfileinpopup" class="modal fade openjobmain" role="dialog">
+  <div class="modal-dialog"> 
+    
+	<div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <button type="button" class="close col-2 donbtn" data-dismiss="modal" data-target="#jobopenfileinpopup">Cancel</button>
+			<div class="pdfsaveprint" style="display:none;">
+				<a href="" class="savepdffile" target="_blank">Save</a>
+				<a href="" class="printpdffile" target="_blank">Print</a>
+			</div>
+            <div class="col-7 pop-title">View File</div>
+          </div>
+        </div>
+        <div class="pop-left viewfile"></div>
+      </div>
+    </div>
+	
+    <!-- Modal content-->
+  </div>
+</div>
 <script src="js/jquery-3.2.1.min.js" ></script> 
 <script src="js/jquery-ui.min.js" ></script>
 <script src="js/popper.min.js" ></script> 
@@ -474,6 +499,27 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
+function openfileinpopup(file){
+	var files=file.split('.');
+	var filetype=files[files.length-1];
+	filetype = filetype.toLowerCase();
+	jQuery('.pdfsaveprint').hide();
+	var imgs=['gif','jpg','png','jpeg'];
+	if(jQuery.inArray( filetype, imgs ) !== -1){
+		jQuery('#jobopenfileinpopup .viewfile').html('<img src="'+siteurl+'/uploads/'+file+'" />');
+		jQuery('#jobopenfileinpopup').modal('show');
+	}
+	else if(filetype=='pdf'){
+		jQuery('.pdfsaveprint').show();
+		jQuery('.pdfsaveprint a.savepdffile').attr('href',siteurl+'/jobs/viewprintpdf/?file=uploads/'+file);
+		jQuery('.pdfsaveprint a.printpdffile').attr('href',siteurl+'/jobs/viewprintpdf/?file=uploads/'+file+'&print=1');
+		jQuery('#jobopenfileinpopup .viewfile').html('<iframe style="height:500px; width:100%" src="'+siteurl+'/uploads/'+file+'"></iframe>');
+		jQuery('#jobopenfileinpopup').modal('show');
+	}
+	else{
+		window.location=siteurl+"uploads/"+file;
+	}
+}
 function loadjob(job_id){
 	var url=siteurl+'/api/jobs/singlerecord';
 	var uid=localStorage.getItem('Staff_ID');
@@ -557,6 +603,15 @@ function loadjob(job_id){
 				});
 				jQuery('.notelists').html(html);
 			}
+			if(res['record']['forms']!=''){
+				var html='';
+				jQuery(res['record']['forms']).each(function(index){
+					html+='<div class="pickup-msg"><span  class="left-block">'+res['record']['forms'][index]['task']+' </span><p class="assign-name">'+res['record']['forms'][index]['formtitle']+' by '+res['record']['forms'][index]['addby']+'</p></div>';
+				  
+				});
+				jQuery('.formlists').html(html);
+			}
+			
 			if(res['record']['status']=='Completed' || res['record']['status']=='Unassigned'){
 				jQuery('.str-job').hide();
 			}

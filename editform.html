@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts-styles.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mycss.css" >
+<link href="css/signature-pad.css" rel="stylesheet" />
+
+</head>
+<body class="grey-bg after-login">
+<!----- Header Top ----->
+
+    
+   
+<div id="editjobformmissiletag" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <a class="close col-2 donbtn gobackbtn" href="">Cancel</a>
+            <div class="col-7 pop-title">Edit Missile Tag</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+		<table class="table">
+			  <tr>
+				<th valign="top" align="left">PICKUP DATE:</th>
+				<td valign="top" align="left" class="show_pickup_date"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">PICKUP NAME:</th>
+				<td valign="top" align="left" class="show_pickup_name"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">DRIVER:</th>
+				<td valign="top" align="left" class="show_contact_name"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">PICKUP LOCATION:</th>
+				<td valign="top" align="left" class="show_pickup_location"></td>
+			  </tr>
+			  </table>
+			<form id="editmissiletagform" name="editmissiletagform" action="" method="post">
+				<input type="hidden" name="form_job_id" value="" />
+				<input type="hidden" name="form_id" value="0" />
+				<input type="hidden" name="form_type" value="missiletag" />
+				<input type="hidden" name="form_title" value="Missile Tag" />
+				<input type="hidden" name="upload_fields" value="photo_material_1,photo_material_2,photo_material_3" />
+				<input type="hidden" name="add_by" value="0">
+          <div class="nf-box">
+            <label>Missile Tag #'s*</label>
+            <input class="forminput required" type="text" name="missile_tag" placeholder="" />
+          </div>
+          <div class="nf-box">
+            <label>Send Certification to?*</label>
+            <input class="forminput required" type="text" placeholder="" name="certification_name" />
+          </div>
+          <div class="nf-box">
+            <label>Customer E-Mail*</label>
+            <input class="forminput required" type="email" placeholder="" name="certification_email" />
+          </div>
+          <div class="nf-box">
+            <label class="required_certification_requested">Certification Requested?*</label>
+            <div class="form-radios">
+              <label>
+                <input value="Yes" type="radio" name="certification_requested[]" />
+                Yes</label>
+              <label>
+                <input value="No" type="radio" name="certification_requested[]" />
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box showhide_certification_type">
+            <label class="required_certification_type">Certification Type?</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input value="General Recycling" type="checkbox" name="certification_type[]" />
+                General Recycling</label>
+              <label>
+                <input value="General w/ Inventory" type="checkbox" name="certification_type[]" />
+                Recycling w/ Inventory</label>
+              <label>
+                <input value="Data Destruction" type="checkbox" name="certification_type[]" />
+                Data Destruction</label>
+              <label>
+                <input value="Data Destruction with video" type="checkbox" name="certification_type[]" />
+                Data Destruction with Video</label>
+            </div>
+          </div>
+          <div class="nf-box showhide_loose_hdd">
+            <label class="required_loose_hdd">Were there any loose HDD's?</label>
+            <div class="form-radios">
+              <label>
+                <input value="Yes" type="radio" name="loose_hdd" />
+                Yes</label>
+              <label>
+                <input value="No" type="radio" name="loose_hdd" />
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box showhide_how_many">
+            <label>How many loose HDD's?</label>
+            <input type="number" class="required forminput" name="how_many"  min="1" />
+          </div>
+          <div class="nf-box">
+            <label>Notes/Special Instructions</label>
+			<textarea class="forminput" name="special_note" rows="3" cols="50"></textarea>
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+				<a href="javascript:;" id="uploadphoto1" class="col-6"><i class="fa fa-camera"></i></a>
+            <input type="hidden" name="photo_material_1" id="photo_material_1" />
+				  	<img id="edit_image_material_1" class="showuploadphoto" style="display:none;" />
+          </div>
+          <div class="nf-box">
+            <label>Photo 2</label>
+				<a href="javascript:;" id="uploadphoto2" class="col-6"><i class="fa fa-camera"></i></a>
+            <input type="hidden" name="photo_material_2" id="photo_material_2" />
+				  	<img id="edit_image_material_2" class="showuploadphoto" style="display:none;" />
+          </div>
+          <div class="nf-box">
+            <label>Photo 3</label>
+				<a href="javascript:;" id="uploadphoto3" class="col-6"><i class="fa fa-camera"></i></a>
+            <input type="hidden" name="photo_material_3" id="photo_material_3" />
+				  <img id="edit_image_material_3" class="showuploadphoto" style="display:none;" />
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn savenewmissiletag" type="button">Done</button>
+          </div>
+		  </form>
+		  <div class="successsavejobform"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="editjobformtransferresponse" class="modal fade popupformats taskpopup" role="dialog">
+  <div class="modal-dialog"> 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pop-head">
+          <div class="row">
+            <a class="close col-2 donbtn gobackbtn" href="">Cancel</a>
+            <div class="col-10 pop-title">Edit Transfer of Responsibility</div>
+          </div>
+        </div>
+        <div class="new-forms-formats">
+			<table class="table">
+			  <tr>
+				<th valign="top" align="left">PICKUP DATE:</th>
+				<td valign="top" align="left" class="show_pickup_date"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">PICKUP NAME:</th>
+				<td valign="top" align="left" class="show_pickup_name"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">DRIVER:</th>
+				<td valign="top" align="left" class="show_contact_name"></td>
+			  </tr>
+			  <tr>
+				<th valign="top" align="left">PICKUP LOCATION:</th>
+				<td valign="top" align="left" class="show_pickup_location"></td>
+			  </tr>
+			  </table>
+			<form id="edittransferresponseform" name="edittransferresponseform" action="" method="post">
+				<input type="hidden" name="form_id" value="0" />
+				<input type="hidden" name="form_job_id" value="" />
+				<input type="hidden" name="form_type" value="transferresponse" />
+				<input type="hidden" name="form_title" value="Transfer of Responsibility" />
+				<input type="hidden" name="upload_fields" value="photo_trans_material,signaturefile" />
+				<input type="hidden" name="add_by" value="0">
+          <div class="nf-box">
+            <label>Certification Requested</label>
+            <div class="form-radios multiradi">
+              <label>
+                <input value="None" type="checkbox" name="certification_requested[]" />
+                None</label>
+              <label>
+                <input value="General Recycling" type="checkbox" name="certification_requested[]" />
+                General Recycling</label>
+              <label>
+                <input value="Recycling with Inventory" type="checkbox" name="certification_requested[]" />
+                Recycling with Inventory</label>
+              <label>
+                <input value="Data Destruction" type="checkbox" name="certification_requested[]" />
+                Data Destruction</label>
+              <label>
+                <input value="Data Destruction with video" type="checkbox" name="certification_requested[]" />
+                Data Destruction with Video</label>
+            </div>
+          </div>
+		  <div class="nf-box">
+            <label>Customer Name*</label>
+			<input type="text" class="required forminput" name="certification_name" />
+          </div>
+		  <div class="nf-box">
+            <label>Customer E-Mail*</label>
+			<input type="email" class="required forminput" name="certification_email" />
+          </div>
+          <div class="nf-box">
+            <label>Were there any loose hard drives collected?</label>
+            <div class="form-radios">
+              <label>
+                <input value="Yes" type="radio" name="loose_hdd" />
+                Yes</label>
+              <label>
+                <input value="No" type="radio" name="loose_hdd" />
+                No</label>
+            </div>
+          </div>
+          
+          <div class="nf-box">
+            <label>Total number of loose hard drives?</label>
+			<input type="number" name="how_many" class="forminput" min="1" />
+          </div>
+          <div class="nf-box">
+            <label>Photo of Material</label>
+			<a href="javascript:;" id="transuploadphoto" class="col-6"><i class="fa fa-camera"></i></a>
+            <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
+			<img id="edit_image_trans_material" class="showuploadphoto" style="display:none;" />
+          </div>
+          <div class="nf-box">
+            <label>Was customer present at pickup?</label>
+            <div class="form-radios">
+              <label>
+                <input value="Yes" type="radio" name="customer_present" />
+                Yes</label>
+              <label>
+                <input value="No" type="radio" name="customer_present" />
+                No</label>
+            </div>
+          </div>
+          <div class="nf-box showhide_signature">
+            <label>Signature:</label>
+                  <div class="cust">
+				  	<div class="canvas_container">
+					  <div id="signature-pad2" class="m-signature-pad">
+						<div class="m-signature-pad--body2">
+						</div>
+					  </div>
+					</div>
+					<div class="patent_submit nextbox">
+					  <button type="button" class="btn btn-default clearsignature2" data-action="clear">Clear Signature</button>
+					  <button type="button" class="btn btn-default savesignature2" data-action="save">Save Signature</button>
+					</div>
+				  </div>
+				  <input type="hidden" name="signaturefile" id="signaturefile2" value="" />
+          </div>
+          <div class="nf-box">
+            <button class="nf-box-btn savenewtransferresponse" type="button">Done</button>
+          </div>
+          
+		  </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/jquery-ui.min.js" ></script>
+<script src="js/popper.min.js" ></script> 
+<script src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/signature_pad.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script type="text/javascript">
+function editjobform(form_id){
+	var url=siteurl+'/api/jobs/viewjobform';
+	jQuery.ajax({ 
+	 type: 'POST',  
+	 url: url,  
+	 dataType: 'json',
+	 data: {form_id:form_id},  
+	 beforeSend: function() {
+	 },		
+	 complete: function() {
+	 },
+	 success: function(res) { 
+	 	jQuery('form input, form textarea').removeClass('error');
+	 	if(res['form_type'])
+		{
+			
+			if(res['form_type']=='missiletag')
+			{
+				jQuery('#editjobformmissiletag table.table').show();
+				jQuery('#editmissiletagform')[0].reset();
+				jQuery('#editjobformmissiletag img').hide();
+				jQuery('#editjobformmissiletag form').show();
+				jQuery('#editjobformmissiletag button').show();
+				jQuery('#editjobformmissiletag .showhide_certification_type').show();
+				jQuery('#editjobformmissiletag .showhide_loose_hdd').show();
+				jQuery('#editjobformmissiletag .showhide_how_many').show();
+				jQuery('#editjobformmissiletag .successsavejobform').hide();
+				jQuery('#editjobformmissiletag .saveeditmissiletag').show();
+				jQuery('#editmissiletagform input[name="missile_tag"]').val(res['missile_tag']);
+				//jQuery('#editmissiletagform input[name="certification_to"]').val(res['certification_to']);
+				jQuery('#editmissiletagform input[name="certification_name"]').val(res['certification_name']);
+				jQuery('#editmissiletagform input[name="certification_email"]').val(res['certification_email']);
+				jQuery('#editmissiletagform input[name="how_many"]').val(res['how_many']);
+				jQuery('#editmissiletagform textarea[name="special_note"]').val(res['special_note']);
+				var certification_requesteds=res['certification_requested'];
+				
+				jQuery('#editmissiletagform input[name="certification_requested[]"]').each(function(index){
+					var v=jQuery(this).val();
+					if(certification_requesteds[0]==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+				});
+				var certification_types=res['certification_type'];
+				jQuery('#editmissiletagform input[name="certification_type[]"]').each(function(index){
+					var v=jQuery(this).val();
+					if(certification_types[index]==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+				});
+				var loose_hdd=res['loose_hdd'];
+				jQuery('#editmissiletagform input[name="loose_hdd"]').each(function(index){
+					var v=jQuery(this).val();
+					if(loose_hdd==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+				});
+				var photo_material_1=res['photo_material_1'];
+				if(jQuery.trim(photo_material_1)!=''){
+					var fl=photo_material_1['file'];
+					jQuery('#edit_image_material_1').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_1').show();
+				}
+				var photo_material_2=res['photo_material_2'];
+				if(jQuery.trim(photo_material_2)!=''){
+					var fl=photo_material_2['file'];
+					jQuery('#edit_image_material_2').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_2').show();
+				}
+				var photo_material_3=res['photo_material_3'];
+				if(jQuery.trim(photo_material_3)!=''){
+					var fl=photo_material_3['file'];
+					jQuery('#edit_image_material_3').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_3').show();
+				}
+				jQuery('#editjobformmissiletag td.show_pickup_date').html(res['pickup_date']);
+				jQuery('#editjobformmissiletag td.show_pickup_name').html(res['pickup_name']);
+				jQuery('#editjobformmissiletag td.show_contact_name').html(res['contact_name']);
+				jQuery('#editjobformmissiletag td.show_pickup_location').html(res['pickup_address']);
+				
+				jQuery('#editmissiletagform .required_certification_requested').removeClass('error');
+				jQuery('#editmissiletagform .required_certification_type').removeClass('error');
+				
+				if(res['certification_requested'][0]=='Yes'){
+					jQuery('#editmissiletagform .showhide_certification_type').show();
+					jQuery('#editmissiletagform .showhide_loose_hdd').show();
+					jQuery('#editmissiletagform .showhide_how_many').show();
+					if(res['loose_hdd']=='Yes'){
+						jQuery('#editmissiletagform input[name="how_many"]').addClass('required');
+						jQuery('#editmissiletagform .showhide_how_many').show();
+					}
+					else{
+						jQuery('#editmissiletagform input[name="how_many"]').removeClass('required');
+						jQuery('#editmissiletagform input[name="how_many"]').val('');
+						jQuery('#editmissiletagform .showhide_how_many').hide();
+					}
+				}
+				else{
+					jQuery('#editmissiletagform .showhide_certification_type').hide();
+					jQuery('#editmissiletagform .showhide_loose_hdd').hide();
+					jQuery('#editmissiletagform .showhide_how_many').show();
+					jQuery('#editmissiletagform input[name="how_many"]').addClass('required');
+					jQuery('#editmissiletagform .showhide_how_many').show();
+				}
+				
+				jQuery('#editjobformmissiletag').modal('show');
+			}
+			
+	 		if(res['form_type']=='transferresponse')
+			{
+				jQuery('.saveedittransferresponse').prev('img').hide();
+				jQuery('.m-signature-pad--body').html('');
+				jQuery('.m-signature-pad--body2').html('<canvas id="canvas2" width="250" height="40"></canvas>');
+				var wrapper = document.getElementById("signature-pad2"),
+					canvas = wrapper.querySelector("#signature-pad2 canvas"),
+					signaturePad2;
+				signaturePad2 = new SignaturePad(canvas);
+				function resizeCanvas2() {
+					var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+					canvas.width = canvas.offsetWidth * ratio;
+					canvas.height = canvas.offsetHeight * ratio;
+					canvas.getContext("2d").scale(ratio, ratio);
+					signaturePad2.clear();
+				}
+				
+				jQuery('.clearsignature2').click(function () {
+					signaturePad2.clear();
+					jQuery('.m-signature-pad--body2 img').remove();
+					jQuery('.m-signature-pad--body2 canvas').show();
+					jQuery(".savesignature2").attr('disabled',false);
+					jQuery('#signaturefile2').val('');
+					resizeCanvas2();
+				});
+				jQuery(".savesignature2").click(function(){
+					
+					var canvasData = signaturePad2.toDataURL("image/png");
+					var job_id=jQuery('#recid').val();		
+					jQuery.ajax({
+						url: siteurl+'/api/jobs/savesignature',
+						type: "POST",
+						data: {"save-signature": "canvasSave", "image":canvasData, "job_id":job_id},		
+						success: function(results) {
+							jQuery('.m-signature-pad--body2 img').remove();
+							jQuery('.m-signature-pad--body2 canvas').hide();
+							jQuery('.m-signature-pad--body2').append('<img src="'+siteurl+'/'+results+'" alt="" style="width:100%;" />');
+							setTimeout(function(){jQuery('.m-signature-pad--body2 img').attr('src',siteurl+'/'+results);},1000);
+							jQuery(".savesignature2").attr('disabled',true);
+							jQuery('#signaturefile2').val(results);
+						},
+						error: function() {
+							console.log('Cannot retrieve data.');
+						}
+					});
+			
+				});
+				jQuery('#edittransferresponseform')[0].reset();
+				jQuery('#editjobformtransferresponse img').hide();
+				jQuery('#editjobformtransferresponse form').show();
+				jQuery('#editjobformtransferresponse button').show();
+				jQuery('#editjobformtransferresponse .successsavejobform').hide();
+				jQuery('#editjobformtransferresponse .saveeditmissiletag').show();
+				jQuery('#edittransferresponseform input[name="certification_name"]').val(res['certification_name']);
+				jQuery('#edittransferresponseform input[name="certification_email"]').val(res['certification_email']);
+				jQuery('#edittransferresponseform input[name="how_many"]').val(res['how_many']);
+				var certification_requesteds=res['certification_requested'];
+				
+				jQuery('#edittransferresponseform input[name="certification_requested[]"]').each(function(index){
+					var v=jQuery(this).val();
+					var $thi=jQuery(this);
+					jQuery(certification_requesteds).each(function(ind){
+						if(certification_requesteds[ind]==v){jQuery($thi).attr('checked',true);jQuery($thi).prop('checked',true);}										   
+					});
+					
+				});
+				var loose_hdd=res['loose_hdd'];
+				jQuery('#edittransferresponseform input[name="loose_hdd"]').each(function(index){
+					var v=jQuery(this).val();
+					if(loose_hdd==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+				});
+				var customer_present=res['customer_present'];
+				jQuery('#edittransferresponseform input[name="customer_present"]').each(function(index){
+					var v=jQuery(this).val();
+					if(customer_present==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+				});
+				var signature=res['signature'];
+				jQuery('.m-signature-pad--body2 img').remove();
+				jQuery('.m-signature-pad--body2 canvas').hide();
+				jQuery('.m-signature-pad--body2').append('<img src="'+siteurl+'/'+signature+'" alt="" style="width:100%;" />');
+				setTimeout(function(){jQuery('.m-signature-pad--body2 img').attr('src',siteurl+'/'+signature);},1000);
+				jQuery(".savesignature2").attr('disabled',true);
+				jQuery('#signaturefile2').val(signature);
+				
+				var photo_trans_material=res['photo_trans_material'];
+				if(jQuery.trim(photo_trans_material)!=''){
+					var fl=photo_trans_material['file'];
+					jQuery('#edit_image_trans_material').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_trans_material').show();
+				}
+				jQuery('#editjobformtransferresponse td.show_pickup_date').html(res['pickup_date']);
+				jQuery('#editjobformtransferresponse td.show_pickup_name').html(res['pickup_name']);
+				jQuery('#editjobformtransferresponse td.show_contact_name').html(res['contact_name']);
+				jQuery('#editjobformtransferresponse td.show_pickup_location').html(res['pickup_address']);
+				jQuery('#editjobformtransferresponse table.table').show();
+				
+				if(res['loose_hdd']=='Yes'){
+					jQuery('#editjobformtransferresponse input[name="how_many"]').addClass('required');
+					jQuery('#editjobformtransferresponse .showhide_how_many').show();
+				}
+				else{
+					jQuery('#editjobformtransferresponse input[name="how_many"]').removeClass('required');
+					jQuery('#editjobformtransferresponse input[name="how_many"]').val(0);
+					jQuery('#editjobformtransferresponse .showhide_how_many').hide();
+				}
+				if(res['customer_present']=='Yes'){
+					jQuery('#editjobformtransferresponse .showhide_signature').show();
+				}
+				else{
+					jQuery('#editjobformtransferresponse .showhide_signature').hide();
+				}
+				
+				jQuery('#editjobformtransferresponse').modal('show');
+				setTimeout(function(){resizeCanvas2();},2000);
+			}
+			
+		}
+	 },  
+	 error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},5000); 
+	 } 
+   });
+}
+function loadjob(job_id){
+	var url=siteurl+'/api/jobs/singlerecord';
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url,           
+		dataType: 'json',  
+		crossDomain: true,
+		data: {job_id:job_id}, 
+		beforeSend: function() {
+		
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) { 
+		if(res['record'])
+		{
+			
+			jQuery('#editmissiletagform input[name="certification_name"],#newtransferresponseform input[name="certification_name"]').val(res['record']['contact_fname']+' '+res['record']['contact_lname']);
+			jQuery('#editmissiletagform input[name="certification_email"],#newtransferresponseform input[name="certification_email"]').val(res['record']['contact_email']);
+			
+		}
+		
+		},  
+		error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		return false; 
+		}
+	});
+}
+var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0, transferuploading=0;
+
+jQuery(document).ready(function(){
+	jQuery( document ).on( "mobileinit", function() {
+		jQuery.mobile.allowCrossDomainPages = true;
+	});
+	var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+    if(window.XDomainRequest){contentType = "text/plain";}
+	jQuery.support.cors = true;
+	
+	
+	var job_id=gup('job_id');
+	loadjob(job_id);
+	var form_id=gup('form_id');
+	editjobform(form_id)
+	var vform=gup('vform');
+	jQuery('input[name="form_id"]').val(form_id);
+	jQuery('input[name="form_job_id"]').val(job_id);
+	var uid=localStorage.getItem('Staff_ID');
+	jQuery('input[name="add_by"]').val(uid);
+	
+	if(vform=='missiletag'){
+		jQuery('#editjobformmissiletag').modal();
+	}
+	else if(vform=='transferresponse'){
+		jQuery('#editjobformtransferresponse').modal();
+	}
+	var gottoback=localStorage.getItem('gotopage');
+	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
+	
+	jQuery("#editmissiletagform").on('submit',(function(e) {
+		
+		//return false;
+		var url=siteurl+'/api/jobs/updatejobform';
+		var noerror=true;
+		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
+		{
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Form uploading please wait..</div>';
+			jQuery('body').append(html);
+			formuploading=1
+			noerror=false;
+		}
+		var job_id=gup('job_id');
+		jQuery('#editmissiletagform .required_certification_requested').removeClass('error');
+		jQuery('#editmissiletagform .required_certification_type').removeClass('error');
+		jQuery('#editmissiletagform .required_loose_hdd').removeClass('error');
+		
+		var x=1;
+		jQuery('input[name="certification_requested[]"]').each(function(){
+			if(jQuery(this).is(':checked')){
+				x=2;
+			}															
+		});
+		if(x==1){noerror=false;jQuery('#editmissiletagform .required_certification_requested').addClass('error');}
+		if(jQuery('input[name="certification_requested[]"]:checked').val()=='Yes'){
+			var x=1;
+			jQuery('input[name="certification_type[]"]').each(function(){
+				if(jQuery(this).is(':checked')){
+					x=2;
+				}															
+			});
+			if(x==1){noerror=false;jQuery('#editmissiletagform .required_certification_type').addClass('error');}
+			jQuery('#editmissiletagform input[name="how_many"]').addClass('required');
+			if(!jQuery('#editmissiletagform input[name="loose_hdd"]').is(':checked')){
+				noerror=false;
+				jQuery('#editmissiletagform .required_loose_hdd').addClass('error');
+			}
+		}
+		
+		if(jQuery('#editmissiletagform input[name="loose_hdd"]:checked').val()=='Yes'){
+			jQuery('#editmissiletagform input[name="how_many"]').addClass('required');
+		}
+		else if(jQuery('#editmissiletagform input[name="loose_hdd"]:checked').val()=='No'){
+			jQuery('#editmissiletagform input[name="how_many"]').removeClass('required');
+		}
+		jQuery("#editmissiletagform input, #editmissiletagform textarea").each(function(){
+			if(jQuery(this).hasClass('required') && jQuery.trim(jQuery(this).val())==''){
+				jQuery(this).addClass('error');	
+				noerror=false;
+			}
+			else{
+				jQuery(this).removeClass('error');	
+			}
+		});
+		
+		
+		e.preventDefault();
+		if(noerror){
+			jQuery('.savenewmissiletag').prev('img').show();
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data:  new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{	
+					jQuery('.savenewmissiletag').prev('img').hide();
+					jQuery("#editmissiletagform")[0].reset();
+					/*jQuery('.savenewmissiletag').hide();
+					jQuery('#newjobformmissiletag form').hide();
+					jQuery('#newjobformmissiletag .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
+					jQuery('#newjobformmissiletag .successsavejobform').show();*/
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Job form save successfully</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+					
+				},
+				error: function() 
+				{
+				} 	        
+		   });
+		}
+	}));
+	  jQuery('.savenewmissiletag').click(function(){
+	  	jQuery("#editmissiletagform").submit();
+	  });
+	  jQuery('#newtransferresponseform input[name="loose_hdd"], #edittransferresponseform input[name="loose_hdd"], #newmissiletagform input[name="loose_hdd"], #editmissiletagform input[name="loose_hdd"]').change(function(){
+			var $this=jQuery(this).parents('form');																	 
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_how_many',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_how_many',$this).hide();
+			}
+	  });
+	  jQuery('#newtransferresponseform input[name="customer_present"], #edittransferresponseform input[name="customer_present"]').change(function(){
+			var $this=jQuery(this).parents('form');	
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_signature',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_signature',$this).hide();
+			}
+	  });
+	  jQuery('#newmissiletagform input[name="certification_requested[]"], #editmissiletagform input[name="certification_requested[]"]').change(function(){
+			var $this=jQuery(this).parents('form');	
+	  		if(jQuery(this).val()=='Yes'){
+				jQuery('.showhide_certification_type',$this).show();
+				jQuery('.showhide_loose_hdd',$this).show();
+				jQuery('.showhide_how_many',$this).show();
+			}
+			else if(jQuery(this).val()=='No'){
+				jQuery('.showhide_certification_type',$this).hide();
+				jQuery('.showhide_loose_hdd',$this).hide();
+				jQuery('.showhide_how_many',$this).show();
+			}
+	  });
+	  
+	  jQuery("#edittransferresponseform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/updatejobform';
+		var noerror=true;
+		
+		if(transferuploading=='1'){
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Form uploading please wait..</div>';
+			jQuery('body').append(html);
+			formuploading=1
+			noerror=false;
+		}
+		jQuery("#edittransferresponseform input, #edittransferresponseform textarea").each(function(){
+			if(jQuery(this).hasClass('required') && jQuery.trim(jQuery(this).val())==''){
+				jQuery(this).addClass('error');	
+				noerror=false;
+			}
+			else{
+				jQuery(this).removeClass('error');	
+			}
+		});
+		if(!jQuery('input[name="certification_requested[]"]').is(':checked')){
+			noerror=false;
+		}
+		var x=1;
+		jQuery('input[name="certification_requested[]"]').each(function(){
+			if(jQuery(this).is(':checked')){
+				x=2;
+			}															
+		});
+		if(x==1){noerror=false;}
+		if(!jQuery('input[name="customer_present"]').is(':checked')){
+			noerror=false;
+		}
+		if(!jQuery('input[name="loose_hdd"]').is(':checked')){
+			noerror=false;
+		}
+		e.preventDefault();
+		var signaturefile= jQuery('#signaturefile2').val();
+		if(jQuery.trim(signaturefile)==''){
+			noerror=false;
+			jQuery(".savesignature").trigger('click');
+			setTimeout(function(){jQuery("#edittransferresponseform").submit();},1500);
+		}
+		
+		if(noerror){
+			jQuery('.savenewtransferresponse').prev('img').show();
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data:  new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{	
+					jQuery('.savenewtransferresponse').prev('img').hide();
+					jQuery('.m-signature-pad--body2 img').remove();
+					jQuery('.m-signature-pad--body2 canvas').show();
+					jQuery(".savesignature").attr('disabled',false);
+					jQuery('#signaturefile2').val('');
+					jQuery("#edittransferresponseform")[0].reset();
+					/*jQuery('.savenewtransferresponse').hide();
+					jQuery('#newjobformtransferresponse form').hide();
+					jQuery('#newjobformtransferresponse .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
+					jQuery('#newjobformtransferresponse .successsavejobform').show();*/
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Job form save successfully</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+					
+				},
+				error: function() 
+				{
+				} 	        
+		   });
+		}
+	}));
+	  jQuery('.savenewtransferresponse').click(function(){
+	  	jQuery("#edittransferresponseform").submit();
+	  });
+});
+
+function selPic1(img) {
+	//alert('Pick a pic');
+	var job_id=gup('job_id');
+	navigator.camera.getPicture(function(f) {
+        var filetrasfer=f;
+		if(img=='photo_material_1'){
+			jQuery('#edit_image_material_1').attr('src',f);
+			jQuery('#edit_image_material_1').show();
+			uploadfile1=1;
+		}
+		else if(img=='photo_material_2'){
+			jQuery('#edit_image_material_2').attr('src',f);
+			jQuery('#edit_image_material_2').show();
+			uploadfile2=1;
+		}
+		else if(img=='photo_material_3'){
+			jQuery('#edit_image_material_3').attr('src',f);
+			jQuery('#edit_image_material_3').show();
+			uploadfile3=1;
+		}
+		if(filetrasfer!=''){
+			var uid=localStorage.getItem('Staff_ID');	
+			resolveLocalFileSystemURL(filetrasfer, function(entry) {
+			var filetrasfer2= entry.toURL();
+			var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=missiletag&job_id='+job_id);
+			var options = new FileUploadOptions();
+			options.fileKey="file";
+			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+			//options.mimeType="image/jpeg";
+			var params = new Object();
+			 params.value1 = "test";
+			 params.value2 = "param";
+			 options.params = params;
+			 options.chunkedMode = false;
+			var headers={'headerParam':'headerValue'};
+			options.headers = headers;
+			
+			var ft = new FileTransfer();
+			
+			var t=ft.upload(filetrasfer2, uri, function(r){
+				
+				if(typeof img!='undefined'){
+					if(img=='photo_material_1'){
+						jQuery('#photo_material_1').val(r.response);
+						uploadfile1=0;
+					}
+					else if(img=='photo_material_2'){
+						jQuery('#photo_material_2').val(r.response);
+						uploadfile2=0;
+					}
+					else if(img=='photo_material_3'){
+						jQuery('#photo_material_3').val(r.response);
+						uploadfile3=0;
+					}
+					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+					{
+						jQuery("#editjobformmissiletag").submit();
+					}
+				}
+			}, fail, options);
+			});
+		}
+    }, function(e) {
+    }, { 
+        quality: 1,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: Camera.DestinationType.FILE_URI
+    });
+    
+}
+function selPic2(img) {
+	//alert('Pick a pic');
+	var job_id=gup('job_id');
+	navigator.camera.getPicture(function(f) {
+        var filetrasfer=f;
+		if(img=='photo_trans_material'){
+			jQuery('#edit_image_trans_material').attr('src',f);
+			jQuery('#edit_image_trans_material').show();
+			transferuploading=1;
+		}
+		
+		if(filetrasfer!=''){
+			var uid=localStorage.getItem('Staff_ID');	
+			resolveLocalFileSystemURL(filetrasfer, function(entry) {
+			var filetrasfer2= entry.toURL();
+			var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=transferresponse&job_id='+job_id);
+			var options = new FileUploadOptions();
+			options.fileKey="file";
+			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+			//options.mimeType="image/jpeg";
+			var params = new Object();
+			 params.value1 = "test";
+			 params.value2 = "param";
+			 options.params = params;
+			 options.chunkedMode = false;
+			var headers={'headerParam':'headerValue'};
+			options.headers = headers;
+			
+			var ft = new FileTransfer();
+			
+			var t=ft.upload(filetrasfer2, uri, function(r){
+				
+				if(typeof img!='undefined'){
+					if(img=='photo_trans_material'){
+						jQuery('#photo_trans_material').val(r.response);
+						transferuploading=0;
+					}
+					
+					if(transferuploading=='0' && formuploading=='1')
+					{
+						jQuery("#edittransferresponseform").submit();
+					}
+				}
+			}, fail, options);
+			});
+		}
+    }, function(e) {
+    }, { 
+        quality: 1,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: Camera.DestinationType.FILE_URI
+    });
+    
+}
+function fail(error) {
+	jQuery('body .showmessage').remove();
+	var html='<div class="showmessage" style="width:100%">Uploading error: Code = ' + error.code+', upload error source ' + error.source+', upload error target ' + error.target+'</div>';
+	jQuery('body').append(html);
+	setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+}
+
+
+document.addEventListener("deviceready", init, false);
+function init() {
+	jQuery("#uploadphoto1").on("touchend", function(){selPic1('photo_material_1');});
+	jQuery("#uploadphoto2").on("touchend", function(){selPic1('photo_material_2');});
+	jQuery("#uploadphoto3").on("touchend", function(){selPic1('photo_material_3');});
+	jQuery("#transuploadphoto").on("touchend", function(){selPic2('photo_trans_material');});
+	
+}
+
+</script>
+</body>
+</html>
