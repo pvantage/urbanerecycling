@@ -455,7 +455,7 @@ jQuery(document).ready(function(){
 				success: function(results) {
 					jQuery('.m-signature-pad--body img').remove();
 					jQuery('.m-signature-pad--body canvas').hide();
-					jQuery('.m-signature-pad--body').append('<img src="'+siteurl+'/'+results+'" alt="" />');
+					jQuery('.m-signature-pad--body').append('<img src="'+siteurl+'/'+results+'" alt="" style="width:100%" />');
 					setTimeout(function(){jQuery('.m-signature-pad--body img').attr('src',siteurl+'/'+results);},1000);
 					jQuery(".savesignature").attr('disabled',true);
 					jQuery('#signaturefile').val(results);
