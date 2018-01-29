@@ -1055,7 +1055,7 @@ ul.not-box span p {
     font-size: 17px;
 
 }
-input, textarea{
+input[type="text"], textarea{
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;	

@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/jquery-ui.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/mycss.css" >
+<link href="css/signature-pad.css" rel="stylesheet" />
+
 </head>
 <body class="grey-bg after-login">
 <!----- Header Top ----->
@@ -132,75 +134,99 @@
       <div class="modal-body">
         <div class="pop-head">
           <div class="row">
-            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <a class="close col-2 donbtn gobackbtn" href="">Cancel</a>
             <div class="col-10 pop-title">Transfer of Responsibility</div>
           </div>
         </div>
         <div class="new-forms-formats">
+			<form id="newtransferresponseform" name="newtransferresponseform" action="" method="post">
+				<input type="hidden" name="form_job_id" value="" />
+				<input type="hidden" name="form_type" value="transferresponse" />
+				<input type="hidden" name="form_title" value="Transfer of Responsibility" />
+				<input type="hidden" name="upload_fields" value="trans_material,signaturefile" />
+				<input type="hidden" name="add_by" value="0">
           <div class="nf-box">
             <label>Certification Requested</label>
             <div class="form-radios multiradi">
               <label>
-                <input name="Recycling" type="checkbox" value="General Recycling">
+                <input value="None" type="checkbox" name="certification_requested[]" />
                 None</label>
               <label>
-                <input name="Recycling" type="checkbox" value="Recycling w/ Inventory">
+                <input value="General Recycling" type="checkbox" name="certification_requested[]" />
                 General Recycling</label>
               <label>
-                <input name="Recycling" type="checkbox" value="Data Destruction">
+                <input value="Recycling with Inventory" type="checkbox" name="certification_requested[]" />
                 Recycling with Inventory</label>
               <label>
-                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                <input value="Data Destruction" type="checkbox" name="certification_requested[]" />
                 Data Destruction</label>
               <label>
-                <input name="Recycling" type="checkbox" value="Data Destruction with Video">
+                <input value="Data Destruction with video" type="checkbox" name="certification_requested[]" />
                 Data Destruction with Video</label>
             </div>
+          </div>
+		  <div class="nf-box">
+            <label>Customer Name*</label>
+			<input type="text" class="required forminput" name="certification_name" />
+          </div>
+		  <div class="nf-box">
+            <label>Customer E-Mail*</label>
+			<input type="email" class="required forminput" name="certification_email" />
           </div>
           <div class="nf-box">
             <label>Were there any loose hard drives collected?</label>
             <div class="form-radios">
               <label>
-                <input name="Requested" type="radio" value="Yes">
+                <input value="Yes" type="radio" name="loose_hdd" />
                 Yes</label>
               <label>
-                <input name="Requested" type="radio" value="No">
+                <input value="No" type="radio" name="loose_hdd" />
                 No</label>
             </div>
           </div>
-          <div class="nf-box">
-            <label>Customer E-Mail*</label>
-            <input class="forminput" type="email" placeholder=""/>
-          </div>
+          
           <div class="nf-box">
             <label>Total number of loose hard drives?</label>
-            <input class="forminput" type="text" placeholder=""/>
+			<input type="number" name="how_many" class="forminput" min="1" />
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-            <input type="file">
+			<a href="javascript:;" id="transuploadphoto" class="col-6"><i class="fa fa-camera"></i></a>
+            <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
+			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Was customer present at pickup?</label>
             <div class="form-radios">
               <label>
-                <input name="Requested" type="radio" value="Yes">
+                <input value="Yes" type="radio" name="customer_present" />
                 Yes</label>
               <label>
-                <input name="Requested" type="radio" value="No">
+                <input value="No" type="radio" name="customer_present" />
                 No</label>
             </div>
           </div>
-          <div class="nf-box">
-            <label>Customer Authorization</label>
-            <input class="forminput" type="text" placeholder="Sign"/>
+          <div class="nf-box showhide_signature">
+            <label>Signature:</label>
+                  <div class="cust">
+				  	<div class="canvas_container">
+					  <div id="signature-pad" class="m-signature-pad">
+						<div class="m-signature-pad--body">
+						</div>
+					  </div>
+					</div>
+					<div class="patent_submit nextbox">
+					  <button type="button" class="btn btn-default clearsignature" data-action="clear">Clear Signature</button>
+					  <button type="button" class="btn btn-default savesignature" data-action="save">Save Signature</button>
+					</div>
+				  </div>
+				  <input type="hidden" name="signaturefile" id="signaturefile" value="" />
           </div>
           <div class="nf-box">
-            <button class="nf-box-btn">Done</button>
+            <button class="nf-box-btn savenewtransferresponse" type="button">Done</button>
           </div>
-          <div class="nf-box" style="display:none">
-            <button class="nf-box-btn nfbtn2" >View Form</button>
-          </div>
+          
+		  </form>
         </div>
       </div>
     </div>
@@ -212,6 +238,7 @@
 <script src="js/bootstrap.min.js" ></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/signature_pad.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
 function loadjob(job_id){
@@ -249,7 +276,7 @@ function loadjob(job_id){
 		}
 	});
 }
-var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0;
+var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0, transferuploading=0;
 
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
@@ -263,13 +290,15 @@ jQuery(document).ready(function(){
 	var job_id=gup('job_id');
 	loadjob(job_id);
 	var vform=gup('vform');
-	jQuery('.job-title').html('JOB#'+job_id);
 	jQuery('input[name="form_job_id"]').val(job_id);
 	var uid=localStorage.getItem('Staff_ID');
 	jQuery('input[name="add_by"]').val(uid);
 	
 	if(vform=='addmissiletag'){
 		jQuery('#myModal17').modal();
+	}
+	if(vform=='addtransferresponse'){
+		jQuery('#myModal19').modal();
 	}
 	var gottoback=localStorage.getItem('gotopage');
 	jQuery('a.gobackbtn').attr('href','job.html?job_id='+job_id);
@@ -334,31 +363,31 @@ jQuery(document).ready(function(){
 		e.preventDefault();
 		if(noerror){
 			jQuery('.savenewmissiletag').prev('img').show();
-		jQuery.ajax({
-        	url: url,
-			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data)
-		    {	
-				jQuery('.savenewmissiletag').prev('img').hide();
-				jQuery("#newmissiletagform")[0].reset();
-				jQuery('.savenewmissiletag').hide();
-				jQuery('#newjobformmissiletag form').hide();
-				jQuery('#newjobformmissiletag .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
-				jQuery('#newjobformmissiletag .successsavejobform').show();
-				jQuery('body .showmessage').remove();
-				var html='<div class="showmessage">Job form save successfully</div>';
-				jQuery('body').append(html);
-				setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
-				
-		    },
-		  	error: function() 
-	    	{
-	    	} 	        
-	   });
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data:  new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{	
+					jQuery('.savenewmissiletag').prev('img').hide();
+					jQuery("#newmissiletagform")[0].reset();
+					/*jQuery('.savenewmissiletag').hide();
+					jQuery('#newjobformmissiletag form').hide();
+					jQuery('#newjobformmissiletag .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
+					jQuery('#newjobformmissiletag .successsavejobform').show();*/
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Job form save successfully</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+					
+				},
+				error: function() 
+				{
+				} 	        
+		   });
 		}
 	}));
 	  jQuery('.savenewmissiletag').click(function(){
@@ -394,6 +423,126 @@ jQuery(document).ready(function(){
 				jQuery('.showhide_loose_hdd',$this).hide();
 				jQuery('.showhide_how_many',$this).show();
 			}
+	  });
+	  jQuery('.m-signature-pad--body2').html('');
+		jQuery('.m-signature-pad--body').html('<canvas id="canvas" width="250" height="40"></canvas>');
+		var wrapper = document.getElementById("signature-pad"),
+			canvas = wrapper.querySelector("#signature-pad canvas"),
+		signaturePad = new SignaturePad(canvas);
+		function resizeCanvas() {
+			var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+			canvas.width = canvas.offsetWidth * ratio;
+			canvas.height = canvas.offsetHeight * ratio;
+			canvas.getContext("2d").scale(ratio, ratio);
+			signaturePad.clear();
+		}
+		setTimeout(function(){resizeCanvas();},2000);
+		jQuery('.clearsignature').click(function () {
+			signaturePad.clear();
+			jQuery('.m-signature-pad--body img').remove();
+			jQuery('.m-signature-pad--body canvas').show();
+			jQuery(".savesignature").attr('disabled',false);
+			jQuery('#signaturefile').val('');
+			resizeCanvas();
+		});
+		jQuery(".savesignature").click(function(){
+		
+			var canvasData = signaturePad.toDataURL("image/png");
+			jQuery.ajax({
+				url: siteurl+'/api/jobs/savesignature',
+				type: "POST",
+				data: {"save-signature": "canvasSave", "image":canvasData, "job_id":job_id},		
+				success: function(results) {
+					jQuery('.m-signature-pad--body img').remove();
+					jQuery('.m-signature-pad--body canvas').hide();
+					jQuery('.m-signature-pad--body').append('<img src="'+siteurl+'/'+results+'" alt="" />');
+					setTimeout(function(){jQuery('.m-signature-pad--body img').attr('src',siteurl+'/'+results);},1000);
+					jQuery(".savesignature").attr('disabled',true);
+					jQuery('#signaturefile').val(results);
+				},
+				error: function() {
+					console.log('Cannot retrieve data.');
+				}
+			});
+	
+		});
+	  jQuery("#newtransferresponseform").on('submit',(function(e) {
+		var url=siteurl+'/api/jobs/savejobform';
+		var noerror=true;
+		if(transferuploading=='1'){
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Form uploading please wait..</div>';
+			jQuery('body').append(html);
+			formuploading=1
+			noerror=false;
+		}
+		jQuery("#newtransferresponseform input, #newtransferresponseform textarea").each(function(){
+			if(jQuery(this).hasClass('required') && jQuery.trim(jQuery(this).val())==''){
+				jQuery(this).addClass('error');	
+				noerror=false;
+			}
+			else{
+				jQuery(this).removeClass('error');	
+			}
+		});
+		if(!jQuery('input[name="certification_requested[]"]').is(':checked')){
+			noerror=false;
+		}
+		var x=1;
+		jQuery('input[name="certification_requested[]"]').each(function(){
+			if(jQuery(this).is(':checked')){
+				x=2;
+			}															
+		});
+		if(x==1){noerror=false;}
+		if(!jQuery('input[name="customer_present"]').is(':checked')){
+			noerror=false;
+		}
+		if(!jQuery('input[name="loose_hdd"]').is(':checked')){
+			noerror=false;
+		}
+		e.preventDefault();
+		var signaturefile= jQuery('#signaturefile').val();
+		if(jQuery.trim(signaturefile)==''){
+			noerror=false;
+			jQuery(".savesignature").trigger('click');
+			setTimeout(function(){jQuery("#newtransferresponseform").submit();},1500);
+		}
+		if(noerror){
+			jQuery('.savenewtransferresponse').prev('img').show();
+		jQuery.ajax({
+        	url: url,
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+    	    cache: false,
+			processData:false,
+			success: function(data)
+		    {	
+				jQuery('.savenewtransferresponse').prev('img').hide();
+				jQuery('.m-signature-pad--body img').remove();
+				jQuery('.m-signature-pad--body canvas').show();
+				jQuery(".savesignature").attr('disabled',false);
+				jQuery('#signaturefile').val('');
+				jQuery("#newtransferresponseform")[0].reset();
+				/*jQuery('.savenewtransferresponse').hide();
+				jQuery('#newjobformtransferresponse form').hide();
+				jQuery('#newjobformtransferresponse .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
+				jQuery('#newjobformtransferresponse .successsavejobform').show();*/
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Job form save successfully</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+				
+		    },
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+		}
+	}));
+	  jQuery('.savenewtransferresponse').click(function(){
+	  	jQuery("#newtransferresponseform").submit();
 	  });
 });
 
@@ -435,17 +584,7 @@ function selPic1(img) {
 			options.headers = headers;
 			
 			var ft = new FileTransfer();
-			/*jQuery('body .showmessage').remove();
-			var html='<div class="showmessage showmessage_"'+img+'>Start uploading...<span class="progressbar"></span></div>';
-			jQuery('body').append(html);
-			ft.onprogress = function(progressEvent) {
-				if (progressEvent.lengthComputable) {
-					loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-					jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
-				} else {
-					loadingStatus.increment();
-				}
-			};*/
+			
 			var t=ft.upload(filetrasfer2, uri, function(r){
 				
 				if(typeof img!='undefined'){
@@ -454,11 +593,11 @@ function selPic1(img) {
 						uploadfile1=0;
 					}
 					else if(img=='photo_material_2'){
-						jQuery('#photo_material_1').val(r.response);
+						jQuery('#photo_material_2').val(r.response);
 						uploadfile2=0;
 					}
 					else if(img=='photo_material_3'){
-						jQuery('#photo_material_1').val(r.response);
+						jQuery('#photo_material_3').val(r.response);
 						uploadfile3=0;
 					}
 					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
@@ -477,14 +616,60 @@ function selPic1(img) {
     });
     
 }
-function win(r) {
-	/*var job_id=gup('job_id');
-	jQuery('body .showmessage').remove();
-	var html='<div class="showmessage">File uploaded successfully</div>';
-	jQuery('body').append(html);
-	setTimeout(function(){window.location='job.html?job_id='+job_id},1500);*/
+function selPic2(img) {
+	//alert('Pick a pic');
+	var job_id=gup('job_id');
+	navigator.camera.getPicture(function(f) {
+        var filetrasfer=f;
+		if(img=='photo_trans_material'){
+			jQuery('#image_trans_material').attr('src',f);
+			jQuery('#image_trans_material').show();
+			transferuploading=1;
+		}
+		
+		if(filetrasfer!=''){
+			var uid=localStorage.getItem('Staff_ID');	
+			resolveLocalFileSystemURL(filetrasfer, function(entry) {
+			var filetrasfer2= entry.toURL();
+			var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=transferresponse&job_id='+job_id);
+			var options = new FileUploadOptions();
+			options.fileKey="file";
+			options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+			//options.mimeType="image/jpeg";
+			var params = new Object();
+			 params.value1 = "test";
+			 params.value2 = "param";
+			 options.params = params;
+			 options.chunkedMode = false;
+			var headers={'headerParam':'headerValue'};
+			options.headers = headers;
+			
+			var ft = new FileTransfer();
+			
+			var t=ft.upload(filetrasfer2, uri, function(r){
+				
+				if(typeof img!='undefined'){
+					if(img=='photo_trans_material'){
+						jQuery('#photo_trans_material').val(r.response);
+						transferuploading=0;
+					}
+					
+					if(transferuploading=='0' && formuploading=='1')
+					{
+						jQuery("#newtransferresponseform").submit();
+					}
+				}
+			}, fail, options);
+			});
+		}
+    }, function(e) {
+    }, { 
+        quality: 1,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: Camera.DestinationType.FILE_URI
+    });
+    
 }
-
 function fail(error) {
 	jQuery('body .showmessage').remove();
 	var html='<div class="showmessage" style="width:100%">Uploading error: Code = ' + error.code+', upload error source ' + error.source+', upload error target ' + error.target+'</div>';
@@ -498,6 +683,8 @@ function init() {
 	jQuery("#uploadphoto1").on("touchend", function(){selPic1('photo_material_1');});
 	jQuery("#uploadphoto2").on("touchend", function(){selPic1('photo_material_2');});
 	jQuery("#uploadphoto3").on("touchend", function(){selPic1('photo_material_3');});
+	jQuery("#transuploadphoto").on("touchend", function(){selPic2('photo_trans_material');});
+	
 }
 
 </script>
