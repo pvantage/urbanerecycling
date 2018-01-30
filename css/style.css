@@ -92,7 +92,7 @@ input#pu_date {
     margin-top: 0px;
 }
 .container {
-	max-width: 600px;
+	max-width: 1024px;
 }
 .full-height {
 	min-height: calc(100vh - 0px);
@@ -911,6 +911,10 @@ float: left;
 
 .notification .modal-dialog {
     margin: 0;
+	    max-width: 100%;
+}
+body .modal-dialog {
+    max-width: 100%;
 }
 .notification {
     background: #fff;
