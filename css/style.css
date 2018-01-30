@@ -3,8 +3,9 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
+
 body.after-login {
-    padding-bottom: 70px;
+    padding-bottom: 58px;
     display: block;
     float: left;
     width: 100%;
@@ -1342,6 +1343,27 @@ input[type="text"] {
     border-bottom: 1px solid #ddd;
     padding: 5px 10px 3px 14px;
 }
+.loginbox {
+    margin: 0 auto;
+}
+.form-radio span{ width:90%;}
+
+.attachmentbox.attmds span {
+    position: inherit;
+}
+ul.attachment-areas {
+ padding-left: 25px;
+    list-style: none;
+}
+.showhide_signature button {
+    background: #ddd !important;
+    font-size: 14px;
+    padding: 3px 8px;
+    margin-right: 8px;
+    border-radius: 0;
+}
+.showhide_signature button.btn.btn-default.clearsignature{ background: #bfbfbf !important;}
+ul.attachment-areas a{ color:#000;}
 @media (min-width: 320px) and (max-width: 400px) {
 	.donbtn{ font-size: 16px;}
 	
@@ -1349,3 +1371,10 @@ input[type="text"] {
     font-size: 17px;
 }
 }
+
+@media (min-width: 767px) and (max-width: 1024px) {
+body {
+    margin-top: 25px;
+}
+}
+

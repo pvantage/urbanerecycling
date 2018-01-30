@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/mycss.css" >
 </head>
-<body class="grey-bg after-login">
+<body class="grey-bg">
 <!----- Header Top ----->
 
     
@@ -303,7 +303,8 @@
 				<input type="hidden" id="newtask_job_id" name="newtask_job_id" value="" />
 				<input type="hidden" name="add_by" value="" />
             <div class="form-box">
-              <input type="text" class="required" placeholder="Enter new task.." name="task_detail">
+			<textarea class="whitebase required" placeholder="Enter new task.." name="task_detail"></textarea>
+              <!--<input type="text" class="required" placeholder="Enter new task.." name="task_detail">-->
             </div>
             <div class="pop-edit-item p-pic-req jdtl">
 				<div class="pop-cnt client-addcnt">
@@ -373,7 +374,8 @@
         <div class="pop-cnt">
           <div class="Edit-job-bottom">
             <div class="form-box">
-              <input type="text" class="required" placeholder="Enter new task.." name="task_detail">
+			<textarea class="whitebase required" placeholder="Enter new task.." name="task_detail"></textarea>
+              <!--<input type="text" class="required" placeholder="Enter new task.." name="task_detail">-->
             </div>
 			<div class="completetasklink"></div>
             <div class="pop-edit-item p-pic-req jdtl">
@@ -691,7 +693,7 @@ function loadjob(job_id){
 						if(res['data'])
 						{
 							jQuery('input[name="task_id"]').val(task_id);
-							jQuery('#myModal11 input[name="task_detail"]').val(res['data']['task']);
+							jQuery('#myModal11 textarea[name="task_detail"]').val(res['data']['task']);
 							jQuery('#myModal11 input[name="due_date"]').val(res['data']['due_date']);
 							jQuery('#myModal11 select[name="assigned_to"]').val(res['data']['assigned_to']);
 							jQuery('#myModal11 input[name="job_id"]').val(res['data']['job_id']);
@@ -1114,9 +1116,9 @@ jQuery(document).ready(function(){
 	  jQuery("#newtask_jobform").on('submit',(function(e) {
 		var url=siteurl+'/api/jobs/savenewtask';
 		e.preventDefault();
-		var task_detail=jQuery('input[name="task_detail"]').val();
+		var task_detail=jQuery('textarea[name="task_detail"]').val();
 		if(jQuery.trim(task_detail)==''){
-			jQuery('input[name="task_detail"]').addClass('error');
+			jQuery('textarea[name="task_detail"]').addClass('error');
 			return false;
 		}
 		jQuery.ajax({

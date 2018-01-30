@@ -1,4 +1,7 @@
 .m-signature-pad {
+    margin: 0px 0px 22px 0px;
+}
+.m-signature-pad {
 
   font-size: 10px;
 
@@ -138,7 +141,7 @@
 
     min-width: 250px;
 
-    margin: 5%;
+    margin: 5% 0%;
 
   }
 
