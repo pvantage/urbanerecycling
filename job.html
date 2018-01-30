@@ -1298,8 +1298,14 @@ jQuery(document).ready(function(){
 	});
 	
 	jQuery('a.listattachfiles').click(function(){
-		
-		var url=siteurl+'/api/jobs/listattachfiles';
+		jQuery('#myModal22').modal();
+	});
+	jQuery('a.opennewemail').click(function(){
+		var html=jQuery('.attachment-areas').html();
+		jQuery('.list_attachfiles .staff-box').append(html);
+		jQuery('.attachment-areas').html('');
+	});
+	var url=siteurl+'/api/jobs/listattachfiles';
 		jQuery.ajax({  
 			type: 'POST',  
 			url: url,           
@@ -1313,7 +1319,6 @@ jQuery(document).ready(function(){
 			crossDomain: true,  
 			success: function(res) { 
 				jQuery('.list_attachfiles .staff-box').html(res);
-				jQuery('#myModal22').modal();
 			},  
 			error: function(response, d, a){
 			
@@ -1324,10 +1329,6 @@ jQuery(document).ready(function(){
 			return false; 
 			}
 		});
-	});
-	jQuery('a.opennewemail').click(function(){
-		jQuery('.attachment-areas').html('');
-	});
 });
 function moveattachfile(id){
 	if(jQuery('input',id).hasClass('attachinemail')){
@@ -1340,7 +1341,7 @@ function moveattachfile(id){
 	else{
 		jQuery('input',id).addClass('attachinemail');
 		var ahtml=jQuery(id).html();
-		jQuery('.list_attachment').append('<li><a href="javascript:;" onclick="return moveattachfile(this)">'+ahtml+'</a></li>');
+		jQuery('.list_attachfiles .staff-box').append('<li><a href="javascript:;" onclick="return moveattachfile(this)">'+ahtml+'</a></li>');
 		jQuery(id).parent('li').remove();
 	}
 	var html=jQuery('.attachment-areas').html();

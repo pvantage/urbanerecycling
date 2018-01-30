@@ -1362,6 +1362,13 @@ ul.attachment-areas {
     margin-right: 8px;
     border-radius: 0;
 }
+.btn.disabled, .btn:disabled {
+    opacity: .65;
+}
+.modal {
+    background: #fff;
+	height:100%;
+}
 .showhide_signature button.btn.btn-default.clearsignature{ background: #bfbfbf !important;}
 ul.attachment-areas a{ color:#000;}
 @media (min-width: 320px) and (max-width: 400px) {
@@ -1375,6 +1382,15 @@ ul.attachment-areas a{ color:#000;}
 @media (min-width: 767px) and (max-width: 1024px) {
 body {
     margin-top: 25px;
+}
+.mysch-fix-hdr {
+    margin-top: 20px;
+}
+.schlbody .tab-content {
+    margin-top: 71px;
+}
+.modal {
+    padding-top: 20px;
 }
 }
 
