@@ -500,7 +500,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
 function openfileinpopup(file){
-	var files=file.split('.');
+	cordova.InAppBrowser.open(siteurl+'/uploads/'+file, '_blank', 'location=yes');
+	/*var files=file.split('.');
 	var filetype=files[files.length-1];
 	filetype = filetype.toLowerCase();
 	jQuery('.pdfsaveprint').hide();
@@ -518,7 +519,7 @@ function openfileinpopup(file){
 	}
 	else{
 		window.location=siteurl+"uploads/"+file;
-	}
+	}*/
 }
 function loadjob(job_id){
 	var url=siteurl+'/api/jobs/singlerecord';
