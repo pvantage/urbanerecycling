@@ -74,7 +74,7 @@
         <div class="pop-cnt">
           <div class="Edit-job-bottom">
             <div class="form-box">
-              <input type="text" placeholder="Enter new task.." name="task_detail">
+              <textarea class="whitebase required" placeholder="Enter new task.." name="task_detail"></textarea>
             </div>
             <div class="pop-edit-item p-pic-req jdtl">
 				<div class="pop-cnt client-addcnt">
@@ -124,7 +124,7 @@
         <div class="pop-cnt">
           <div class="Edit-job-bottom">
             <div class="form-box">
-              <input type="text" placeholder="Enter new task.." name="task_detail">
+			  <textarea class="whitebase required" placeholder="Enter new task.." name="task_detail"></textarea>
             </div>
 			<div class="completetasklink"></div>
             <div class="pop-edit-item p-pic-req jdtl">
@@ -325,7 +325,7 @@ function showrecords(){
 						if(res['data'])
 						{
 							jQuery('input[name="task_id"]').val(task_id);
-							jQuery('#myModal11 input[name="task_detail"]').val(res['data']['task']);
+							jQuery('#myModal11 textarea[name="task_detail"]').val(res['data']['task']);
 							jQuery('#myModal11 input[name="due_date"]').val(res['data']['due_date']);
 							jQuery('#myModal11 select[name="assigned_to"]').val(res['data']['assigned_to']);
 							jQuery('#myModal11 select[name="job_id"]').val(res['data']['job_id']);
@@ -445,7 +445,7 @@ jQuery(document).ready(function(){
 			}
 		});
 		if(noerror){
-			var task_detail=jQuery('#myModal11 input[name="task_detail"]').val();
+			var task_detail=jQuery('#myModal11 textarea[name="task_detail"]').val();
 			var due_date=jQuery('#myModal11 input[name="due_date"]').val();
 			var assigned_to=jQuery('#myModal11 select[name="assigned_to"]').val();
 			var newtask_job_id=jQuery('#myModal11 select[name="job_id"]').val();
@@ -494,7 +494,7 @@ jQuery(document).ready(function(){
 			}
 		});
 		if(noerror){
-			var task_detail=jQuery('#myModal10 input[name="task_detail"]').val();
+			var task_detail=jQuery('#myModal10 textarea[name="task_detail"]').val();
 			var due_date=jQuery('#myModal10 input[name="due_date"]').val();
 			var assigned_to=jQuery('#myModal10 select[name="assigned_to"]').val();
 			var newtask_job_id=jQuery('#myModal10 select[name="job_id"]').val();
