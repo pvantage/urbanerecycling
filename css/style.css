@@ -1365,9 +1365,8 @@ ul.attachment-areas {
 .btn.disabled, .btn:disabled {
     opacity: .65;
 }
-.modal {
-    background: #fff;
-}
+.p-pic-req .formlists .left-block{ width:50%;}
+.p-pic-req .formlists .assign-name{ width:49%;}
 .showhide_signature button.btn.btn-default.clearsignature{ background: #bfbfbf !important;}
 ul.attachment-areas a{ color:#000;}
 @media (min-width: 320px) and (max-width: 400px) {
