@@ -40,7 +40,7 @@
 	<edit-config target="NSLocationWhenInUseUsageDescription" file="GoogleService-Info.plist" mode="merge">
 		<string>need location access to get your location on map</string>
 	</edit-config>
-	<gap:plugin name="cordova-plugin-document-viewer" />
+	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />	
 	<plugin name="cordova-plugin-splashscreen" />
 	
 	<icon src="icon.png" />
