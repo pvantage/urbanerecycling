@@ -172,7 +172,7 @@ function showPosition(position) {
  
  
 
-function showNotify(){	
+/*function showNotify(){	
 	cordova.plugins.diagnostic.switchToLocationSettings();
 	return true;
 }
@@ -194,11 +194,15 @@ function showNotify(){
 				}
 		});		
 		
-	};
+	};*/
 var uid=localStorage.getItem('Staff_ID');
 		
 if(typeof uid!='undefine' && uid!='' && uid!=null){
-	getLocation();
+	var path = window.location.pathname;
+	var page = path.split("/").pop();
+	if(page=='activity-feed.html'){
+		getLocation();
+	}
 }
 function ValidateEmail(inputText)  
 {  
