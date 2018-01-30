@@ -499,8 +499,56 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
+function onImpossible(){
+  window.console.log('document cannot be shown');
+  //e.g. track document usage
+}
+function onError(error){
+  window.console.log(error);
+  alert("Sorry! Cannot show document.");
+}
+function onMissingApp(appId, installer)
+{
+    if(confirm("Do you want to install the free PDF Viewer App "
+            + appId + " for Android?"))
+    {
+        installer();
+    }
+}
+function onPossible(){
+  window.console.log('document can be shown');
+  //e.g. track document usage
+}
 function openfileinpopup(file){
-	cordova.InAppBrowser.open(siteurl+'/uploads/'+file, '_blank', 'location=yes');
+	var options = {
+	title: 'View File',
+	documentView : {
+		closeLabel : 'Close'
+	},
+	navigationView : {
+		closeLabel : 'X'
+	},
+	email : {
+		enabled : false
+	},
+	print : {
+		enabled : true
+	},
+	openWith : {
+		enabled : false
+	},
+	bookmarks : {
+		enabled : false
+	},
+	search : {
+		enabled : false
+	},
+	autoClose: {
+		onPause : false
+	}
+}
+	//cordova.InAppBrowser.open(siteurl+'/uploads/'+file, '_blank', 'location=yes');
+	cordova.plugins.SitewaertsDocumentViewer.canViewDocument(siteurl+'/uploads/'+file, contentType, options, onPossible, onMissingApp, onImpossible, onError);
 	/*var files=file.split('.');
 	var filetype=files[files.length-1];
 	filetype = filetype.toLowerCase();
