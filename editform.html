@@ -644,6 +644,7 @@ jQuery(document).ready(function(){
 				processData:false,
 				success: function(data)
 				{	
+					alert(data);
 					jQuery('.savenewmissiletag').prev('img').hide();
 					jQuery("#editmissiletagform")[0].reset();
 					/*jQuery('.savenewmissiletag').hide();
@@ -653,7 +654,7 @@ jQuery(document).ready(function(){
 					jQuery('body .showmessage').remove();
 					var html='<div class="showmessage">Job form save successfully</div>';
 					jQuery('body').append(html);
-					setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
+					//setTimeout(function(){window.location='job.html?job_id='+job_id;},1000);
 					
 				},
 				error: function() 
