@@ -1497,9 +1497,17 @@ function selPic2() {
 	var captureError = function(error) {
 		navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 	};
-	navigator.device.capture.captureImage(captureSuccess, captureError, {limit:1});
-    
-    
+	
+    navigator.camera.cleanup(onSuccess, onFail);
+ 
+	function onSuccess() {
+		console.log("Camera cleanup success.")
+	}
+	 
+	function onFail(message) {
+		alert('Failed because: ' + message);
+	}
+    navigator.device.capture.captureImage(captureSuccess, captureError, {limit:1});
 }
 document.addEventListener("deviceready", init, false);
 function init() {
