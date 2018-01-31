@@ -1369,6 +1369,10 @@ ul.attachment-areas {
 .p-pic-req .formlists .assign-name{ width:49%;}
 .showhide_signature button.btn.btn-default.clearsignature{ background: #bfbfbf !important;}
 ul.attachment-areas a{ color:#000;}
+
+.popupformats {
+	height:100%;
+}
 @media (min-width: 320px) and (max-width: 400px) {
 	.donbtn{ font-size: 16px;}
 	
@@ -1389,6 +1393,9 @@ body {
 }
 .modal {
     padding-top: 20px;
+}
+.more-menu li a:after {
+    width: 94%;
 }
 }
 
