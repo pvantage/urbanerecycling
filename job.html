@@ -722,63 +722,86 @@ function loadjob(job_id){
 				setTimeout(function(){jQuery('#myModal2 #assigned_to').val(uid);},1000);
 			}
 			jQuery('.endjob').click(function(){
-				var url=siteurl+'/api/jobs/updatejobstatus';
-				jQuery.ajax({  
-					type: 'POST',  
-					url: url,           
-					crossDomain: true,
-					data: {status:'Completed',job_id:job_id}, 
-					beforeSend: function() {
-						
-					},		
-					complete: function() {
-					}, 
-					crossDomain: true,  
-					success: function(res) { 
-						loadjob(job_id);
-						var html='<div class="showmessage">Job is completed.</div>';
-						jQuery('body').append(html);
-						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
-						jQuery('.str-job').remove();
-					},  
-					error: function(response, d, a){
-					
+				var endjob=true;
+				if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
+					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Server Error.</div>';
+					var html='<div class="showmessage">Please first complete the Missile Tag form.</div>';
 					jQuery('body').append(html);
-					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
-					return false; 
-					}
-				});
+					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
+				}
+				else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
+					endjob=false;
+					jQuery('body .showmessage').remove();
+					var html='<div class="showmessage">Please first complete the TOR form.</div>';
+					jQuery('body').append(html);
+					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
+				}
+				if(endjob){
+					var url=siteurl+'/api/jobs/updatejobstatus';
+					jQuery.ajax({  
+						type: 'POST',  
+						url: url,           
+						crossDomain: true,
+						data: {status:'Completed',job_id:job_id}, 
+						beforeSend: function() {
+							
+						},		
+						complete: function() {
+						}, 
+						crossDomain: true,  
+						success: function(res) { 
+							loadjob(job_id);
+							var html='<div class="showmessage">Job is completed.</div>';
+							jQuery('body').append(html);
+							setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+							jQuery('.str-job').remove();
+						},  
+						error: function(response, d, a){
+						
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Server Error.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+						return false; 
+						}
+					});
+				}
 			});
 			jQuery('.start-job').click(function(){
-				var url=siteurl+'/api/jobs/updatejobstatus';
-				jQuery.ajax({  
-					type: 'POST',  
-					url: url,           
-					crossDomain: true,
-					data: {status:'Being Processed',job_id:job_id}, 
-					beforeSend: function() {
+				var startjob=true;
+				if(jQuery(this).hasClass('endjob')){
+					startjob=false;
+				}
+				if(startjob){
+					var url=siteurl+'/api/jobs/updatejobstatus';
+					jQuery.ajax({  
+						type: 'POST',  
+						url: url,           
+						crossDomain: true,
+						data: {status:'Being Processed',job_id:job_id}, 
+						beforeSend: function() {
+							
+						},		
+						complete: function() {
+						}, 
+						crossDomain: true,  
+						success: function(res) { 
+							loadjob(job_id);
+							var html='<div class="showmessage">Job is being processed.</div>';
+							jQuery('body').append(html);
+							setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+						},  
+						error: function(response, d, a){
 						
-					},		
-					complete: function() {
-					}, 
-					crossDomain: true,  
-					success: function(res) { 
-						loadjob(job_id);
-						var html='<div class="showmessage">Job is being processed.</div>';
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage">Server Error.</div>';
 						jQuery('body').append(html);
-						setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
-					},  
-					error: function(response, d, a){
-					
-					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Server Error.</div>';
-					jQuery('body').append(html);
-					setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
-					return false; 
-					}
-				});
+						setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+						return false; 
+						}
+					});
+				}
 			});
 		}
 		
