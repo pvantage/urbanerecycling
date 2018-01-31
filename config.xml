@@ -23,9 +23,9 @@
 	<plugin name="cordova-plugin-camera" spec="~2.4.1" />
 	<plugin name="cordova-plugin-media-capture" spec="~1.4.3" />
 	<plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
-	<plugin name="cordova.plugins.diagnostic" source="npm" />
-	<plugin name="cordova-plugin-dialogs" source="npm" />
-	
+	<!--<plugin name="cordova.plugins.diagnostic" source="npm" />
+	<plugin name="cordova-plugin-dialogs" source="npm" />-->
+	<plugin name="cordova-plugin-ios-camera-permissions" source="npm" />
 	<platform name="android">
 	  <resource-file src="google-services.json" target="google-services.json" />
 	</platform>
@@ -37,7 +37,7 @@
 	  <resource-file src="GoogleService-Info.plist" />
 	  <icon src="res/icon/icon-60@3x.png" platform="ios" width="180" height="180" />
 	</platform>
-	<edit-config target="NSLocationWhenInUseUsageDescription" file="GoogleService-Info.plist" mode="merge">
+	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
 		<string>need location access to get your location on map</string>
 	</edit-config>
 	<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
