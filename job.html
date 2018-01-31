@@ -1498,7 +1498,7 @@ function selPic2() {
 		navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 	}
 	
-    navigator.device.capture.captureImage(captureSuccess, captureError, {});
+    navigator.device.capture.captureImage(captureSuccess, captureError, {limit: 1, quality: 0});
 }
 document.addEventListener("deviceready", init, false);
 function init() {
