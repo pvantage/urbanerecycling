@@ -52,6 +52,12 @@
 	<edit-config target="NSMicrophoneUsageDescription" file="GoogleService-Info.plist" mode="merge">
 		<string>need microphone access to record sounds</string>
 	</edit-config>
+	<feature name="Camera">
+		<param name="ios-package" value="CDVCamera" />
+	</feature>
+	<feature name="Capture">
+		<param name="ios-package" value="CDVCapture" />
+	 </feature>
 	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />	
 	<plugin name="cordova-plugin-splashscreen" />
 	

@@ -3,6 +3,13 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
+
+.attmds ul.attachment-areas li {
+      float: left;
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 6px;
+}
 .m-signature-pad--body img {
     height: 100% !important;
     width: auto !important;
