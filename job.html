@@ -726,14 +726,14 @@ function loadjob(job_id){
 				if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Please first complete the Missile Tag form.</div>';
+					var html='<div class="showmessage">Please first complete the TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
 				else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Please first complete the TOR form.</div>';
+					var html='<div class="showmessage">Please first complete the TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
