@@ -104,19 +104,22 @@
 				<a class="phone-anch" href="javascript:;" id="uploadphoto1" class="col-6"><i class="fa fa-camera"></i></a>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto12" class="col-6"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_1" id="photo_material_1" />
-				  	<img id="image_material_1" class="showuploadphoto" style="display:none;" />          </div>
+				  	<img id="image_material_1" class="showuploadphoto" style="display:none;" />
+          </div>
           <div class="nf-box">
             <label>Photo 2</label>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto2" class="col-6"><i class="fa fa-camera"></i></a>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto22" class="col-6"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_2" id="photo_material_2" />
-				  	<img id="image_material_2" class="showuploadphoto" style="display:none;" />          </div>
+				  	<img id="image_material_2" class="showuploadphoto" style="display:none;" />
+          </div>
           <div class="nf-box">
             <label>Photo 3</label>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto3" class="col-6"><i class="fa fa-camera"></i></a>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto32" class="col-6"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
-				  <img id="image_material_3" class="showuploadphoto" style="display:none;" />          </div>
+				  <img id="image_material_3" class="showuploadphoto" style="display:none;" />
+          </div>
           <div class="nf-box">
             <button class="nf-box-btn savenewmissiletag" type="button">Done</button>
           </div>
@@ -194,7 +197,8 @@
 			<a class="phone-anch" href="javascript:;" id="transuploadphoto" class="col-6"><i class="fa fa-camera"></i></a>
 			<a class="phone-anch" href="javascript:;" id="transuploadphoto2" class="col-6"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
-			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />          </div>
+			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />
+          </div>
           <div class="nf-box">
             <label>Was customer present at pickup?</label>
             <div class="form-radios">
@@ -211,7 +215,8 @@
                   <div class="cust">
 				  	<div class="canvas_container">
 					  <div id="signature-pad" class="m-signature-pad">
-						<div class="m-signature-pad--body">						</div>
+						<div class="m-signature-pad--body">
+						</div>
 					  </div>
 					</div>
 					<div class="patent_submit nextbox">
@@ -224,6 +229,7 @@
           <div class="nf-box">
             <button class="nf-box-btn savenewtransferresponse" type="button">Done</button>
           </div>
+          
 		  </form>
         </div>
       </div>
@@ -758,7 +764,6 @@ function selPic3(img) {
 function selPic4(img) {
 	
 	var captureSuccess = function(mediaFiles) {
-		
 		var i, path, len;
 		for (i = 0, len = mediaFiles.length; i < len; i += 1) {
 			path = mediaFiles[i].fullPath;
@@ -766,7 +771,6 @@ function selPic4(img) {
 				var htt = "file:///";
 				if(path.indexOf(htt) == '-1'){path=htt+path;}
 			}
-			
 			var job_id=gup('job_id');
 			var filetrasfer=path;
 			if(img=='photo_trans_material'){
