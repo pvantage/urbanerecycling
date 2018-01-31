@@ -1498,7 +1498,9 @@ function selPic2() {
 		navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 	}
 	
-    navigator.device.capture.captureImage(captureSuccess, captureError, {limit: 1});
+    navigator.device.capture.captureImage(function(response) {
+                alert("success: response=" + JSON.stringify(response));
+            }, captureError, {limit: 1});
 	
 	
 }
