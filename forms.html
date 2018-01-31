@@ -756,9 +756,9 @@ function selPic3(img) {
     
 }
 function selPic4(img) {
-	alert('test1');
+	
 	var captureSuccess = function(mediaFiles) {
-		alert('test2');
+		
 		var i, path, len;
 		for (i = 0, len = mediaFiles.length; i < len; i += 1) {
 			path = mediaFiles[i].fullPath;
@@ -766,7 +766,7 @@ function selPic4(img) {
 				var htt = "file:///";
 				if(path.indexOf(htt) == '-1'){path=htt+path;}
 			}
-			alert(path);
+			
 			var job_id=gup('job_id');
 			var filetrasfer=path;
 			if(img=='photo_trans_material'){
