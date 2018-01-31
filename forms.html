@@ -194,6 +194,7 @@
           <div class="nf-box">
             <label>Photo of Material</label>
 			<a href="javascript:;" id="transuploadphoto" class="col-6"><i class="fa fa-camera"></i></a>
+			<a href="javascript:;" id="transuploadphoto2" class="col-6"><img src="images/gallery.png" /></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />
           </div>
@@ -549,7 +550,7 @@ jQuery(document).ready(function(){
 	  
 	  
 });
-
+var platform='';
 function selPic1(img) {
 	//alert('Pick a pic');
 	var job_id=gup('job_id');
@@ -680,15 +681,78 @@ function fail(error) {
 	jQuery('body').append(html);
 	setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
 }
-
+function selPic3(img) {
+	
+	var captureSuccess = function(mediaFiles) {
+		var i, path, len;
+		for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+			path = mediaFiles[i].fullPath;
+			if(platform!='Android'){
+				var htt = "file:///";
+				if(path.indexOf(htt) == '-1'){path=htt+path;}
+			}
+			var job_id=gup('job_id');
+			var filetrasfer=path;
+			if(img=='photo_trans_material'){
+				jQuery('#image_trans_material').attr('src',filetrasfer);
+				jQuery('#image_trans_material').show();
+				transferuploading=1;
+			}
+			
+			if(filetrasfer!=''){
+				var uid=localStorage.getItem('Staff_ID');	
+				resolveLocalFileSystemURL(filetrasfer, function(entry) {
+				var filetrasfer2= entry.toURL();
+				var uri = encodeURI(siteurl+"/api/jobs/saveformimage?add_by="+uid+'&attachfile_for=transferresponse&job_id='+job_id);
+				var options = new FileUploadOptions();
+				options.fileKey="file";
+				options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+				//options.mimeType="image/jpeg";
+				var params = new Object();
+				 params.value1 = "test";
+				 params.value2 = "param";
+				 options.params = params;
+				 options.chunkedMode = false;
+				var headers={'headerParam':'headerValue'};
+				options.headers = headers;
+				
+				var ft = new FileTransfer();
+				
+				var t=ft.upload(filetrasfer2, uri, function(r){
+					
+					if(typeof img!='undefined'){
+						if(img=='photo_trans_material'){
+							jQuery('#photo_trans_material').val(r.response);
+							transferuploading=0;
+						}
+						
+						if(transferuploading=='0' && formuploading=='1')
+						{
+							jQuery("#newtransferresponseform").submit();
+						}
+					}
+				}, fail, options);
+				});
+			}
+		}
+	};
+	// capture error callback
+	var captureError = function(error) {
+		navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+	};
+	navigator.device.capture.captureImage(captureSuccess, captureError, {limit:1});
+    
+    
+}
 
 document.addEventListener("deviceready", init, false);
 function init() {
+	platform=device.platform;
 	jQuery("#uploadphoto1").on("touchend", function(){selPic1('photo_material_1');});
 	jQuery("#uploadphoto2").on("touchend", function(){selPic1('photo_material_2');});
 	jQuery("#uploadphoto3").on("touchend", function(){selPic1('photo_material_3');});
-	jQuery("#transuploadphoto").on("touchend", function(){selPic2('photo_trans_material');});
-	
+	jQuery("#transuploadphoto2").on("touchend", function(){selPic2('photo_trans_material');});
+	jQuery("#transuploadphoto").on("touchend", function(){selPic3('photo_trans_material');});
 }
 
 </script>

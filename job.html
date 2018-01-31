@@ -1433,7 +1433,10 @@ function win(r) {
 	jQuery('body .showmessage').remove();
 	var html='<div class="showmessage">File uploaded successfully</div>';
 	jQuery('body').append(html);
-	setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+	setTimeout(function(){jQuery('.showmessage').slideUp();
+	var job_id=gup('job_id');
+	window.location='job.html?job_id='+job_id;
+	},2000);
 }
 
 function fail(error) {
@@ -1456,7 +1459,6 @@ function selPic2() {
 			}
 			var job_id=gup('job_id');
 			var filetrasfer=path;
-			alert(filetrasfer);
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -1476,7 +1478,7 @@ function selPic2() {
 				
 				var ft = new FileTransfer();
 				jQuery('body .showmessage').remove();
-				var html='<div class="showmessage">Start uploading... <span class="progressbar"></span></div>';
+				var html='<div class="showmessage">Start uploading please wait...</div>';
 				jQuery('body').append(html);
 				ft.onprogress = function(progressEvent) {
 					if (progressEvent.lengthComputable) {
