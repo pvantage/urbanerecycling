@@ -1482,8 +1482,8 @@ body {
 
 .modal-body {
   position: absolute;
-  top: 50px;
-  bottom: 60px;
+ 
+ 
   width: 100%;
   font-weight: 300;
   overflow: auto;
