@@ -1454,7 +1454,9 @@ function selPic2() {
 				var htt = "file:///";
 				if(path.indexOf(htt) == '-1'){path=htt+path;}
 			}
+			var job_id=gup('job_id');
 			var filetrasfer=path;
+			alert(filetrasfer);
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
