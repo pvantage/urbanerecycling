@@ -889,7 +889,7 @@ ul.more-menu {
 .more-menu a {
 float: left;
     width: 100%;
-    padding: 8px 0px;
+    padding: 13px 0px;
     font-size: 16px;
     color: #505050;
     text-transform: capitalize;
@@ -1160,7 +1160,6 @@ ul.staff-box {
 ul.staff-box li {
     float: left;
     width: 100%;
-    padding: 13px 0px;
 }
 ul.staff-box li{ position:relative;}
 ul.staff-box li:after{content:""; position:absolute; bottom:0; right:0; width:93%; height:1px; background:#ebebeb;}
@@ -1170,7 +1169,9 @@ margin-right: 10px;
     float: left;
     width: 20px;
 }
-ul.staff-box li a{ color:#000;}
+ul.staff-box li a{ color:#000; 
+    padding: 13px 0px; float: left;
+    width: 100%;}
 
 .addtasknew  .pickup-msg p.assign-name {
     width: 44%;
@@ -1273,13 +1274,18 @@ button.nf-box-btn.nfbtn2 {
     width: 25px;
     height: 25px;
 }
-.nf-box i.fa.fa-camera {
+.nf-box i.fa.fa-camera, .nf-box i.fa.fa-picture-o {
     font-size: 28px;
-    margin-top: 10px;
+}
+.phone-anch {
+    margin-right: 45px;
+    float: left;
+	    margin-top: 10px;
 }
 .p-pic-req .formlists .left-block a {
     margin-bottom: 8px;
     float: left;
+    width: 100%;
 }
 .p-pic-req .formlists .left-block a img {
     margin-right: 5px;
