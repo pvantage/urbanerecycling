@@ -1447,62 +1447,57 @@ function fail(error) {
 }
 
 var platform='';
+function captureSuccess(mediaFiles) {
+var i, path, len;
+for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+	path = mediaFiles[i].fullPath;
+	alert(path);
+	if(platform!='Android'){
+		var htt = "file:///";
+		if(path.indexOf(htt) == '-1'){path=htt+path;}
+	}
+	alert(path);
+	var job_id=gup('job_id');
+	var filetrasfer=path;
+	if(filetrasfer!=''){
+		var uid=localStorage.getItem('Staff_ID');	
+		resolveLocalFileSystemURL(filetrasfer, function(entry) {
+		var filetrasfer2= entry.toURL();
+		var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?add_by="+uid+'&attachfile_for=job&job_id='+job_id);
+		var options = new FileUploadOptions();
+		options.fileKey="file";
+		options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
+		//options.mimeType="image/jpeg";
+		var params = new Object();
+		 params.value1 = "test";
+		 params.value2 = "param";
+		 options.params = params;
+		 options.chunkedMode = false;
+		var headers={'headerParam':'headerValue'};
+		options.headers = headers;
+		
+		var ft = new FileTransfer();
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Start uploading please wait...</div>';
+		jQuery('body').append(html);
+		ft.onprogress = function(progressEvent) {
+			if (progressEvent.lengthComputable) {
+				loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+				jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
+			} else {
+				loadingStatus.increment();
+			}
+		};
+		var t=ft.upload(filetrasfer2, uri, win, fail, options);
+		});
+	}
+}
+}
+function captureError(error) {
+	navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+}
 function selPic2() {
-	alert('test1');
-	var captureSuccess = function(mediaFiles) {
-		alert('test2');
-		var i, path, len;
-		for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-			path = mediaFiles[i].fullPath;
-			alert(path);
-			if(platform!='Android'){
-				var htt = "file:///";
-				if(path.indexOf(htt) == '-1'){path=htt+path;}
-			}
-			alert(path);
-			var job_id=gup('job_id');
-			var filetrasfer=path;
-			if(filetrasfer!=''){
-				var uid=localStorage.getItem('Staff_ID');	
-				resolveLocalFileSystemURL(filetrasfer, function(entry) {
-				var filetrasfer2= entry.toURL();
-				var uri = encodeURI(siteurl+"/api/jobs/saveattachfile?add_by="+uid+'&attachfile_for=job&job_id='+job_id);
-				var options = new FileUploadOptions();
-				options.fileKey="file";
-				options.fileName=filetrasfer2.substr(filetrasfer2.lastIndexOf('/')+1);
-				//options.mimeType="image/jpeg";
-				var params = new Object();
-				 params.value1 = "test";
-				 params.value2 = "param";
-				 options.params = params;
-				 options.chunkedMode = false;
-				var headers={'headerParam':'headerValue'};
-				options.headers = headers;
-				
-				var ft = new FileTransfer();
-				jQuery('body .showmessage').remove();
-				var html='<div class="showmessage">Start uploading please wait...</div>';
-				jQuery('body').append(html);
-				ft.onprogress = function(progressEvent) {
-					if (progressEvent.lengthComputable) {
-						loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-						jQuery('body .showmessage .progressbar').html((progressEvent.loaded / progressEvent.total)+'%');
-					} else {
-						loadingStatus.increment();
-					}
-				};
-				var t=ft.upload(filetrasfer2, uri, win, fail, options);
-				});
-			}
-		}
-	};
-	// capture error callback
-	var captureError = function(error) {
-		navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-	};
 	
-    navigator.camera.cleanup(onSuccess, onFail);
- 
 	function onSuccess() {
 		console.log("Camera cleanup success.")
 	}
@@ -1510,6 +1505,9 @@ function selPic2() {
 	function onFail(message) {
 		alert('Failed because: ' + message);
 	}
+    navigator.camera.cleanup(onSuccess, onFail);
+ 
+	
     navigator.device.capture.captureImage(captureSuccess, captureError, {limit:1});
 }
 document.addEventListener("deviceready", init, false);
