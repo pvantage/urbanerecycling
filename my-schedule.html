@@ -413,10 +413,11 @@ function listschedules(){
 		}, 
 		crossDomain: true,  
 		success: function(res) { 
+			var html='';
+			jQuery('.map_joblist, .job_list, .cal_joblist').html('');
 			if(res['list'])
 			{
-				var html='';
-				jQuery('.map_joblist, .job_list').html('');
+				
 				jQuery(res['list']).each(function(index){
 					if(typeof res['list'][index]!='undefined'){
 						html='<div class="schedule-wrap">';
@@ -486,7 +487,6 @@ function listschedules(){
 			}
 			if(res['cal'])
 			{
-				jQuery('.cal_joblist').html('');
 				jQuery(res['cal']).each(function(index){
 					if(typeof res['cal'][index]!='undefined'){
 						html2='';
@@ -780,7 +780,7 @@ jQuery(document).ready(function(){
 				   if(res['record']){
 						var html='<ul>';
 						jQuery(res['record']).each(function(index){
-							html+='<li><a href="javascript:;" class="select_customer" data-id="'+res['record'][index]['id']+'" data-name="'+res['record'][index]['full_name']+'" data-address="'+res['record'][index]['address']+'"><span class="cust_f_name">'+res['record'][index]['full_name']+'</span><span class="cust_addres">'+res['record'][index]['address']+'</span></a></li>';
+							html+='<li><a href="javascript:;" class="select_customer" data-id="'+res['record'][index]['id']+'" data-name="'+res['record'][index]['full_name']+'" data-address="'+res['record'][index]['address']+'" data-fname="'+res['record'][index]['fname']+'" data-lname="'+res['record'][index]['lname']+'" data-email="'+res['record'][index]['email']+'" data-phone="'+res['record'][index]['mobile']+'"><span class="cust_f_name">'+res['record'][index]['full_name']+'</span><span class="cust_addres">'+res['record'][index]['address']+'</span></a></li>';
 						});
 						html+='</ul>';
 						jQuery('.suggestion_box').css({'height':'200px'});
@@ -797,6 +797,14 @@ jQuery(document).ready(function(){
 							jQuery('#customer_full_name').val(dataname);
 							var dataaddress=jQuery(this).attr('data-address');
 							jQuery('#address').val(dataaddress);
+							var dataemail=jQuery(this).attr('data-email');
+							jQuery('#contact_email').val(dataemail);
+							var datafname=jQuery(this).attr('data-fname');
+							jQuery('#contact_fname').val(datafname);
+							var datalname=jQuery(this).attr('data-lname');
+							jQuery('#contact_lname').val(datalname);
+							var dataphone=jQuery(this).attr('data-phone');
+							jQuery('#contact_phone').val(dataphone);
 							jQuery('.suggestion_box').html('');
 							jQuery('.suggestion_box').css({'height':'0px'});
 						});
@@ -827,10 +835,10 @@ jQuery(document).ready(function(){
 			noerror=false;
 		}
 		var contact_lname=jQuery('#contact_lname').val();
-		if(jQuery.trim(contact_lname)==''){
+		/*if(jQuery.trim(contact_lname)==''){
 			jQuery('#contact_lname').addClass('error');
 			noerror=false;
-		}
+		}*/
 		var contact_email=jQuery('#contact_email').val();
 		if(jQuery.trim(contact_email)==''){
 			jQuery('#contact_email').addClass('error');

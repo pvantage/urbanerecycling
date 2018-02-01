@@ -743,7 +743,7 @@ function loadjob(job_id){
 						type: 'POST',  
 						url: url,           
 						crossDomain: true,
-						data: {status:'Completed',job_id:job_id}, 
+						data: {status:'Completed',job_id:job_id, add_by:uid}, 
 						beforeSend: function() {
 							
 						},		
@@ -779,7 +779,7 @@ function loadjob(job_id){
 						type: 'POST',  
 						url: url,           
 						crossDomain: true,
-						data: {status:'Being Processed',job_id:job_id}, 
+						data: {status:'Being Processed',job_id:job_id, add_by:uid}, 
 						beforeSend: function() {
 							
 						},		
@@ -1003,10 +1003,10 @@ jQuery(document).ready(function(){
 			noerror=false;
 		}
 		var contact_lname=jQuery('input[name="contact_lname"]').val();
-		if(jQuery.trim(contact_lname)==''){
+		/*if(jQuery.trim(contact_lname)==''){
 			jQuery('input[name="contact_lname"]').addClass('error');
 			noerror=false;
-		}
+		}*/
 		var contact_email=jQuery('input[name="contact_email"]').val();
 		if(jQuery.trim(contact_email)==''){
 			jQuery('input[name="contact_email"]').addClass('error');
