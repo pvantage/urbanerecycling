@@ -958,7 +958,7 @@ function selPic3(img) {
 				var ft = new FileTransfer();
 				
 				var t=ft.upload(filetrasfer2, uri, function(r){
-					alert(r.response);
+					//alert(r.response);
 					if(typeof img!='undefined'){
 						if(img=='photo_material_1'){
 							jQuery('#photo_material_1').val(r.response);
