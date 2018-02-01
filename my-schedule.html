@@ -391,6 +391,40 @@ function showonmap($this,latit,longit,jobstatus,job_id)
 	});
 
 }
+function deletepu(pu_id,job_id)
+{
+	var url2=siteurl+'/api/jobs/deletepurequest';
+	jQuery.ajax({  
+		type: 'POST',  
+		url: url2,           
+		crossDomain: true,
+		data: {job_pu_id:pu_id}, 
+		beforeSend: function() {
+		},		
+		complete: function() {
+		}, 
+		crossDomain: true,  
+		success: function(res) {
+			listschedules();
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">PU Requested cancelled.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
+			jQuery('#myModal221').modal('hide');
+			jQuery('#myModal1').modal('hide');
+			
+			
+		},  
+		error: function(response, d, a){
+		
+			jQuery('body .showmessage').remove();
+			var html='<div class="showmessage">Server Error.</div>';
+			jQuery('body').append(html);
+			setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+			return false; 
+		}
+	});
+}
 function listschedules(){
 	var uid=localStorage.getItem('Staff_ID');
 	var url=siteurl+'/api/jobs/myschedulejobs';

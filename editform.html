@@ -119,22 +119,22 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto1" class="col-6"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto12" class="col-6"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_1" id="photo_material_1" />
 				  	<img id="edit_image_material_1" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 2</label>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto2" class="col-6"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto22" class="col-6"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto2"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_2" id="photo_material_2" />
 				  	<img id="edit_image_material_2" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 3</label>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto3" class="col-6"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch" href="javascript:;" id="uploadphoto32" class="col-6"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto3"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
 				  <img id="edit_image_material_3" class="showuploadphoto" style="display:none;" />
           </div>
@@ -231,8 +231,8 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-			<a class="phone-anch" href="javascript:;" id="transuploadphoto" class="col-6"><i class="fa fa-camera"></i></a>
-			<a class="phone-anch" href="javascript:;" id="transuploadphoto2" class="col-6"><i class="fa fa-picture-o"></i></a>
+			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto"><i class="fa fa-camera"></i></a>
+			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="edit_image_trans_material" class="showuploadphoto" style="display:none;" />
           </div>
@@ -958,7 +958,7 @@ function selPic3(img) {
 				var ft = new FileTransfer();
 				
 				var t=ft.upload(filetrasfer2, uri, function(r){
-					
+					alert(r.response);
 					if(typeof img!='undefined'){
 						if(img=='photo_material_1'){
 							jQuery('#photo_material_1').val(r.response);
