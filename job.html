@@ -722,19 +722,22 @@ function loadjob(job_id){
 				jQuery('#myModal2').modal();
 				setTimeout(function(){jQuery('#myModal2 #assigned_to').val(uid);},1000);
 			}
+			var ht=jQuery(window).height();
+			var wdt=jQuery(window).width();
+			var newstyle='top:'+(parseInt(ht/2)-40)+'px; left:50%; margin-left:-'+parseInt(wdt/2)+'px; background:#000000;color:red;font-size:14px;';
 			jQuery('.endjob').click(function(){
 				var endjob=true;
 				if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage" style="top:200px; background:#000000;color:red;font-size:14px;">Please complete TOR/Missile Tag form.</div>';
+					var html='<div class="showmessage" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
 				else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage" style="top:200px; background:#000000;color:red;font-size:14px;">Please complete TOR/Missile Tag form.</div>';
+					var html='<div class="showmessage" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
@@ -753,7 +756,7 @@ function loadjob(job_id){
 						crossDomain: true,  
 						success: function(res) { 
 							loadjob(job_id);
-							var html='<div class="showmessage" style="top:200px; background:#000000;color:red;">Job is completed.</div>';
+							var html='<div class="showmessage" style="'+newstyle+'">Job is completed.</div>';
 							jQuery('body').append(html);
 							setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
 							jQuery('.str-job').remove();
