@@ -554,6 +554,7 @@ function loadjob(job_id){
 			jQuery('input[name="contact_fname"]').val(res['record']['contact_fname']);
 			jQuery('input[name="contact_lname"]').val(res['record']['contact_lname']);
 			jQuery('input[name="contact_email"]').val(res['record']['contact_email']);
+			jQuery('#emailform input[name="email_to"]').val(res['record']['contact_email']);
 			jQuery('input[name="contact_mobile"]').val(res['record']['contact_mobile']);
 			jQuery('input[name="contact_phone"]').val(res['record']['contact_phone']);
 			jQuery('input[name="customer_id"]').val(res['record']['customer_id']);
@@ -726,14 +727,14 @@ function loadjob(job_id){
 				if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Please first complete the TOR/Missile Tag form.</div>';
+					var html='<div class="showmessage" style="top:200px; background:#000000;color:red;font-size:14px;">Please complete TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
 				else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
 					endjob=false;
 					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage">Please first complete the TOR/Missile Tag form.</div>';
+					var html='<div class="showmessage" style="top:200px; background:#000000;color:red;font-size:14px;">Please complete TOR/Missile Tag form.</div>';
 					jQuery('body').append(html);
 					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
 				}
@@ -752,7 +753,7 @@ function loadjob(job_id){
 						crossDomain: true,  
 						success: function(res) { 
 							loadjob(job_id);
-							var html='<div class="showmessage">Job is completed.</div>';
+							var html='<div class="showmessage" style="top:200px; background:#000000;color:red;">Job is completed.</div>';
 							jQuery('body').append(html);
 							setTimeout(function(){jQuery('.showmessage').slideUp();},3000);
 							jQuery('.str-job').remove();
