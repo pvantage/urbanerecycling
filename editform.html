@@ -119,26 +119,27 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_1" id="photo_material_1" />
 				  	<img id="edit_image_material_1" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 2</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto2"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto2"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_2" id="photo_material_2" />
 				  	<img id="edit_image_material_2" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 3</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto3"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto3"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
 				  <img id="edit_image_material_3" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
+		  	<img src="images/ajax-loader.gif" class="uploadloader" />
             <button class="nf-box-btn savenewmissiletag" type="button">Done</button>
           </div>
 		  </form>
@@ -231,8 +232,8 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto"><i class="fa fa-camera"></i></a>
-			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
+			<a class="phone-anch" href="javascript:;" id="transuploadphoto"><i class="fa fa-camera"></i></a>
+			<a class="phone-anch" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="edit_image_trans_material" class="showuploadphoto" style="display:none;" />
           </div>
@@ -264,6 +265,7 @@
 				  <input type="hidden" name="signaturefile" id="signaturefile2" value="" />
           </div>
           <div class="nf-box">
+		  	<img src="images/ajax-loader.gif" class="uploadloader" />
             <button class="nf-box-btn savenewtransferresponse" type="button">Done</button>
           </div>
           
@@ -582,11 +584,12 @@ jQuery(document).ready(function(){
 		var noerror=true;
 		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
 		{
-			jQuery('body .showmessage').remove();
-			var html='<div class="showmessage">Form uploading please wait..</div>';
-			jQuery('body').append(html);
+			jQuery('.uploadloader').show();
 			formuploading=1
 			noerror=false;
+		}
+		else{
+			jQuery('.uploadloader').hide();
 		}
 		var job_id=gup('job_id');
 		jQuery('#editmissiletagform .required_certification_requested').removeClass('error');
@@ -703,11 +706,12 @@ jQuery(document).ready(function(){
 		var noerror=true;
 		
 		if(transferuploading=='1'){
-			jQuery('body .showmessage').remove();
-			var html='<div class="showmessage">Form uploading please wait..</div>';
-			jQuery('body').append(html);
+			jQuery('.uploadloader').show();
 			formuploading=1
 			noerror=false;
+		}
+		else{
+			jQuery('.uploadloader').hide();
 		}
 		jQuery("#edittransferresponseform input, #edittransferresponseform textarea").each(function(){
 			if(jQuery(this).hasClass('required') && jQuery.trim(jQuery(this).val())==''){
@@ -836,6 +840,7 @@ function selPic1(img) {
 					}
 					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
 					{
+						jQuery('.uploadloader').hide();
 						jQuery("#editjobformmissiletag").submit();
 					}
 				}
@@ -890,6 +895,7 @@ function selPic2(img) {
 					
 					if(transferuploading=='0' && formuploading=='1')
 					{
+						jQuery('.uploadloader').hide();
 						jQuery("#edittransferresponseform").submit();
 					}
 				}
@@ -974,6 +980,7 @@ function selPic3(img) {
 						}
 						if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
 						{
+							jQuery('.uploadloader').hide();
 							jQuery("#editjobformmissiletag").submit();
 						}
 					}
@@ -1037,6 +1044,7 @@ function selPic4(img) {
 						
 						if(transferuploading=='0' && formuploading=='1')
 						{
+							jQuery('.uploadloader').hide();
 							jQuery("#edittransferresponseform").submit();
 						}
 					}

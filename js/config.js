@@ -54,9 +54,9 @@ function shownotificationpopup(){
 	 success: function(res) { 
 	   if(jQuery.trim(res)!=''){
 	  	jQuery('body .showmessage').remove();
-		var html='<div class="showmessage" style="height:auto;">'+res+'</div>';
+		var html='<div class="showmessage popupnotification">'+res+'</div>';
 		jQuery('body').append(html);
-		setTimeout(function(){jQuery('.showmessage').slideUp();},4000);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},5000);
 		
 	  }
 	  setTimeout(shownotificationpopup,10000);
