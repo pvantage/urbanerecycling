@@ -189,7 +189,7 @@
             </div>
           </div>
           
-          <div class="nf-box">
+          <div class="nf-box showhide_how_many">
             <label>Total number of loose hard drives?</label>
 			<input type="number" name="how_many" class="forminput" min="1" />
           </div>
@@ -349,6 +349,9 @@ jQuery(document).ready(function(){
 				jQuery('#newmissiletagform .required_loose_hdd').addClass('error');
 			}
 		}
+		else{
+			jQuery('#newmissiletagform input[name="how_many"]').val('');
+		}
 		
 		if(jQuery('#newmissiletagform input[name="loose_hdd"]:checked').val()=='Yes'){
 			jQuery('#newmissiletagform input[name="how_many"]').addClass('required');
@@ -400,7 +403,7 @@ jQuery(document).ready(function(){
 	  jQuery('.savenewmissiletag').click(function(){
 	  	jQuery("#newmissiletagform").submit();
 	  });
-	  jQuery('#newtransferresponseform input[name="loose_hdd"], #edittransferresponseform input[name="loose_hdd"], #newmissiletagform input[name="loose_hdd"], #editmissiletagform input[name="loose_hdd"]').change(function(){
+	  jQuery('#newtransferresponseform input[name="loose_hdd"], #newmissiletagform input[name="loose_hdd"]').change(function(){
 			var $this=jQuery(this).parents('form');																	 
 	  		if(jQuery(this).val()=='Yes'){
 				jQuery('.showhide_how_many',$this).show();
@@ -409,7 +412,8 @@ jQuery(document).ready(function(){
 				jQuery('.showhide_how_many',$this).hide();
 			}
 	  });
-	  jQuery('#newtransferresponseform input[name="customer_present"], #edittransferresponseform input[name="customer_present"]').change(function(){
+	  
+	  jQuery('#newtransferresponseform input[name="customer_present"]').change(function(){
 			var $this=jQuery(this).parents('form');	
 	  		if(jQuery(this).val()=='Yes'){
 				jQuery('.showhide_signature',$this).show();
