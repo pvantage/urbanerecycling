@@ -101,22 +101,22 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_1" id="photo_material_1" />
 				  	<img id="image_material_1" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 2</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto2"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto2"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_2" id="photo_material_2" />
 				  	<img id="image_material_2" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Photo 3</label>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto3"><i class="fa fa-camera"></i></a>
-				<a class="phone-anch col-6" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto3"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
 				  <img id="image_material_3" class="showuploadphoto" style="display:none;" />
           </div>
@@ -195,8 +195,8 @@
           </div>
           <div class="nf-box">
             <label>Photo of Material</label>
-			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto"><i class="fa fa-camera"></i></a>
-			<a class="phone-anch col-6" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
+			<a class="phone-anch" href="javascript:;" id="transuploadphoto"><i class="fa fa-camera"></i></a>
+			<a class="phone-anch" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />
           </div>
@@ -316,7 +316,7 @@ jQuery(document).ready(function(){
 		var noerror=true;
 		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
 		{
-			jQuery('.uploadloader').show();
+			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
 			noerror=false;
 		}
@@ -477,7 +477,7 @@ jQuery(document).ready(function(){
 		var url=siteurl+'/api/jobs/savejobform';
 		var noerror=true;
 		if(transferuploading=='1'){
-			jQuery('.uploadloader').show();
+			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
 			noerror=false;
 		}
