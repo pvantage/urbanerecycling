@@ -39,7 +39,33 @@ function users_menus()
 }
 
 var uid=localStorage.getItem('Staff_ID');
+function shownotificationpopup(){
+	var uid=localStorage.getItem('Staff_ID');
+	var url=siteurl+'/api/jobs/notificationpopup';
+	jQuery.ajax({ 
+	 type: 'POST',  
+	 url: url,  
+	 crossDomain: true,
+	 data: {user_id:uid},  
+	 beforeSend: function() {
+	 },		
+	 complete: function() {
+	 },
+	 success: function(res) { 
+	   if(jQuery.trim(res)!=''){
+	  	jQuery('body .showmessage').remove();
+		var html='<div class="showmessage" style="height:auto;">'+res+'</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},4000);
 		
+	  }
+	  setTimeout(shownotificationpopup,10000);
+	 },  
+	 error: function(response, d, a){
+		
+	 } 
+   });
+}
 if(typeof uid!='undefine' && uid!='' && uid!=null){
 
 	setTimeout(function(){
@@ -77,6 +103,7 @@ if(typeof uid!='undefine' && uid!='' && uid!=null){
 		   });
 		}
 	},1000);
+	shownotificationpopup();
 }
 function checkloggedin(uid)
 {

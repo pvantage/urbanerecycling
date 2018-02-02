@@ -93,7 +93,7 @@
           </div>
           <div class="nf-box showhide_how_many">
             <label>How many loose HDD's?</label>
-            <input type="number" class="required forminput" name="how_many"  min="1" />
+            <input type="number" class="forminput" name="how_many"  min="1" />
           </div>
           <div class="nf-box">
             <label>Notes/Special Instructions</label>
@@ -425,7 +425,7 @@ jQuery(document).ready(function(){
 			else if(jQuery(this).val()=='No'){
 				jQuery('.showhide_certification_type',$this).hide();
 				jQuery('.showhide_loose_hdd',$this).hide();
-				jQuery('.showhide_how_many',$this).show();
+				jQuery('.showhide_how_many',$this).hide();
 			}
 	  });
 	  jQuery('.m-signature-pad--body2').html('');
