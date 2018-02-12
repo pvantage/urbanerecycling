@@ -16,6 +16,7 @@ ul.not-box label.assigned-job{background:#f79e34;}
 ul.not-box label.completed-job{background:#3cbc3c;}
 .schedule-detail.processing-status:before,.schedule-detail.processing-status .alp-badge{background-color:#4289ff;}
 .schedule-detail.assigned-status:before,.schedule-detail.assigned-status .alp-badge{background-color:#f79e34;}
+.schedule-detail.unassigned-status:before,.schedule-detail.unassigned-status .alp-badge{background-color:#e74c3c;}
 .schedule-detail.completed-status:before,.schedule-detail.completed-status .alp-badge{background-color:#3cbc3c;}
 .map-maincnt .schedule-detail.selected-schedule { background: #ddd;}
 .cl-wrap .cl-address a{overflow:hidden;}
@@ -33,3 +34,5 @@ input.error, textarea.error, select.error{border:1px solid #FF0000 !important;}
 .popupnotification2{background:#ffffff !important; font-size: 14px !important; font-weight:bold; color:#FF0000 !important; border:1px solid #FF0000 !important;box-shadow: 2px 2px 2px #FF0000;}
 img.uploadloader{text-align:center; margin:0 auto 10px; float:none; display:none;}
 .m-signature-pad--body2 img{max-height:150px;}
+ul.calsubmenus{display:none;}
+ul.current {display:block;}

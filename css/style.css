@@ -4,6 +4,25 @@ body {
 	font-size: 14px;
 }
 
+.top-header-links .cal-submenu {
+    border: none;
+    text-align: right;
+	border-radius: 0px;
+}
+.top-header-links .cal-submenu a {
+    color: #000;
+}
+.cal-submenu li {
+    float: right;
+}
+.cal-submenu li a {
+    padding: 0px 20px !important;
+    border: none !important;
+}
+.cal-submenu li {
+    border: honeydew;
+    margin-top: 10px;
+}
 .attmds ul.attachment-areas li {
       float: left;
     width: 100%;

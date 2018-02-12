@@ -559,7 +559,7 @@ function loadjob(job_id){
 			jQuery('input[name="contact_phone"]').val(res['record']['contact_phone']);
 			jQuery('input[name="customer_id"]').val(res['record']['customer_id']);
 			if(res['record']['status']=='Unassigned'){
-				jQuery('.showjobstatus').addClass('assigned-status');
+				jQuery('.showjobstatus').addClass('unassigned-status');
 				jQuery('.showjobstatus .alp-badge').html('U');
 			}
 			else if(res['record']['status']=='Assigned'){

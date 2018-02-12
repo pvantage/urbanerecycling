@@ -15,7 +15,6 @@
 </head>
 <body class="light-grey-bg after-login schlbody">
 <!----- Header Top ----->
-
 <div class="container mysch-fix-hdr">
   <div class="header-top">
     <div class="row  align-items-center">
@@ -23,10 +22,15 @@
       <div class="col header-center-col">
         <div class="top-header-links">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home" class="active">List</a></li>
+            <li><a data-toggle="tab" href="#home" class="active">List</a></li>
             <li><a data-toggle="tab" href="#menu1">Calendar</a></li>
             <li><a data-toggle="tab" href="#menu2">Map</a></li>
           </ul>
+		  <ul class="calsubmenus nav nav-tabs cal-submenu">
+			<li><a data-toggle="tab" href="#menu1">Day</a></li>
+			<li><a data-toggle="tab" href="#menu3">Week</a></li>
+			<li><a data-toggle="tab" href="#menu4">Month</a></li>
+		</ul>
         </div>
       </div>
       <div class="col-2 header-right-col"><a href="#" data-toggle="modal" data-target="#myModal5"><i class="icon-plus"></i></a></div>
@@ -34,7 +38,10 @@
   </div>
 </div>
 <!----- /Header Top ----->
-
+<input type="hidden" id="week_show" value="1">
+<input type="hidden" id="month_show" value="1">
+<input type="hidden" id="month_srchstart" value="1">
+<input type="hidden" id="week_srchstart" value="1">
 <div class="container cntbox tab-content">
   <div id="home" class="tab-pane fade in active show">
     <h1 class="myschle">My Schedule</h1>
@@ -44,7 +51,13 @@
 	<div class="job_list"></div>
   </div>
   <div id="menu1" class="tab-pane fade">
-<div class="cl-wrap cal_joblist"></div>
+	<div class="cl-wrap cal_joblist"></div>
+  </div>
+  <div id="menu3" class="tab-pane fade">
+	<div class="cl-wrap cal_joblist3"></div>
+  </div>
+  <div id="menu4" class="tab-pane fade">
+	<div class="cl-wrap cal_joblist4"></div>
   </div>
   <div id="menu2" class="tab-pane fade map-maincnt">
     <div class="map-cnt"> <div id="ourgmap" style="width:100%; height:300px;"></div></div>
@@ -448,7 +461,7 @@ function listschedules(){
 		crossDomain: true,  
 		success: function(res) { 
 			var html='';
-			jQuery('.map_joblist, .job_list, .cal_joblist').html('');
+			jQuery('.map_joblist, .job_list, .cal_joblist, .cal_joblist3, .cal_joblist4').html('');
 			if(res['list'])
 			{
 				
@@ -512,6 +525,7 @@ function listschedules(){
 				jQuery('.nav-tabs li a').click(function(){
 					var tagret=jQuery(this).attr('href');
 					if(tagret=='#menu2' && !jQuery(this).hasClass('active')){
+						jQuery('ul.calsubmenus').removeClass('current');
 						setTimeout(function(){
 							initalgmap(res['list']);
 						},500);
@@ -560,12 +574,92 @@ function listschedules(){
 					}
 				});
 				
-				jQuery('.nav-tabs li a').click(function(){
+				
+			}
+			if(res['week'])
+			{
+				jQuery(res['week']['day']).each(function(index){
+					html2='';
+					html2+='<div class="cl-heading">'+res['week']['day'][index]+'</div><div class="cl-detail cal-details"><div class="row">';
+					if(typeof res['week']['day'][index]!='undefined'){
+						
+						if(res['week']['data'][res['week']['day'][index]])
+						{
+							jQuery(res['week']['data'][res['week']['day'][index]]).each(function(index2){
+								cls='';
+								if(res['week']['data'][res['week']['day'][index]][index2]['status']=='Assigned' || res['week']['data'][res['week']['day'][index]][index2]['status']=='Unassigned'){
+									cls=' orange';
+								}
+								else if(res['week']['data'][res['week']['day'][index]][index2]['status']=='Completed'){
+									cls=' completed-status';
+								}
+								html2+='<div class="cal-rightbx col-12"><div class="col"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['week']['data'][res['week']['day'][index]][index2]['ID']+'" data-jobid="'+res['week']['data'][res['week']['day'][index]][index2]['job_id']+'" href="javascript:;">'+res['week']['data'][res['week']['day'][index]][index2]['contact_fname']+' <span class="showtime">'+res['week']['data'][res['week']['day'][index]][index2]['pu_time']+'</span><br><span class="cl-city">'+res['week']['data'][res['week']['day'][index]][index2]['address']+'</span> </a> </div></div></div>';
+							});
+							
+						}
+						
+					}
+					html2+='</div></div>';
+					jQuery('.cal_joblist3').append(html2);
+				});
+				
+			}
+			if(res['month'])
+			{
+				jQuery(res['month']['day']).each(function(index){
+					html2='';
+					
+					if(typeof res['month']['day'][index]!='undefined'){
+						
+						if(res['month']['data'][res['month']['day'][index]] && parseInt(res['month']['data'][res['month']['day'][index]].length)>0)
+						{
+							html2+='<div class="cl-heading">'+res['month']['day'][index]+'</div><div class="cl-detail cal-details"><div class="row">';
+							jQuery(res['month']['data'][res['month']['day'][index]]).each(function(index2){
+								cls='';
+								if(res['month']['data'][res['month']['day'][index]][index2]['status']=='Assigned' || res['month']['data'][res['month']['day'][index]][index2]['status']=='Unassigned'){
+									cls=' orange';
+								}
+								else if(res['month']['data'][res['month']['day'][index]][index2]['status']=='Completed'){
+									cls=' completed-status';
+								}
+								html2+='<div class="cal-rightbx col-12"><div class="col"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['month']['data'][res['month']['day'][index]][index2]['ID']+'" data-jobid="'+res['month']['data'][res['month']['day'][index]][index2]['job_id']+'" href="javascript:;">'+res['month']['data'][res['month']['day'][index]][index2]['contact_fname']+' <span class="showtime">'+res['month']['data'][res['month']['day'][index]][index2]['pu_time']+'</span><br><span class="cl-city">'+res['month']['data'][res['month']['day'][index]][index2]['address']+'</span> </a> </div></div></div>';
+							});
+							html2+='</div></div>';
+							jQuery('.cal_joblist4').append(html2);
+						}
+						
+					}
+					
+					
+				});
+				
+			}
+			jQuery('.top-header-links li a').click(function(){
 					var tagret=jQuery(this).attr('href');
-					if(tagret=='#menu1' && !jQuery(this).hasClass('active')){
+					if(tagret=='#menu1'){
+						if(jQuery(this).parents('ul').hasClass('calsubmenus')){
+							jQuery('.tab-content div').removeClass('show');
+							jQuery('.tab-content div').removeClass('active');
+							jQuery('#menu1').addClass('active');
+							jQuery('#menu1').addClass('show');
+						}
+						jQuery('.calsubmenus li a').removeClass('active');
+						jQuery('ul.calsubmenus').addClass('current');
+						jQuery('.calsubmenus li a[href="#menu1"]').addClass('active');
 						setTimeout(function(){
 							jQuery('html, body').animate({scrollTop:jQuery('.calnavigate').position().top}, 'slow');
+							jQuery('.calsubmenus li a[href="#menu1"]').addClass('active');
 						},500);
+					}
+					else if(tagret=='#menu3' || tagret=='#menu4'){
+						jQuery('.nav-tabs:first li a').removeClass('active');
+						jQuery('ul.calsubmenus').addClass('current');
+						jQuery('.nav-tabs li a[href="#menu1"]:first').addClass('active');
+						jQuery('.calsubmenus li a[href="#menu1"]').removeClass('active');
+					}
+					else{
+						jQuery('ul.calsubmenus').removeClass('current');
+						jQuery('.calsubmenus li a[href="#menu1"]').removeClass('active');
 					}
 					localStorage.setItem('openedtab', tagret);
 				});
@@ -577,16 +671,33 @@ function listschedules(){
 					jQuery('#myModal1 .caljob_reschedule').attr('data-id',resid);
 					jQuery('#myModal1').modal();
 				});
-			}
 			var openedtab=localStorage.getItem('openedtab');
 			if(typeof openedtab!='undefine' && openedtab!='' && openedtab!=null){
-				jQuery('.nav-tabs li a').each(function(){
+				jQuery('.top-header-links li a').each(function(){
 					var target=jQuery(this).attr('href');
-					if(target==openedtab){
+					if(openedtab=='#menu1' && target==openedtab){
+						jQuery('.nav-tabs li a[href="#menu1"]:first').trigger('click');
+						jQuery('.calsubmenus li a[href="#menu1"]').addClass('active');
+						jQuery('ul.calsubmenus').addClass('current');
+					}
+					else if((openedtab=='#menu3' || openedtab=='#menu4') && target==openedtab){
 						jQuery(this).trigger('click');
+						jQuery('.nav-tabs li a[href="#menu1"]:first').addClass('active');
+						jQuery('ul.calsubmenus').addClass('current');
+						jQuery('.calsubmenus li a[href="#menu1"]').removeClass('active');
+					}
+					else{
+						if(target==openedtab){
+							jQuery(this).trigger('click');
+						}
 					}
 				});
 			}
+			$(window).scroll(function() {
+			   if($(window).scrollTop() + $(window).height() > $(document).height() - 150) {
+					showweekmonthsch();
+			   }
+			});
 		},  
 		error: function(response, d, a){
 		
@@ -597,6 +708,135 @@ function listschedules(){
 		return false; 
 		}
 	});
+}
+function showweekmonthsch(){
+	var openedtab=localStorage.getItem('openedtab');
+	if(openedtab=='#menu3' || openedtab=='#menu4'){
+		if(openedtab=='#menu3'){
+			var viewfor='week';
+			var show=jQuery('#week_show').val();
+			jQuery('#week_show').val((parseInt(show)+1));
+			var startsearch=jQuery('#week_srchstart').val();
+		}
+		else if(openedtab=='#menu4'){
+			var viewfor='month';
+			var show=jQuery('#month_show').val();
+			jQuery('#month_show').val((parseInt(show)+1));
+			var startsearch=jQuery('#month_srchstart').val();
+		}
+		var uid=localStorage.getItem('Staff_ID');
+		var url=siteurl+'/api/jobs/nextschedulejobs';
+		if(!jQuery('#myschedule').is(':checked'))
+		{
+			uid='';	
+		}
+		var fileterstatus=jQuery('#fileter-status').val();
+		var searchtext=jQuery('input.sch-srch').val();
+		if(startsearch=='1'){
+			if(openedtab=='#menu3'){
+				jQuery('#week_srchstart').val(0);
+			}
+			else if(openedtab=='#menu4'){
+				jQuery('#month_srchstart').val(0);
+			}
+			jQuery.ajax({  
+				type: 'POST',  
+				url: url,           
+				dataType: 'json',  
+				crossDomain: true,
+				data: {assigned_to:uid, status:fileterstatus, searchtext:searchtext, viewfor:viewfor, show:show}, 
+				beforeSend: function() {
+				
+				},		
+				complete: function() {
+				}, 
+				crossDomain: true,  
+				success: function(res) { 
+					if(res['week'])
+					{
+						jQuery(res['week']['day']).each(function(index){
+							html2='';
+							
+							if(typeof res['week']['day'][index]!='undefined'){
+								
+								if(res['week']['data'][res['week']['day'][index]] && parseInt(res['week']['data'][res['week']['day'][index]].length)>0)
+								{
+									html2+='<div class="cl-heading">'+res['week']['day'][index]+'</div><div class="cl-detail cal-details"><div class="row">';
+									jQuery(res['week']['data'][res['week']['day'][index]]).each(function(index2){
+										cls='';
+										if(res['week']['data'][res['week']['day'][index]][index2]['status']=='Assigned' || res['week']['data'][res['week']['day'][index]][index2]['status']=='Unassigned'){
+											cls=' orange';
+										}
+										else if(res['week']['data'][res['week']['day'][index]][index2]['status']=='Completed'){
+											cls=' completed-status';
+										}
+										html2+='<div class="cal-rightbx col-12"><div class="col"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['week']['data'][res['week']['day'][index]][index2]['ID']+'" data-jobid="'+res['week']['data'][res['week']['day'][index]][index2]['job_id']+'" href="javascript:;">'+res['week']['data'][res['week']['day'][index]][index2]['contact_fname']+' <span class="showtime">'+res['week']['data'][res['week']['day'][index]][index2]['pu_time']+'</span><br><span class="cl-city">'+res['week']['data'][res['week']['day'][index]][index2]['address']+'</span> </a> </div></div></div>';
+									});
+									html2+='</div></div>';
+									jQuery('.cal_joblist3').append(html2);
+								}
+								
+							}
+							
+						});
+						
+					}
+					if(res['month'])
+					{
+						jQuery(res['month']['day']).each(function(index){
+							html2='';
+							
+							if(typeof res['month']['day'][index]!='undefined'){
+								
+								if(res['month']['data'][res['month']['day'][index]] && parseInt(res['month']['data'][res['month']['day'][index]].length)>0)
+								{
+									html2+='<div class="cl-heading">'+res['month']['day'][index]+'</div><div class="cl-detail cal-details"><div class="row">';
+									jQuery(res['month']['data'][res['month']['day'][index]]).each(function(index2){
+										cls='';
+										if(res['month']['data'][res['month']['day'][index]][index2]['status']=='Assigned' || res['month']['data'][res['month']['day'][index]][index2]['status']=='Unassigned'){
+											cls=' orange';
+										}
+										else if(res['month']['data'][res['month']['day'][index]][index2]['status']=='Completed'){
+											cls=' completed-status';
+										}
+										html2+='<div class="cal-rightbx col-12"><div class="col"><div class="cl-address"> <a class="openmyModal1'+cls+'" data-id="'+res['month']['data'][res['month']['day'][index]][index2]['ID']+'" data-jobid="'+res['month']['data'][res['month']['day'][index]][index2]['job_id']+'" href="javascript:;">'+res['month']['data'][res['month']['day'][index]][index2]['contact_fname']+' <span class="showtime">'+res['month']['data'][res['month']['day'][index]][index2]['pu_time']+'</span><br><span class="cl-city">'+res['month']['data'][res['month']['day'][index]][index2]['address']+'</span> </a> </div></div></div>';
+									});
+									html2+='</div></div>';
+									jQuery('.cal_joblist4').append(html2);
+								}
+								
+							}
+							
+							
+						});
+						
+					}
+					jQuery('a.openmyModal1').click(function(){
+						var jid=jQuery(this).attr('data-jobid');
+						var resid=jQuery(this).attr('data-id');
+						jQuery('#myModal1 .caljob_title').html('Job #'+jid);
+						jQuery('#myModal1 .caljob_link').attr('href','job.html?job_id='+jid);
+						jQuery('#myModal1 .caljob_reschedule').attr('data-id',resid);
+						jQuery('#myModal1').modal();
+					});
+					if(openedtab=='#menu3'){
+						jQuery('#week_srchstart').val(1);
+					}
+					else if(openedtab=='#menu4'){
+						jQuery('#month_srchstart').val(1);
+					}
+				},  
+				error: function(response, d, a){
+				
+				jQuery('body .showmessage').remove();
+				var html='<div class="showmessage">Server Error.</div>';
+				jQuery('body').append(html);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				return false; 
+				}
+			});
+		}
+	}
 }
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
