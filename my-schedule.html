@@ -657,7 +657,7 @@ function listschedules(){
 						},500);
 					}
 					else if(tagret=='#menu3' || tagret=='#menu4'){
-						setTimeout(function(){
+						/*setTimeout(function(){
 							var ht2=jQuery('div.mysch-fix-hdr').height();
 							var ht3=jQuery('div.bottom-nav-bar').height();
 							var ht=jQuery('#menu3').height();
@@ -669,7 +669,7 @@ function listschedules(){
 									setTimeout(showweekmonthsch,3000);
 								}
 							}
-						},1000);
+						},1000);*/
 						jQuery('.nav-tabs:first li a').removeClass('active');
 						jQuery('ul.calsubmenus').addClass('current');
 						jQuery('.nav-tabs li a[href="#menu1"]:first').addClass('active');
@@ -716,7 +716,7 @@ function listschedules(){
 					showweekmonthsch();
 			   }
 			});
-			setTimeout(function(){
+			/*setTimeout(function(){
 				var ht2=jQuery('div.mysch-fix-hdr').height();
 				var ht3=jQuery('div.bottom-nav-bar').height();
 				var ht=jQuery('#menu3').height();
@@ -728,19 +728,19 @@ function listschedules(){
 						setTimeout(showweekmonthsch,3000);
 					}
 				}
-			},1000);
-			/*$("#menu3").swipe( {
+			},1000);*/
+			$("body").swipe( {
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				  if(direction=='down' || direction=='up') {
 				  	if(parseInt($(window).scrollTop())<=10) {
 						showweekmonthsch();
 				    }
 				  	//showweekmonthsch();
-					jQuery(this).css({'overflow':'auto'});
+					//jQuery(this).css({'overflow':'auto'});
 				  }
 				}
 			  });
-			 $("#menu4").swipe( {
+			 /*$("#menu4").swipe( {
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				  if(direction=='down' || direction=='up') {
 				  	if(parseInt($(window).scrollTop())<=10) {
