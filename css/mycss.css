@@ -36,4 +36,4 @@ img.uploadloader{text-align:center; margin:0 auto 10px; float:none; display:none
 .m-signature-pad--body2 img{max-height:150px;}
 ul.calsubmenus{display:none;}
 ul.current {display:block;}
-.loadmore3, .loadmore4{width:100%; display:block; background:#29a03f; color:#FFFFFF; border:1px solid #FFFFFF; text-align:center; padding:2px;}
+.loadmore3, .loadmore4, .loadmore3:active, .loadmore4:active{width:100%; display:block; background:#29a03f; color:#FFFFFF; border:1px solid #FFFFFF; text-align:center; padding:2px;}

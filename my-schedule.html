@@ -798,7 +798,12 @@ function showweekmonthsch(){
 				crossDomain: true,
 				data: {assigned_to:uid, status:fileterstatus, searchtext:searchtext, viewfor:viewfor, show:show}, 
 				beforeSend: function() {
-				
+					if(openedtab=='#menu3'){
+						jQuery('a.loadmore3').remove();
+					}
+					else if(openedtab=='#menu4'){
+						jQuery('a.loadmore4').remove();
+					}
 				},		
 				complete: function() {
 				}, 
@@ -873,14 +878,12 @@ function showweekmonthsch(){
 					});
 					if(openedtab=='#menu3'){
 						jQuery('#week_srchstart').val(1);
-						jQuery('a.loadmore3').remove();
 						if(!$(window).hasScrollBar() && parseInt($(window).scrollTop())<=5){
 							$(".cal_joblist3").append('<a href="javascript:;" onclick="showweekmonthsch();" class="btn loadmore3">Load More</a>');
 						}
 					}
 					else if(openedtab=='#menu4'){
 						jQuery('#month_srchstart').val(1);
-						jQuery('a.loadmore4').remove();
 						if(!$(window).hasScrollBar() && parseInt($(window).scrollTop())<=5){
 							$(".cal_joblist4").append('<a href="javascript:;" onclick="showweekmonthsch();" class="btn loadmore4">Load More</a>');
 						}
