@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/fonts-styles.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
 <link rel="stylesheet" href="css/mycss.css">
 </head>
 <body class="light-grey-bg after-login schlbody">
@@ -280,6 +281,7 @@
   </div>
 </div>
 <script src="js/jquery-3.2.1.min.js" ></script> 
+<script src="js/jquery-ui.min.js" ></script>
 <script src="js/popper.min.js" ></script> 
 <script src="js/bootstrap.min.js" ></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -909,6 +911,12 @@ jQuery(document).ready(function(){
 	jQuery('#myschedule').change(function(){
 		listschedules();
 		jQuery('#myModal15').modal('hide');
+	});
+	jQuery('#task_due_date, #pu_date, #pu_date2, #pu_date3, #pu_date4').datepicker({
+		showButtonPanel: true,
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: 'yy-mm-dd'
 	});
 	jQuery('a.caljob_reschedule').click(function(){
 		var url2=siteurl+'/api/jobs/pudetail';

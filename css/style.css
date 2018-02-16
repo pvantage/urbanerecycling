@@ -1451,7 +1451,12 @@ ul.attachment-areas a{ color:#000;}
 	.pop-title {
     font-size: 17px;
 }
+.cal-submenu li a {
+    padding: 0px 17px !important;
 }
+}
+
+
 
 @media (min-width: 767px) and (max-width: 1024px) {
 body {
