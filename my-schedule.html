@@ -281,12 +281,14 @@
   </div>
 </div>
 <script src="js/jquery-3.2.1.min.js" ></script> 
+
 <script src="js/jquery-ui.min.js" ></script>
 <script src="js/popper.min.js" ></script> 
 <script src="js/bootstrap.min.js" ></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<script src="js/jquery.mobile-1.4.5.min.js" ></script> 
 <script type="text/javascript">
 function initalgmap(jobs){
 	var markers=[];
@@ -700,6 +702,7 @@ function listschedules(){
 					showweekmonthsch();
 			   }
 			});
+			$(window).on('swipeup',function(){showweekmonthsch();} );
 		},  
 		error: function(response, d, a){
 		
