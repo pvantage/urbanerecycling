@@ -289,6 +289,7 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
+var reqtime=1;
 function initalgmap(jobs){
 	var markers=[];
 	var latit= parseFloat(localStorage.getItem('Staff_Lat'));
@@ -655,6 +656,15 @@ function listschedules(){
 						},500);
 					}
 					else if(tagret=='#menu3' || tagret=='#menu4'){
+						var ht=jQuery('#menu3').height();
+						var wht=jQuery(window).height();
+						var htd=parseInt(wht)-parseInt(ht);
+						if(parseInt(htd)<=250){
+							reqtime=parseInt(reqtime)+1;
+							if(reqtime<=5){
+								setTimeout(showweekmonthsch,3000);
+							}
+						}
 						jQuery('.nav-tabs:first li a').removeClass('active');
 						jQuery('ul.calsubmenus').addClass('current');
 						jQuery('.nav-tabs li a[href="#menu1"]:first').addClass('active');
@@ -704,8 +714,11 @@ function listschedules(){
 			var ht=jQuery('#menu3').height();
 			var wht=jQuery(window).height();
 			var htd=parseInt(wht)-parseInt(ht);
-			if(htd<=200){
-				setTimeout(showweekmonthsch,3000);
+			if(parseInt(htd)<=250){
+				reqtime=parseInt(reqtime)+1;
+				if(reqtime<=5){
+					setTimeout(showweekmonthsch,3000);
+				}
 			}
 		},  
 		error: function(response, d, a){
