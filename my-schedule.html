@@ -656,15 +656,19 @@ function listschedules(){
 						},500);
 					}
 					else if(tagret=='#menu3' || tagret=='#menu4'){
-						var ht=jQuery('#menu3').height();
-						var wht=jQuery(window).height();
-						var htd=parseInt(wht)-parseInt(ht);
-						if(parseInt(htd)<=400){
-							reqtime=parseInt(reqtime)+1;
-							if(reqtime<=15){
-								setTimeout(showweekmonthsch,3000);
+						setTimeout(function(){
+							var ht2=jQuery('div.mysch-fix-hdr').height();
+							var ht3=jQuery('div.bottom-nav-bar').height();
+							var ht=jQuery('#menu3').height();
+							var wht=jQuery(window).height();
+							var htd=parseInt(wht)-parseInt(ht)-parseInt(ht2)-parseInt(ht3);
+							if(parseInt(htd)<=200){
+								reqtime=parseInt(reqtime)+1;
+								if(reqtime<=15){
+									setTimeout(showweekmonthsch,3000);
+								}
 							}
-						}
+						},1000);
 						jQuery('.nav-tabs:first li a').removeClass('active');
 						jQuery('ul.calsubmenus').addClass('current');
 						jQuery('.nav-tabs li a[href="#menu1"]:first').addClass('active');
@@ -711,15 +715,19 @@ function listschedules(){
 					showweekmonthsch();
 			   }
 			});
-			var ht=jQuery('#menu3').height();
-			var wht=jQuery(window).height();
-			var htd=parseInt(wht)-parseInt(ht);
-			if(parseInt(htd)<=400){
-				reqtime=parseInt(reqtime)+1;
-				if(reqtime<=15){
-					setTimeout(showweekmonthsch,3000);
+			setTimeout(function(){
+				var ht2=jQuery('div.mysch-fix-hdr').height();
+				var ht3=jQuery('div.bottom-nav-bar').height();
+				var ht=jQuery('#menu3').height();
+				var wht=jQuery(window).height();
+				var htd=parseInt(wht)-parseInt(ht)-parseInt(ht2)-parseInt(ht3);
+				if(parseInt(htd)<=200){
+					reqtime=parseInt(reqtime)+1;
+					if(reqtime<=15){
+						setTimeout(showweekmonthsch,3000);
+					}
 				}
-			}
+			},1000);
 		},  
 		error: function(response, d, a){
 		
