@@ -702,7 +702,8 @@ function listschedules(){
 					showweekmonthsch();
 			   }
 			});
-			$(window).on('swipeup',function(){showweekmonthsch();} );
+			$('body').on('swipeup',function(){alert('test');showweekmonthsch();} );
+			$('body').on('swipedown',function(){alert('test');showweekmonthsch();} );
 		},  
 		error: function(response, d, a){
 		
