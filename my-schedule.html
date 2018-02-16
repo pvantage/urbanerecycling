@@ -711,12 +711,12 @@ function listschedules(){
 					}
 				});
 			}
-			/*$(window).scroll(function() {
+			$(window).scroll(function() {
 			   if($(window).scrollTop() + $(window).height() > $(document).height() - 150) {
 					showweekmonthsch();
 			   }
 			});
-			setTimeout(function(){
+			/*setTimeout(function(){
 				var ht2=jQuery('div.mysch-fix-hdr').height();
 				var ht3=jQuery('div.bottom-nav-bar').height();
 				var ht=jQuery('#menu3').height();
@@ -732,7 +732,21 @@ function listschedules(){
 			$("#menu3").swipe( {
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				  if(direction=='down' || direction=='up') {
-				  	showweekmonthsch();
+				  	if(parseInt($(window).scrollTop())<=10) {
+						showweekmonthsch();
+				    }
+				  	//showweekmonthsch();
+					//jQuery(this).css({'overflow':'auto'});
+				  }
+				}
+			  });
+			 $("#menu4").swipe( {
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				  if(direction=='down' || direction=='up') {
+				  	if(parseInt($(window).scrollTop())<=10) {
+						showweekmonthsch();
+				    }
+					//jQuery(this).css({'overflow':'auto'});
 				  }
 				}
 			  });
