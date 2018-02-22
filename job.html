@@ -165,7 +165,7 @@
           <li><a href="#" data-toggle="modal" class="opennewemail" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal10"><img src="images/task.png"><span>Task</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal16"><img src="images/form.png"><span>Forms</span></a></li>
-          <li><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
+          <li class="addnewpurbtn"><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
 		  <li><a href="#" data-toggle="modal" data-target="#myModal102"><img src="images/note.png"><span>Note</span></a></li>
         </ul>
       </div>
@@ -595,6 +595,7 @@ function loadjob(job_id){
 				  {
 				  	showstartbtn=true;
 				  }
+				  jQuery('li.addnewpurbtn').remove();
 				});
 				jQuery('.pulists').html(html);
 			}
