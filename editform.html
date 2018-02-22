@@ -743,7 +743,8 @@ jQuery(document).ready(function(){
 		}
 		e.preventDefault();
 		var signaturefile= jQuery('#signaturefile2').val();
-		if(jQuery.trim(signaturefile)==''){
+		var customer_present=jQuery('input[name="customer_present"]:checked').val();
+		if(jQuery.trim(signaturefile)=='' && customer_present=='Yes'){
 			noerror=false;
 			jQuery(".savesignature").trigger('click');
 			setTimeout(function(){jQuery("#edittransferresponseform").submit();},1500);
