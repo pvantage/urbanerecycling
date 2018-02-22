@@ -723,17 +723,22 @@ function listschedules(){
 			});
 			var totalcal=jQuery('.cal_joblist3 .cal-details .cal-rightbx').length;
 			var totalweekmonth=0;
+			var totalweekmonth2=0;
 			var totalcal2=jQuery('.cal_joblist4 .cal-details .cal-rightbx').length;
-			if(res['weekmonth']['total']){
-				totalweekmonth=res['weekmonth']['total'];
+			if(res['week']['total']){
+				totalweekmonth=res['week']['total'];
 			}
+			if(res['month']['total']){
+				totalweekmonth2=res['month']['total'];
+			}
+			//alert(uid);
 			setTimeout(function(){
 				
 				if(!$(window).hasScrollBar() && parseInt($(window).scrollTop())<=5){
 					if(parseInt(totalweekmonth)>parseInt(totalcal)){
 						$(".cal_joblist3").append('<a href="javascript:;" onclick="showweekmonthsch();" class="btn loadmore3">Load More</a>');
 					}
-					if(parseInt(totalweekmonth)>parseInt(totalcal2)){
+					if(parseInt(totalweekmonth2)>parseInt(totalcal2)){
 						$(".cal_joblist4").append('<a href="javascript:;" onclick="showweekmonthsch();" class="btn loadmore4">Load More</a>');
 					}
 				}
@@ -889,10 +894,11 @@ function showweekmonthsch(){
 					var totalcal=jQuery('.cal_joblist3 .cal-details .cal-rightbx').length;
 					var totalweekmonth=0;
 					var totalcal2=jQuery('.cal_joblist4 .cal-details .cal-rightbx').length;
-					if(res['weekmonth']['total']){
-						totalweekmonth=res['weekmonth']['total'];
-					}
+					
 					if(openedtab=='#menu3'){
+						if(res['week']['total']){
+							totalweekmonth=res['week']['total'];
+						}
 						jQuery('#week_srchstart').val(1);
 						if(!$(window).hasScrollBar() && parseInt($(window).scrollTop())<=5){
 							if(parseInt(totalweekmonth)>parseInt(totalcal)){
@@ -901,6 +907,9 @@ function showweekmonthsch(){
 						}
 					}
 					else if(openedtab=='#menu4'){
+						if(res['month']['total']){
+							totalweekmonth=res['month']['total'];
+						}
 						jQuery('#month_srchstart').val(1);
 						if(!$(window).hasScrollBar() && parseInt($(window).scrollTop())<=5){
 							if(parseInt(totalweekmonth)>parseInt(totalcal2)){
