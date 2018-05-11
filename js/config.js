@@ -129,7 +129,7 @@ function checkloggedin(uid)
 	   }
 		else
 		{
-			window.location='activity-feed.html';	
+			window.location='frontpage.html';	
 		}
 	 },  
 	 error: function(response, d, a){

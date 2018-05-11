@@ -3,6 +3,42 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
+.frontpage ul {
+    padding: 0px;
+}
+.frontpage ul li {
+width: 44.8%;
+    margin: 0px 2.6% 5% 2.6%;
+    float: left;
+    list-style: none;
+    border: 2px solid #7f7f7f;
+    padding: 10px 5px;
+    border-radius: 12px;
+    text-align: center;
+
+}
+.frontpage ul li img {
+    height: 67px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+.frontpage ul li p {
+    margin: 0px;
+    color: #000;
+    float: left;
+    width: 100%;
+	    text-transform: uppercase;
+		    margin-top: 9px;
+			    font-weight: 600;
+				    font-size: 15px;
+}
+
+.frontpage ul li a {
+    float: left;
+    width: 100%;
+}
+
+
 .cal-allcnt {
     margin-top: 37px;
 }
@@ -386,6 +422,10 @@ input.sch-srch {
 	left: 38px;
 	top: 50%;
 	margin-top: -10px;
+	display:none;
+}
+.frontpage ul li:focus, .frontpage ul li:hover {
+    background: #f0f1f1;
 }
 .schedule-time {
 	color: #000;

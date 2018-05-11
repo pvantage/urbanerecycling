@@ -96,7 +96,7 @@ jQuery(document).ready(function(){
 					localStorage.setItem('Staff_photo', res['checklogin']['udetail']['photo']);
 					localStorage.setItem('Staff_job_title', res['checklogin']['udetail']['job_title']);
 					localStorage.setItem('Staff_user_type', res['checklogin']['udetail']['user_type']);
-					window.location ='activity-feed.html';
+					window.location ='frontpage.html';
 				
 				}else if(res['checklogin']['error']){				
 					jQuery('body .showmessage').remove();
