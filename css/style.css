@@ -17,6 +17,16 @@ width: 44.8%;
     text-align: center;
 
 }
+.homehdrs img {
+    width: 20px;
+    float: left;
+    margin-right: 5px;
+}
+.bottom-nav-bar ul li a.moremenu{ background:none !important;}
+body .homehdrs h4.modal-title {
+    font-weight: 600;
+    font-size: 20px;
+}
 .frontpage ul li img {
     height: 67px;
     display: inline-block;

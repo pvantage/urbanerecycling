@@ -28,11 +28,12 @@ function users_menus()
 {
 	var User_fname=localStorage.getItem('Staff_fname');
 	var menu='<ul>';
-	menu+='<li><a href="activity-feed.html" class="activityfeedmenu"><i class="fa fa-home" aria-hidden="true"></i><br>Activity</a></li>';
+	menu+='<li><a href="frontpage.html" class="myschedulemenu"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a></li>';
+	menu+='<li><a href="activity-feed.html" class="activityfeedmenu"><i class="fa fa-map" aria-hidden="true"></i><br>Activity</a></li>';
 	menu+='<li><a href="my-schedule.html" class="myschedulemenu"><i class="icon-jobs"></i><br>Jobs</a></li>';
 	//menu+='<li><a href="notification.html"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge badge-danger">9</span><br>Notifications </a></li>';
 	menu+='<li><a href="notification.html" class="notificationmenu"><i class="fa fa-bell" aria-hidden="true"></i><br>Notifications </a></li>';
-	menu+='<li><a href="more.html" class="moremenu"><i class="icon-more"></i><br>More</a></li>';
+	//menu+='<li><a href="more.html" class="moremenu"><i class="icon-more"></i><br>More</a></li>';
 	menu+='</ul>';
 	
 	return menu;
