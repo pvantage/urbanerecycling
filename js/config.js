@@ -28,7 +28,7 @@ function users_menus()
 {
 	var User_fname=localStorage.getItem('Staff_fname');
 	var menu='<ul>';
-	menu+='<li><a href="frontpage.html" class="myschedulemenu"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a></li>';
+	menu+='<li><a href="frontpage.html" class="frontpagemenu"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a></li>';
 	menu+='<li><a href="activity-feed.html" class="activityfeedmenu"><i class="fa fa-map" aria-hidden="true"></i><br>Activity</a></li>';
 	menu+='<li><a href="my-schedule.html" class="myschedulemenu"><i class="icon-jobs"></i><br>Jobs</a></li>';
 	//menu+='<li><a href="notification.html"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge badge-danger">9</span><br>Notifications </a></li>';
@@ -75,8 +75,10 @@ if(typeof uid!='undefine' && uid!='' && uid!=null){
 			jQuery('.bottom-nav-bar').html(menu);
 			var path = window.location.pathname;
 			var page = path.split("/").pop();
+			
 			if(page=='notification.html'){jQuery('.bottom-nav-bar a.notificationmenu').addClass('active');}
 			else if(page=='activity-feed.html'){jQuery('.bottom-nav-bar a.activityfeedmenu').addClass('active');}
+			else if(page=='frontpage.html'){jQuery('.bottom-nav-bar a.frontpagemenu').addClass('active');}
 			else if(page=='my-schedule.html'){jQuery('.bottom-nav-bar a.myschedulemenu').addClass('active');}
 			else if(page=='more.html' || page=='staff.html' || page=='client.html' || page=='task.html'){jQuery('.bottom-nav-bar a.moremenu').addClass('active');}
 			var url=siteurl+'/api/jobs/unreadnotifications';
