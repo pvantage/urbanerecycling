@@ -230,7 +230,7 @@ var uid=localStorage.getItem('Staff_ID');
 if(typeof uid!='undefine' && uid!='' && uid!=null){
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
-	if(page=='activity-feed.html'){
+	if(page=='activity-feed.html' || page=='frontpage.html' || page=='my-schedule.html' || page=='notification.html'){
 		getLocation();
 	}
 }
