@@ -59,19 +59,19 @@ function shownotificationpopup(){
 		//jQuery('body').append(html);
 		//setTimeout(function(){jQuery('.showmessage').slideUp();},5000);
 		
-		var totalnoti=jQuery('.showpopmessage').length;
+		var totalnoti=jQuery('.notification-pop').length;
 		if(parseInt(totalnoti)<=0){
-		   if(!jQuery('body').hasClass('showpopmessage')){
-			   var html='<div class="showpopmessage"></div>';
+		   if(!jQuery('body').hasClass('notification-pop')){
+			   var html='<div class="showpopmessage notification-pop"></div>';
 			   jQuery('body').append(html);
 		   }
 		}
-		jQuery('.showpopmessage').append(res);
+		jQuery('.notification-pop').append(res);
 		jQuery('a.closenotification').click(function(){
 			jQuery(this).parents('.trip-notification').remove();
 			var totalnoti=jQuery('.trip-notification').length;
 			if(parseInt(totalnoti)<=0){
-				jQuery('.showpopmessage').remove();
+				jQuery('.notification-pop').remove();
 			}
 		});
 		

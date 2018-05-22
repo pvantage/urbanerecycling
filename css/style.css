@@ -3,8 +3,48 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
+
+body .notification-pop {
+    background: green;
+    color: #fff;
+    padding: 0px;
+}
+.notification-pop .trip-content {
+    float: left;
+    width: 72%;
+    padding: 7px;
+    padding-right: 0px;
+	    padding-bottom: 0;
+}
+body .notification-pop .trip-title {
+    text-align: left;
+    font-size: 12px;
+}
+
+body .notification-pop .trip-link a {
+    margin: 0px 0px;
+    color: #fff;
+    padding: 2px 4px;
+    background: #000;
+    font-size: 11px;
+}
+.notification-pop .trip-title a {
+    color: #fff;
+}
 .frontpage ul {
     padding: 0px;
+}
+.notification-pop .trip-notification {
+    text-align: center;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 6px;
+}
+body .notification-pop .trip-link {
+    float: right;
+    margin-top: 0px;
+    display: inline-block;
+    padding-top: 20px;
+    padding-right: 3px;
 }
 .frontpage ul li {
 width: 44.8%;
@@ -391,6 +431,10 @@ input.sch-srch {
 	border-bottom: 1px solid #ebebeb;
 	    float: left;
     width: 100%;
+	overflow:hidden;
+}
+.schedule-wrap {
+    overflow: hidden;
 }
 .schedule-detail:before {
 	content: "";
