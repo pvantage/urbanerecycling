@@ -54,10 +54,31 @@ function shownotificationpopup(){
 	 },
 	 success: function(res) { 
 	   if(jQuery.trim(res)!=''){
-	  	jQuery('body .showmessage').remove();
-		var html='<div class="showmessage popupnotification">'+res+'</div>';
-		jQuery('body').append(html);
-		setTimeout(function(){jQuery('.showmessage').slideUp();},5000);
+	  	//jQuery('body .showmessage').remove();
+		//var html='<div class="showmessage popupnotification">'+res+'</div>';
+		//jQuery('body').append(html);
+		//setTimeout(function(){jQuery('.showmessage').slideUp();},5000);
+		
+		var totalnoti=jQuery('.showpopmessage').length;
+		if(parseInt(totalnoti)<=0){
+		   if(!jQuery('body').hasClass('showpopmessage')){
+			   var html='<div class="showpopmessage"></div>';
+			   jQuery('body').append(html);
+		   }
+		}
+	   var htm='';
+		htm+='<div class="trip-notification">';
+		htm+='<div class="trip-content">';
+		htm+='<div class="trip-title">'+res+'</div>';
+		htm+='</div><div class="trip-link"><a class="closenotification" href="javascript:;">CLOSE</a></div></div>';
+		jQuery('.showpopmessage').append(htm);
+		jQuery('a.closenotification').click(function(){
+			jQuery(this).parents('.trip-notification').remove();
+			var totalnoti=jQuery('.trip-notification').length;
+			if(parseInt(totalnoti)<=0){
+				jQuery('.showpopmessage').remove();
+			}
+		});
 		
 	  }
 	  setTimeout(shownotificationpopup,10000);

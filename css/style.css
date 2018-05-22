@@ -612,6 +612,13 @@ body .donbtn {
     float: left;
     font-weight: 600;
 }
+.popupformats span.job-type {
+    color: #29a03f;
+    margin: 0px 0px 5px;
+    float: left;
+    font-weight: 600;
+	clear:both;
+}
 .whitebase {
     border-bottom: 1px solid #ebebeb;
     padding: 10px;

@@ -36,6 +36,7 @@
               <h3><span class="company_name"></span> <span class="infoicon"><a href="#" data-toggle="modal" data-target="#myModal20"><img src="images/info.png"/></a></span></h3>
               <div class="sch-adr"></div>
               <span class="grey-color"></span>
+			  <span class="job-type"></span>
 			  <button class="str-job" style="display:none;">Start Job</button>
             </div>
           </div>
@@ -69,7 +70,7 @@
               <h1>Tasks</h1>
               <div class="pop-multibox tasklists"></div>
             </div>
-			<div class="pop-edit-item p-pic-req">
+			<div class="pop-edit-item p-pic-req donotshowthis">
               <h1>Forms</h1>
               <div class="pop-multibox formlists" style="padding-top:10px;"></div>
             </div>
@@ -164,7 +165,7 @@
         <ul class="more-menu">
           <li><a href="#" data-toggle="modal" class="opennewemail" data-target="#myModal21"><img src="images/email.png"><span>Email</span></a></li>
           <li><a href="#" data-toggle="modal" data-target="#myModal10"><img src="images/task.png"><span>Task</span></a></li>
-          <li><a href="#" data-toggle="modal" data-target="#myModal16"><img src="images/form.png"><span>Forms</span></a></li>
+          <li class="donotshowthis"><a href="#" data-toggle="modal" data-target="#myModal16"><img src="images/form.png"><span>Forms</span></a></li>
           <li class="addnewpurbtn"><a href="#" data-toggle="modal" data-target="#myModal2"><img src="images/book.png"><span>PU Request</span></a></li>
 		  <li><a href="#" data-toggle="modal" data-target="#myModal102"><img src="images/note.png"><span>Note</span></a></li>
         </ul>
@@ -501,6 +502,7 @@
 <script type="text/javascript" src="js/config.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
+var jobtype='';
 function openfileinpopup(file){
 	cordova.InAppBrowser.open(encodeURI('https://docs.google.com/gview?embedde‌​d=true&url='+siteurl+'/uploads/'+file), '_blank', 'location=yes,EnableViewPortScale=yes');
 	/*var files=file.split('.');
@@ -551,6 +553,11 @@ function loadjob(job_id){
 			jQuery('.company_name').html(res['record']['customer_name']);
 			jQuery('.sch-adr').html(res['record']['address']);
 			jQuery('.grey-color').html(mobile);
+			jobtype=res['record']['job_type'];
+			if(res['record']['job_type']=='appointment'){
+				jQuery('.job-type').html('Appointment');
+				jQuery('.donotshowthis').remove();
+			}
 			jQuery('input[name="contact_fname"]').val(res['record']['contact_fname']);
 			jQuery('input[name="contact_lname"]').val(res['record']['contact_lname']);
 			jQuery('input[name="contact_email"]').val(res['record']['contact_email']);
@@ -727,19 +734,21 @@ function loadjob(job_id){
 			var newstyle='top:'+(parseInt(ht/2)-40)+'px; left:50%; margin-left:-143px;';
 			jQuery('.endjob').click(function(){
 				var endjob=true;
-				if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
-					endjob=false;
-					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage popupnotification2" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
-					jQuery('body').append(html);
-					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
-				}
-				else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
-					endjob=false;
-					jQuery('body .showmessage').remove();
-					var html='<div class="showmessage popupnotification2" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
-					jQuery('body').append(html);
-					setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
+				if(jobtype=='job'){
+					if(!jQuery('.formlists .left-block a').hasClass('form_missiletag')){
+						endjob=false;
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage popupnotification2" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
+					}
+					else if(!jQuery('.formlists .left-block a').hasClass('form_transferresponse')){
+						endjob=false;
+						jQuery('body .showmessage').remove();
+						var html='<div class="showmessage popupnotification2" style="'+newstyle+'">Please complete TOR/Missile Tag form.</div>';
+						jQuery('body').append(html);
+						setTimeout(function(){jQuery('.showmessage').slideUp();},2000);
+					}
 				}
 				if(endjob){
 					var url=siteurl+'/api/jobs/updatejobstatus';
