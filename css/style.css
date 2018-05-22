@@ -18,8 +18,9 @@ body .notification-pop {
 }
 body .notification-pop .trip-title {
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
 }
+
 
 body .notification-pop .trip-link a {
     margin: 0px 0px;
@@ -1560,6 +1561,9 @@ ul.attachment-areas a{ color:#000;}
 
 
 @media (min-width: 767px) and (max-width: 1024px) {
+body .notification-pop .trip-title {
+    font-size: 16px;
+}	
 body {
     margin-top: 25px;
 }
