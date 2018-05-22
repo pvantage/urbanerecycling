@@ -66,12 +66,7 @@ function shownotificationpopup(){
 			   jQuery('body').append(html);
 		   }
 		}
-	   var htm='';
-		htm+='<div class="trip-notification">';
-		htm+='<div class="trip-content">';
-		htm+='<div class="trip-title">'+res+'</div>';
-		htm+='</div><div class="trip-link"><a class="closenotification" href="javascript:;">CLOSE</a></div></div>';
-		jQuery('.showpopmessage').append(htm);
+		jQuery('.showpopmessage').append(res);
 		jQuery('a.closenotification').click(function(){
 			jQuery(this).parents('.trip-notification').remove();
 			var totalnoti=jQuery('.trip-notification').length;

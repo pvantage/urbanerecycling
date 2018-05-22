@@ -948,6 +948,9 @@ jQuery(document).ready(function(){
 	jQuery('#myModal20 .navigate_to_job').attr('href','navigate_job.html?job_id='+job_id+'&backurl=job.html');
 	
 	var gottoback=localStorage.getItem('gotopage');
+	if(typeof gottoback=='undefined' || gottoback==null || gottoback==''){
+		gottoback='my-schedule.html';
+	}
 	jQuery('a.gottoback').attr('href',gottoback);
 	loadjob(job_id);
 	
