@@ -639,7 +639,11 @@ function loadjob(job_id){
 				jQuery('.str-job').addClass('start-job');
 				jQuery('.str-job').removeClass('endjob');
 			}
-			
+			var Staff_Lat= localStorage.getItem('Staff_Lat');
+			var Staff_Long= localStorage.getItem('Staff_Long');
+			jQuery('#myModal20 .navigate_to_job').attr('href','javascript:;');
+			var mapurl='https://www.google.com/maps?saddr=' + Staff_Lat + ',' + Staff_Long + '&daddr=' + res['record']['lati'] + ',' + res['record']['longi'];
+			jQuery('#myModal20 .navigate_to_job').attr('onclick',"opengooglemap('"+mapurl+"')");
 			setTimeout(function(){
 				jQuery('select[name="status"]').val(res['record']['status']);
 				jQuery('select[name="category_id"]').val(res['record']['category_id']);
@@ -945,7 +949,7 @@ jQuery(document).ready(function(){
 	jQuery('input[name="add_by"]').val(uid);
 	
 	jQuery('#myModal20 .view_job_detail').attr('href','job.html?job_id='+job_id);
-	jQuery('#myModal20 .navigate_to_job').attr('href','navigate_job.html?job_id='+job_id+'&backurl=job.html');
+	//jQuery('#myModal20 .navigate_to_job').attr('href','navigate_job.html?job_id='+job_id+'&backurl=job.html');
 	
 	var gottoback=localStorage.getItem('gotopage');
 	if(typeof gottoback=='undefined' || gottoback==null || gottoback==''){
