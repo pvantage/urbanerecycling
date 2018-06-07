@@ -276,5 +276,5 @@ function dateformat(date){
 	return yyyy+'-'+mm+'-'+dd;
 }
 function opengooglemap(mapurl){
-	cordova.InAppBrowser.open(mapurl, '_blank', 'location=yes');	
+	cordova.InAppBrowser.open(mapurl, '_blank', 'location=no');	
 }
