@@ -188,7 +188,7 @@ jQuery(document).ready(function(){
 				var Staff_Long= localStorage.getItem('Staff_Long');
 				jQuery('#myModal20 .navigate_to_job').attr('href','javascript:;');
 				var mapurl='https://www.google.com/maps?saddr=' + Staff_Lat + ',' + Staff_Long + '&daddr=' + job_lati + ',' + job_longi;
-				jQuery('#myModal20 .navigate_to_job').attr('onclick','opengooglemap('+mapurl+')');
+				jQuery('#myModal20 .navigate_to_job').attr('onclick',"opengooglemap('"+mapurl+"')");
 				jQuery('#myModal20').modal();
 			});
 		}else if(res['nodata']){				

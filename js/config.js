@@ -277,5 +277,4 @@ function dateformat(date){
 }
 function opengooglemap(mapurl){
 	cordova.InAppBrowser.open(mapurl, '_blank', 'location=yes');	
-	return false;
 }
