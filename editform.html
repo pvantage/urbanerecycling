@@ -327,7 +327,10 @@ function editjobform(form_id){
 				var certification_types=res['certification_type'];
 				jQuery('#editmissiletagform input[name="certification_type[]"]').each(function(index){
 					var v=jQuery(this).val();
-					if(certification_types[index]==v){jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);}
+					var a = certification_types.indexOf(v);
+					if(a>=0){
+						jQuery(this).attr('checked',true);jQuery(this).prop('checked',true);
+					}
 				});
 				var loose_hdd=res['loose_hdd'];
 				jQuery('#editmissiletagform input[name="loose_hdd"]').each(function(index){
