@@ -69,3 +69,19 @@ ul.current {display:block;}
 .loadmore3, .loadmore4, .loadmore3:active, .loadmore4:active{width:100%; display:block; background:#29a03f; color:#FFFFFF; border:1px solid #FFFFFF; text-align:center; padding:2px;}
 .login-box{text-align:center;}
 .showmessage.forgotpwd{width:350px;}
+ul.email_pre_text {
+    float: left;
+    width: 100%;
+    padding: 0px;
+    margin: 0px 0px 5px 0px;
+}
+ul.email_pre_text li {
+    float: left;
+    background: #FCFFFF;
+    padding: 2px 13px;
+    margin-right: 6px;
+    list-style: none;
+	border:1px solid #29a03f;
+	border-radius:5px;
+}
+ul.email_pre_text li a{color:#000000; text-decoration:none}

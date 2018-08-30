@@ -1,5 +1,5 @@
-var siteurl = "http://urbanerecycling.com/urbanerecycling";
-var realsiteurl = "http://urbanerecycling.com/urbanerecycling/";
+var siteurl = "http://vantageappspro.com/urbanerecycling";
+var realsiteurl = "http://vantageappspro.com/urbanerecycling/";
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -277,4 +277,14 @@ function dateformat(date){
 }
 function opengooglemap(mapurl){
 	cordova.InAppBrowser.open(mapurl, '_blank', 'location=no');	
+}
+function email_pre_text($this){
+	var data=jQuery('span.emailcontent',$this).html();
+	var email_content=jQuery('#email_content').val();
+	if(jQuery.trim(email_content)!=''){
+		jQuery('#email_content').val(email_content+'\n'+data);
+	}
+	else{
+		jQuery('#email_content').val(data);
+	}
 }

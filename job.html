@@ -249,8 +249,10 @@
             </div>
             <div class="form-box">
               <label>Message</label>
+			  <div class="emalpretextlist"></div>
               <textarea placeholder="Email Content" rows="3" cols="40" name="email_content" id="email_content"></textarea>
             </div>
+			
             <div class="form-box attchstc">
               <label>Attachment(s)</label>
               <div class="attachmentbox attmds">
@@ -1372,6 +1374,20 @@ jQuery(document).ready(function(){
 			return false; 
 			}
 		});
+		jQuery.ajax({
+			url: siteurl+'/api/jobs/emailpretext',
+			type: "POST",
+			crossDomain: true,
+			data:  {},
+			success: function(data)
+			{
+				jQuery('.emalpretextlist').html(data);
+			},
+			error: function() 
+			{
+			} 	        
+	   });
+		   
 });
 function moveattachfile(id){
 	if(jQuery('input',id).hasClass('attachinemail')){
