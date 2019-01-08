@@ -88,13 +88,13 @@
               <h1>CONTACTS</h1>
               <div class="pop-cnt client-addcnt">
                 <div class="pop-edit-item">
-					<h1>First Name<span class="errorstk">*</span></h1>
+					<h1>Full Name<span class="errorstk">*</span></h1>
 					<input type="text" class="required" placeholder="First Name" name="contact_fname"/>
 				  </div>
-				  <div class="pop-edit-item">
+				  <!--<div class="pop-edit-item">
 					<h1>Last Name<span class="errorstk">*</span></h1>
 					<input type="text" class="required" placeholder="Last Name" name="contact_lname"/>
-				  </div>
+				  </div>-->
 				  <div class="pop-edit-item">
 					<h1>Email<span class="errorstk">*</span></h1>
 					<input type="email" class="required" placeholder="Email Address" name="contact_email"/>
@@ -560,8 +560,8 @@ function loadjob(job_id){
 				jQuery('.job-type').html('Appointment');
 				jQuery('.donotshowthis').remove();
 			}
-			jQuery('input[name="contact_fname"]').val(res['record']['contact_fname']);
-			jQuery('input[name="contact_lname"]').val(res['record']['contact_lname']);
+			jQuery('input[name="contact_fname"]').val(res['record']['contact_fname']+' '+res['record']['contact_lname']);
+			//jQuery('input[name="contact_lname"]').val(res['record']['contact_lname']);
 			jQuery('input[name="contact_email"]').val(res['record']['contact_email']);
 			jQuery('#emailform input[name="email_to"]').val(res['record']['contact_email']);
 			jQuery('input[name="contact_mobile"]').val(res['record']['contact_mobile']);

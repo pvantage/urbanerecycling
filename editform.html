@@ -369,6 +369,8 @@ function editjobform(form_id){
 				jQuery('#editjobformmissiletag .showhide_how_many').show();
 				jQuery('#editjobformmissiletag .successsavejobform').hide();
 				jQuery('#editjobformmissiletag .saveeditmissiletag').show();
+				
+				jQuery('#editmissiletagform input[name="number_of_missiles"]').val(res['number_of_missiles']);
 				jQuery('#editmissiletagform input[name="missile_tag"]').val(res['missile_tag']);
 				jQuery('#editmissiletagform input[name="missiles_nos"]').val(res['missiles_nos']);
 				jQuery('#editmissiletagform input[name="pallets_qty"]').val(res['pallets_qty']);
