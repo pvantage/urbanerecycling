@@ -1,5 +1,7 @@
-var siteurl = "http://urbanerecycling.com/urbanerecycling";
-var realsiteurl = "http://urbanerecycling.com/urbanerecycling/";
+//var siteurl = "http://localhost/urbanerecycling";
+//var realsiteurl = "http://localhost/urbanerecycling/";
+var siteurl = "http://vantageappspro.com/urbanerecycling";
+var realsiteurl = "http://vantageappspro.com/urbanerecycling/";
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),

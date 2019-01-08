@@ -56,16 +56,32 @@
 				<input type="hidden" name="form_id" value="0" />
 				<input type="hidden" name="form_type" value="missiletag" />
 				<input type="hidden" name="form_title" value="Missile Tag" />
-				<input type="hidden" name="upload_fields" value="photo_material_1,photo_material_2,photo_material_3" />
+				<input type="hidden" name="upload_fields" value="photo_material_1,photo_material_2,photo_material_3,photo_material_4,photo_material_5" />
 				<input type="hidden" name="add_by" value="0">
 		  <div class="nf-box">
             <label>Number of Missiles</label>
             <input type="number" class="forminput" name="number_of_missiles" min="1" />
           </div>
           <div class="nf-box">
-            <label>Missile Tag #'s*</label>
+            <label>Unit Description*</label>
             <input class="forminput required" type="text" name="missile_tag" placeholder="" />
           </div>
+		  <div class="nf-box">
+			  <label>Missiles (#): </label>
+			  <input type="text" name="missiles_nos" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Pallets (qty): </label>
+			  <input type="number" name="pallets_qty" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Gaylords (qty): </label>
+			  <input type="number" name="gaylords_qty" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Loose Items: </label>
+			  <input type="text" name="loose_items" class="forminput" />
+			</div>
           <div class="nf-box">
             <label>Send Certification to?*</label>
             <input class="forminput required" type="text" placeholder="" name="certification_name" />
@@ -145,6 +161,20 @@
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
 				  <img id="edit_image_material_3" class="showuploadphoto" style="display:none;" />
           </div>
+		  <div class="nf-box">
+            <label>Photo 4</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto4"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto42"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_4" id="photo_material_4" />
+				<img id="edit_image_material_4" class="showuploadphoto" style="display:none;" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 5</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto5"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto52"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_5" id="photo_material_5" />
+				<img id="edit_image_material_5" class="showuploadphoto" style="display:none;" />
+          </div>
           <div class="nf-box">
 		  	<img src="images/ajax-loader.gif" class="uploadloader" />
             <button class="nf-box-btn savenewmissiletag" type="button">Done</button>
@@ -191,7 +221,7 @@
 				<input type="hidden" name="form_job_id" value="" />
 				<input type="hidden" name="form_type" value="transferresponse" />
 				<input type="hidden" name="form_title" value="Transfer of Responsibility" />
-				<input type="hidden" name="upload_fields" value="photo_trans_material,signaturefile" />
+				<input type="hidden" name="upload_fields" value="photo_trans_material,signaturefile,photo_material_2t,photo_material_3t,photo_material_4t,photo_material_5t" />
 				<input type="hidden" name="add_by" value="0">
           <div class="nf-box">
             <label>Certification Requested</label>
@@ -236,6 +266,34 @@
 			<a class="phone-anch" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="edit_image_trans_material" class="showuploadphoto" style="display:none;" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 2</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto2t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto22t"><i class="fa fa-picture-o"></i></a>
+            <input type="hidden" name="photo_material_2t" id="photo_material_2t" />
+				  	<img id="edit_image_material_2t" class="showuploadphoto" style="display:none;" />
+          </div>
+          <div class="nf-box">
+            <label>Photo 3</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto3t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto32t"><i class="fa fa-picture-o"></i></a>
+            <input type="hidden" name="photo_material_3t" id="photo_material_3t" />
+				  <img id="edit_image_material_3t" class="showuploadphoto" style="display:none;" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 4</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto4t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto42t"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_4t" id="photo_material_4t" />
+				<img id="edit_image_material_4t" class="showuploadphoto" style="display:none;" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 5</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto5t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto52t"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_5t" id="photo_material_5t" />
+				<img id="edit_image_material_5t" class="showuploadphoto" style="display:none;" />
           </div>
           <div class="nf-box">
             <label>Was customer present at pickup?</label>
@@ -282,7 +340,6 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/signature_pad.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
 <script type="text/javascript">
 function editjobform(form_id){
 	var url=siteurl+'/api/jobs/viewjobform';
@@ -313,7 +370,10 @@ function editjobform(form_id){
 				jQuery('#editjobformmissiletag .successsavejobform').hide();
 				jQuery('#editjobformmissiletag .saveeditmissiletag').show();
 				jQuery('#editmissiletagform input[name="missile_tag"]').val(res['missile_tag']);
-				//jQuery('#editmissiletagform input[name="certification_to"]').val(res['certification_to']);
+				jQuery('#editmissiletagform input[name="missiles_nos"]').val(res['missiles_nos']);
+				jQuery('#editmissiletagform input[name="pallets_qty"]').val(res['pallets_qty']);
+				jQuery('#editmissiletagform input[name="gaylords_qty"]').val(res['gaylords_qty']);
+				jQuery('#editmissiletagform input[name="loose_items"]').val(res['loose_items']);
 				jQuery('#editmissiletagform input[name="certification_name"]').val(res['certification_name']);
 				jQuery('#editmissiletagform input[name="certification_email"]').val(res['certification_email']);
 				jQuery('#editmissiletagform input[name="how_many"]').val(res['how_many']);
@@ -352,8 +412,21 @@ function editjobform(form_id){
 				var photo_material_3=res['photo_material_3'];
 				if(jQuery.trim(photo_material_3)!=''){
 					var fl=photo_material_3['file'];
+					
 					jQuery('#edit_image_material_3').attr('src',siteurl+'/'+fl);
 					jQuery('#edit_image_material_3').show();
+				}
+				var photo_material_4=res['photo_material_4'];
+				if(jQuery.trim(photo_material_4)!=''){
+					var fl=photo_material_4['file'];
+					jQuery('#edit_image_material_4').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_4').show();
+				}
+				var photo_material_5=res['photo_material_5'];
+				if(jQuery.trim(photo_material_5)!=''){
+					var fl=photo_material_5['file'];
+					jQuery('#edit_image_material_5').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_5').show();
 				}
 				jQuery('#editjobformmissiletag td.show_pickup_date').html(res['pickup_date']);
 				jQuery('#editjobformmissiletag td.show_pickup_name').html(res['pickup_name']);
@@ -478,6 +551,30 @@ function editjobform(form_id){
 					jQuery('#edit_image_trans_material').attr('src',siteurl+'/'+fl);
 					jQuery('#edit_image_trans_material').show();
 				}
+				var photo_material_2t=res['photo_material_2t'];
+				if(jQuery.trim(photo_material_2t)!=''){
+					var fl=photo_material_2t['file'];
+					jQuery('#edit_image_material_2t').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_2t').show();
+				}
+				var photo_material_3t=res['photo_material_3t'];
+				if(jQuery.trim(photo_material_3t)!=''){
+					var fl=photo_material_3t['file'];
+					jQuery('#edit_image_material_3t').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_3t').show();
+				}
+				var photo_material_4t=res['photo_material_4t'];
+				if(jQuery.trim(photo_material_4t)!=''){
+					var fl=photo_material_4t['file'];
+					jQuery('#edit_image_material_4t').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_4t').show();
+				}
+				var photo_material_5t=res['photo_material_5t'];
+				if(jQuery.trim(photo_material_5t)!=''){
+					var fl=photo_material_5t['file'];
+					jQuery('#edit_image_material_5t').attr('src',siteurl+'/'+fl);
+					jQuery('#edit_image_material_5t').show();
+				}
 				jQuery('#editjobformtransferresponse td.show_pickup_date').html(res['pickup_date']);
 				jQuery('#editjobformtransferresponse td.show_pickup_name').html(res['pickup_name']);
 				jQuery('#editjobformtransferresponse td.show_contact_name').html(res['contact_name']);
@@ -550,7 +647,7 @@ function loadjob(job_id){
 		}
 	});
 }
-var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0, transferuploading=0;
+var uploadfile1=0,uploadfile2=0,uploadfile3=0,uploadfile4=0,uploadfile5=0, formuploading=0, transferuploading=0,uploadfile2t=0,uploadfile3t=0,uploadfile4t=0,uploadfile5t=0;
 
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
@@ -811,6 +908,16 @@ function selPic1(img) {
 			jQuery('#edit_image_material_3').show();
 			uploadfile3=1;
 		}
+		else if(img=='photo_material_4'){
+			jQuery('#edit_image_material_4').attr('src',f);
+			jQuery('#edit_image_material_4').show();
+			uploadfile4=1;
+		}
+		else if(img=='photo_material_5'){
+			jQuery('#edit_image_material_5').attr('src',f);
+			jQuery('#edit_image_material_5').show();
+			uploadfile5=1;
+		}
 		if(filetrasfer!=''){
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -845,7 +952,15 @@ function selPic1(img) {
 						jQuery('#photo_material_3').val(r.response);
 						uploadfile3=0;
 					}
-					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+					else if(img=='photo_material_4'){
+						jQuery('#photo_material_4').val(r.response);
+						uploadfile4=0;
+					}
+					else if(img=='photo_material_4'){
+						jQuery('#photo_material_4').val(r.response);
+						uploadfile4=0;
+					}
+					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && uploadfile4=='0' && uploadfile5=='0' && formuploading=='1')
 					{
 						jQuery('.uploadloader').hide();
 						jQuery("#editjobformmissiletag").submit();
@@ -862,7 +977,7 @@ function selPic1(img) {
     });
     
 }
-function selPic2(img) {
+function selPic1t(img) {
 	//alert('Pick a pic');
 	var job_id=gup('job_id');
 	navigator.camera.getPicture(function(f) {
@@ -872,7 +987,26 @@ function selPic2(img) {
 			jQuery('#edit_image_trans_material').show();
 			transferuploading=1;
 		}
-		
+		else if(img=='photo_material_2t'){
+			jQuery('#edit_image_material_2t').attr('src',f);
+			jQuery('#edit_image_material_2t').show();
+			uploadfile2t=1;
+		}
+		else if(img=='photo_material_3t'){
+			jQuery('#edit_image_material_3t').attr('src',f);
+			jQuery('#edit_image_material_3t').show();
+			uploadfile3t=1;
+		}
+		else if(img=='photo_material_4t'){
+			jQuery('#edit_image_material_4t').attr('src',f);
+			jQuery('#edit_image_material_4t').show();
+			uploadfile4t=1;
+		}
+		else if(img=='photo_material_5t'){
+			jQuery('#edit_image_material_5t').attr('src',f);
+			jQuery('#edit_image_material_5t').show();
+			uploadfile5t=1;
+		}
 		if(filetrasfer!=''){
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -899,8 +1033,23 @@ function selPic2(img) {
 						jQuery('#photo_trans_material').val(r.response);
 						transferuploading=0;
 					}
-					
-					if(transferuploading=='0' && formuploading=='1')
+					else if(img=='photo_material_2t'){
+						jQuery('#photo_material_2t').val(r.response);
+						uploadfile2t=0;
+					}
+					else if(img=='photo_material_3t'){
+						jQuery('#photo_material_3t').val(r.response);
+						uploadfile3t=0;
+					}
+					else if(img=='photo_material_4t'){
+						jQuery('#photo_material_4t').val(r.response);
+						uploadfile4t=0;
+					}
+					else if(img=='photo_material_4t'){
+						jQuery('#photo_material_4t').val(r.response);
+						uploadfile4t=0;
+					}
+					if(transferuploading=='0' && uploadfile2t=='0' && uploadfile3t=='0' && uploadfile4t=='0' && uploadfile5t=='0' && formuploading=='1')
 					{
 						jQuery('.uploadloader').hide();
 						jQuery("#edittransferresponseform").submit();
@@ -917,6 +1066,7 @@ function selPic2(img) {
     });
     
 }
+
 function fail(error) {
 	jQuery('body .showmessage').remove();
 	var html='<div class="showmessage" style="width:100%">Uploading error: Code = ' + error.code+', upload error source ' + error.source+', upload error target ' + error.target+'</div>';
@@ -951,6 +1101,16 @@ function selPic3(img) {
 				jQuery('#edit_image_material_3').show();
 				uploadfile3=1;
 			}
+			else if(img=='photo_material_4'){
+				jQuery('#edit_image_material_4').attr('src',filetrasfer);
+				jQuery('#edit_image_material_4').show();
+				uploadfile4=1;
+			}
+			else if(img=='photo_material_5'){
+				jQuery('#edit_image_material_5').attr('src',filetrasfer);
+				jQuery('#edit_image_material_5').show();
+				uploadfile5=1;
+			}
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -973,8 +1133,8 @@ function selPic3(img) {
 				var t=ft.upload(filetrasfer2, uri, function(r){
 					//alert(r.response);
 					if(typeof img!='undefined'){
-						if(img=='photo_material_1'){
-							jQuery('#photo_material_1').val(r.response);
+						if(img=='photo_trans_material'){
+							jQuery('#photo_trans_material').val(r.response);
 							uploadfile1=0;
 						}
 						else if(img=='photo_material_2'){
@@ -985,7 +1145,15 @@ function selPic3(img) {
 							jQuery('#photo_material_3').val(r.response);
 							uploadfile3=0;
 						}
-						if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+						else if(img=='photo_material_4'){
+							jQuery('#photo_material_4').val(r.response);
+							uploadfile4=0;
+						}
+						else if(img=='photo_material_5'){
+							jQuery('#photo_material_5').val(r.response);
+							uploadfile5=0;
+						}
+						if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && uploadfile4=='0' && uploadfile5=='0' && formuploading=='1')
 						{
 							jQuery('.uploadloader').hide();
 							jQuery("#editjobformmissiletag").submit();
@@ -1004,7 +1172,7 @@ function selPic3(img) {
     
     
 }
-function selPic4(img) {
+function selPic3t(img) {
 	
 	var captureSuccess = function(mediaFiles) {
 		var i, path, len;
@@ -1021,7 +1189,26 @@ function selPic4(img) {
 				jQuery('#edit_image_trans_material').show();
 				transferuploading=1;
 			}
-			
+			else if(img=='photo_material_2t'){
+				jQuery('#edit_image_material_2t').attr('src',filetrasfer);
+				jQuery('#edit_image_material_2t').show();
+				uploadfile2t=1;
+			}
+			else if(img=='photo_material_3t'){
+				jQuery('#edit_image_material_3t').attr('src',filetrasfer);
+				jQuery('#edit_image_material_3t').show();
+				uploadfile3t=1;
+			}
+			else if(img=='photo_material_4t'){
+				jQuery('#edit_image_material_4t').attr('src',filetrasfer);
+				jQuery('#edit_image_material_4t').show();
+				uploadfile4t=1;
+			}
+			else if(img=='photo_material_5t'){
+				jQuery('#edit_image_material_5t').attr('src',filetrasfer);
+				jQuery('#edit_image_material_5t').show();
+				uploadfile5t=1;
+			}
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -1042,14 +1229,29 @@ function selPic4(img) {
 				var ft = new FileTransfer();
 				
 				var t=ft.upload(filetrasfer2, uri, function(r){
-					
+					//alert(r.response);
 					if(typeof img!='undefined'){
 						if(img=='photo_trans_material'){
 							jQuery('#photo_trans_material').val(r.response);
 							transferuploading=0;
 						}
-						
-						if(transferuploading=='0' && formuploading=='1')
+						else if(img=='photo_material_2t'){
+							jQuery('#photo_material_2t').val(r.response);
+							uploadfile2t=0;
+						}
+						else if(img=='photo_material_3t'){
+							jQuery('#photo_material_3t').val(r.response);
+							uploadfile3t=0;
+						}
+						else if(img=='photo_material_4t'){
+							jQuery('#photo_material_4t').val(r.response);
+							uploadfile4t=0;
+						}
+						else if(img=='photo_material_5t'){
+							jQuery('#photo_material_5t').val(r.response);
+							uploadfile5t=0;
+						}
+						if(transferuploading=='0' && uploadfile2t=='0' && uploadfile3t=='0' && uploadfile4t=='0' && uploadfile5t=='0' && formuploading=='1')
 						{
 							jQuery('.uploadloader').hide();
 							jQuery("#edittransferresponseform").submit();
@@ -1068,17 +1270,30 @@ function selPic4(img) {
     
     
 }
+
 document.addEventListener("deviceready", init, false);
 function init() {
 	platform=device.platform;
 	jQuery("#uploadphoto1").on("touchend", function(){selPic3('photo_material_1');});
 	jQuery("#uploadphoto2").on("touchend", function(){selPic3('photo_material_2');});
 	jQuery("#uploadphoto3").on("touchend", function(){selPic3('photo_material_3');});
-	jQuery("#transuploadphoto2").on("touchend", function(){selPic2('photo_trans_material');});
-	jQuery("#transuploadphoto").on("touchend", function(){selPic4('photo_trans_material');});
+	jQuery("#uploadphoto4").on("touchend", function(){selPic3('photo_material_4');});
+	jQuery("#uploadphoto5").on("touchend", function(){selPic3('photo_material_5');});
+	jQuery("#transuploadphoto2").on("touchend", function(){selPic1t('photo_trans_material');});
+	jQuery("#uploadphoto22t").on("touchend", function(){selPic1t('photo_material_2t');});
+	jQuery("#uploadphoto32t").on("touchend", function(){selPic1t('photo_material_3t');});
+	jQuery("#uploadphoto42t").on("touchend", function(){selPic1t('photo_material_4t');});
+	jQuery("#uploadphoto52t").on("touchend", function(){selPic1t('photo_material_5t');});
+	jQuery("#transuploadphoto").on("touchend", function(){selPic3t('photo_trans_material');});
+	jQuery("#uploadphoto2t").on("touchend", function(){selPic3t('photo_material_2t');});
+	jQuery("#uploadphoto3t").on("touchend", function(){selPic3t('photo_material_3t');});
+	jQuery("#uploadphoto4t").on("touchend", function(){selPic3t('photo_material_4t');});
+	jQuery("#uploadphoto5t").on("touchend", function(){selPic3t('photo_material_5t');});
 	jQuery("#uploadphoto12").on("touchend", function(){selPic1('photo_material_1');});
 	jQuery("#uploadphoto22").on("touchend", function(){selPic1('photo_material_2');});
 	jQuery("#uploadphoto32").on("touchend", function(){selPic1('photo_material_3');});
+	jQuery("#uploadphoto42").on("touchend", function(){selPic1('photo_material_4');});
+	jQuery("#uploadphoto52").on("touchend", function(){selPic1('photo_material_5');});
 	
 }
 

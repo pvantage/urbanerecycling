@@ -38,16 +38,33 @@
 				<input type="hidden" name="form_job_id" value="" />
 				<input type="hidden" name="form_type" value="missiletag" />
 				<input type="hidden" name="form_title" value="Missile Tag" />
-				<input type="hidden" name="upload_fields" value="photo_material_1,photo_material_2,photo_material_3" />
+				<input type="hidden" name="upload_fields" value="photo_material_1,photo_material_2,photo_material_3,photo_material_4,photo_material_5" />
+				<input type="hidden" name="exist_upload_fields" value="exist_photo_material_1,exist_photo_material_2,exist_photo_material_3,exist_photo_material_4,exist_photo_material_5" />
 				<input type="hidden" name="add_by" value="0">
 		  <div class="nf-box">
-            <label>Number of Missiles</label>
+            <label>Number of Tags</label>
             <input type="number" class="forminput" name="number_of_missiles" min="1" />
           </div>
           <div class="nf-box">
-            <label>Missile Tag #'s*</label>
+            <label>Unit Description*</label>
             <input class="forminput required" type="text" name="missile_tag" placeholder="" />
           </div>
+		  <div class="nf-box">
+			  <label>Missiles (#): </label>
+			  <input type="text" name="missiles_nos" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Pallets (qty): </label>
+			  <input type="number" name="pallets_qty" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Gaylords (qty): </label>
+			  <input type="number" name="gaylords_qty" class="forminput" />
+			</div>
+			<div class="nf-box">
+			  <label>Loose Items: </label>
+			  <input type="text" name="loose_items" class="forminput" />
+			</div>
           <div class="nf-box">
             <label>Send Certification to?*</label>
             <input class="forminput required" type="text" placeholder="" name="certification_name" />
@@ -110,8 +127,9 @@
             <label>Photo of Material</label>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto1"><i class="fa fa-camera"></i></a>
 				<a class="phone-anch" href="javascript:;" id="uploadphoto12"><i class="fa fa-picture-o"></i></a>
-            <input type="hidden" name="photo_material_1" id="photo_material_1" />
-				  	<img id="image_material_1" class="showuploadphoto" style="display:none;" />
+				<input type="hidden" name="photo_material_1" id="photo_material_1" />
+				 <img id="image_material_1" class="showuploadphoto" style="display:none;" />
+				 <input type="hidden" name="exist_photo_material_1" id="exist_photo_material_1" />
           </div>
           <div class="nf-box">
             <label>Photo 2</label>
@@ -119,6 +137,7 @@
 				<a class="phone-anch" href="javascript:;" id="uploadphoto22"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_2" id="photo_material_2" />
 				  	<img id="image_material_2" class="showuploadphoto" style="display:none;" />
+					<input type="hidden" name="exist_photo_material_2" id="exist_photo_material_2" />
           </div>
           <div class="nf-box">
             <label>Photo 3</label>
@@ -126,6 +145,23 @@
 				<a class="phone-anch" href="javascript:;" id="uploadphoto32"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_material_3" id="photo_material_3" />
 				  <img id="image_material_3" class="showuploadphoto" style="display:none;" />
+				  <input type="hidden" name="exist_photo_material_3" id="exist_photo_material_3" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 4</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto4"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto42"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_4" id="photo_material_4" />
+				<img id="image_material_4" class="showuploadphoto" style="display:none;" />
+				<input type="hidden" name="exist_photo_material_4" id="exist_photo_material_4" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 5</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto5"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto52"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_5" id="photo_material_5" />
+				<img id="image_material_5" class="showuploadphoto" style="display:none;" />
+				<input type="hidden" name="exist_photo_material_5" id="exist_photo_material_5" />
           </div>
           <div class="nf-box">
 		  	<img src="images/ajax-loader.gif" class="uploadloader" />
@@ -154,7 +190,8 @@
 				<input type="hidden" name="form_job_id" value="" />
 				<input type="hidden" name="form_type" value="transferresponse" />
 				<input type="hidden" name="form_title" value="Transfer of Responsibility" />
-				<input type="hidden" name="upload_fields" value="photo_trans_material,signaturefile" />
+				<input type="hidden" name="upload_fields" value="photo_trans_material,signaturefile,photo_material_2t,photo_material_3t,photo_material_4t,photo_material_5t" />
+				<input type="hidden" name="exist_upload_fields" value="exist_photo_trans_material,exist_photo_material_2t,exist_photo_material_3t,exist_photo_material_4t,exist_photo_material_5t" />
 				<input type="hidden" name="add_by" value="0">
           <div class="nf-box">
             <label>Certification Requested</label>
@@ -199,6 +236,39 @@
 			<a class="phone-anch" href="javascript:;" id="transuploadphoto2"><i class="fa fa-picture-o"></i></a>
             <input type="hidden" name="photo_trans_material" id="photo_trans_material" />
 			<img id="image_trans_material" class="showuploadphoto" style="display:none;" />
+			<input type="hidden" name="exist_photo_trans_material" id="exist_photo_trans_material" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 2</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto2t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto22t"><i class="fa fa-picture-o"></i></a>
+            <input type="hidden" name="photo_material_2t" id="photo_material_2t" />
+				  	<img id="image_material_2t" class="showuploadphoto" style="display:none;" />
+					<input type="hidden" name="exist_photo_material_2t" id="exist_photo_material_2t" />
+          </div>
+          <div class="nf-box">
+            <label>Photo 3</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto3t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto32t"><i class="fa fa-picture-o"></i></a>
+            <input type="hidden" name="photo_material_3t" id="photo_material_3t" />
+				  <img id="image_material_3t" class="showuploadphoto" style="display:none;" />
+				  <input type="hidden" name="exist_photo_material_3t" id="exist_photo_material_3t" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 4</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto4t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto42t"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_4t" id="photo_material_4t" />
+				<img id="image_material_4t" class="showuploadphoto" style="display:none;" />
+				<input type="hidden" name="exist_photo_material_4t" id="exist_photo_material_4t" />
+          </div>
+		  <div class="nf-box">
+            <label>Photo 5</label>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto5t"><i class="fa fa-camera"></i></a>
+				<a class="phone-anch" href="javascript:;" id="uploadphoto52t"><i class="fa fa-picture-o"></i></a>
+				<input type="hidden" name="photo_material_5t" id="photo_material_5t" />
+				<img id="image_material_5t" class="showuploadphoto" style="display:none;" />
+				<input type="hidden" name="exist_photo_material_5t" id="exist_photo_material_5t" />
           </div>
           <div class="nf-box">
             <label>Was customer present at pickup?</label>
@@ -245,8 +315,127 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/signature_pad.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry&key=AIzaSyAdRw4y6QbeCa2AVoQcI_j7NMQZPYDrabU" type="text/javascript"></script>-->
 <script type="text/javascript">
+function deleteimg($this){
+	jQuery($this).next('input').val('');
+	jQuery($this).prev('img').attr('src','');
+	jQuery($this).prev('img').hide();
+	jQuery($this).remove();
+}
+function existjobformimg(job_id){
+	var url=siteurl+'/api/jobs/viewjobformimg';
+	jQuery.ajax({ 
+	 type: 'POST',  
+	 url: url,  
+	 dataType: 'json',
+	 data: {job_id:job_id},  
+	 beforeSend: function() {
+	 },		
+	 complete: function() {
+	 },
+	 success: function(res) { 
+	 	if(res['form_type'])
+		{
+			if(res['form_type']=='missiletag')
+			{
+				var photo_material_1=res['photo_material_1'];
+				if(jQuery.trim(photo_material_1)!=''){
+					var fl=photo_material_1['file'];
+					jQuery('#image_trans_material').attr('src',siteurl+'/'+fl);
+					jQuery('#image_trans_material').show();
+					jQuery('#exist_photo_trans_material').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_trans_material');
+				}
+				var photo_material_2=res['photo_material_2'];
+				if(jQuery.trim(photo_material_2)!=''){
+					var fl=photo_material_2['file'];
+					jQuery('#image_material_2t').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_2t').show();
+					jQuery('#exist_photo_material_2t').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_2t');
+				}
+				var photo_material_3=res['photo_material_3'];
+				if(jQuery.trim(photo_material_3)!=''){
+					var fl=photo_material_3['file'];
+					jQuery('#image_material_3t').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_3t').show();
+					jQuery('#exist_photo_material_3t').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_3t');
+				}
+				var photo_material_4=res['photo_material_4'];
+				if(jQuery.trim(photo_material_4)!=''){
+					var fl=photo_material_4['file'];
+					jQuery('#image_material_4t').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_4t').show();
+					jQuery('#exist_photo_material_4t').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_4t');
+				}
+				var photo_material_5=res['photo_material_5'];
+				if(jQuery.trim(photo_material_5)!=''){
+					var fl=photo_material_5['file'];
+					jQuery('#image_material_5t').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_5t').show();
+					jQuery('#exist_photo_material_5t').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_5t');
+				}
+				
+			}
+	 		if(res['form_type']=='transferresponse')
+			{
+				var photo_trans_material=res['photo_trans_material'];
+				if(jQuery.trim(photo_trans_material)!=''){
+					var fl=photo_trans_material['file'];
+					jQuery('#image_material_1').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_1').show();
+					jQuery('#exist_photo_material_1').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_1');
+				}
+				var photo_material_2t=res['photo_material_2t'];
+				if(jQuery.trim(photo_material_2t)!=''){
+					var fl=photo_material_2t['file'];
+					jQuery('#image_material_2').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_2').show();
+					jQuery('#exist_photo_material_2').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_2');
+				}
+				var photo_material_3t=res['photo_material_3t'];
+				if(jQuery.trim(photo_material_3t)!=''){
+					var fl=photo_material_3t['file'];
+					jQuery('#image_material_3').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_3').show();
+					jQuery('#exist_photo_material_3').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_3');
+				}
+				var photo_material_4t=res['photo_material_4t'];
+				if(jQuery.trim(photo_material_4t)!=''){
+					var fl=photo_material_4t['file'];
+					jQuery('#image_material_4').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_4').show();
+					jQuery('#exist_photo_material_4').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_4');
+				}
+				var photo_material_5t=res['photo_material_5t'];
+				if(jQuery.trim(photo_material_5t)!=''){
+					var fl=photo_material_5t['file'];
+					jQuery('#image_material_5').attr('src',siteurl+'/'+fl);
+					jQuery('#image_material_5').show();
+					jQuery('#exist_photo_material_5').val(fl);
+					jQuery('<a class="deleimg" href="javascript:;" onClick="deleteimg(this)"><i class="fa fa-trash-o"></i></a>').insertAfter('#image_material_5');
+				}
+			}
+			
+		}
+	 },  
+	 error: function(response, d, a){
+		
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},5000); 
+	 } 
+   });
+}
 function loadjob(job_id){
 	var url=siteurl+'/api/jobs/singlerecord';
 	var uid=localStorage.getItem('Staff_ID');
@@ -270,7 +459,7 @@ function loadjob(job_id){
 			jQuery('#newmissiletagform input[name="certification_email"],#newtransferresponseform input[name="certification_email"]').val(res['record']['contact_email']);
 			
 		}
-		
+		existjobformimg(job_id);
 		},  
 		error: function(response, d, a){
 		
@@ -282,7 +471,7 @@ function loadjob(job_id){
 		}
 	});
 }
-var uploadfile1=0,uploadfile2=0,uploadfile3=0, formuploading=0, transferuploading=0;
+var uploadfile1=0,uploadfile2=0,uploadfile3=0,uploadfile4=0,uploadfile5=0, formuploading=0, transferuploading=0,uploadfile2t=0,uploadfile3t=0,uploadfile4t=0,uploadfile5t=0;
 
 jQuery(document).ready(function(){
 	jQuery( document ).on( "mobileinit", function() {
@@ -314,7 +503,7 @@ jQuery(document).ready(function(){
 		//return false;
 		var url=siteurl+'/api/jobs/savejobform';
 		var noerror=true;
-		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
+		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1' || uploadfile4=='1' || uploadfile5=='1')
 		{
 			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
@@ -384,10 +573,6 @@ jQuery(document).ready(function(){
 				{	
 					jQuery('.savenewmissiletag').prev('img').hide();
 					jQuery("#newmissiletagform")[0].reset();
-					/*jQuery('.savenewmissiletag').hide();
-					jQuery('#newjobformmissiletag form').hide();
-					jQuery('#newjobformmissiletag .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
-					jQuery('#newjobformmissiletag .successsavejobform').show();*/
 					jQuery('body .showmessage').remove();
 					var html='<div class="showmessage">Job form save successfully</div>';
 					jQuery('body').append(html);
@@ -480,7 +665,7 @@ jQuery(document).ready(function(){
 	  jQuery("#newtransferresponseform").on('submit',(function(e) {
 		var url=siteurl+'/api/jobs/savejobform';
 		var noerror=true;
-		if(transferuploading=='1'){
+		if(transferuploading=='1' || uploadfile2t=='1' || uploadfile3t=='1' || uploadfile4t=='1' || uploadfile5t=='1'){
 			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
 			noerror=false;
@@ -537,10 +722,6 @@ jQuery(document).ready(function(){
 				jQuery(".savesignature").attr('disabled',false);
 				jQuery('#signaturefile').val('');
 				jQuery("#newtransferresponseform")[0].reset();
-				/*jQuery('.savenewtransferresponse').hide();
-				jQuery('#newjobformtransferresponse form').hide();
-				jQuery('#newjobformtransferresponse .successsavejobform').html('<a href="javascript:;" onclick="return editjobform('+data+')" class="editviewjobform btn btn-default">View Form</a><div class="clearfix"></div><a href="javascript:;" class="closeviewjobform btn btn-default">Done</a>');
-				jQuery('#newjobformtransferresponse .successsavejobform').show();*/
 				jQuery('body .showmessage').remove();
 				var html='<div class="showmessage">Job form save successfully</div>';
 				jQuery('body').append(html);
@@ -580,6 +761,16 @@ function selPic1(img) {
 			jQuery('#image_material_3').show();
 			uploadfile3=1;
 		}
+		else if(img=='photo_material_4'){
+			jQuery('#image_material_4').attr('src',f);
+			jQuery('#image_material_4').show();
+			uploadfile4=1;
+		}
+		else if(img=='photo_material_5'){
+			jQuery('#image_material_5').attr('src',f);
+			jQuery('#image_material_5').show();
+			uploadfile5=1;
+		}
 		if(filetrasfer!=''){
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -614,7 +805,15 @@ function selPic1(img) {
 						jQuery('#photo_material_3').val(r.response);
 						uploadfile3=0;
 					}
-					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+					else if(img=='photo_material_4'){
+						jQuery('#photo_material_4').val(r.response);
+						uploadfile4=0;
+					}
+					else if(img=='photo_material_5'){
+						jQuery('#photo_material_5').val(r.response);
+						uploadfile5=0;
+					}
+					if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && uploadfile4=='0' && uploadfile5=='0' && formuploading=='1')
 					{
 						jQuery('.uploadloader').hide();
 						jQuery("#newmissiletagform").submit();
@@ -631,17 +830,36 @@ function selPic1(img) {
     });
     
 }
-function selPic2(img) {
+function selPic1t(img) {
 	//alert('Pick a pic');
 	var job_id=gup('job_id');
 	navigator.camera.getPicture(function(f) {
         var filetrasfer=f;
 		if(img=='photo_trans_material'){
-			jQuery('#image_trans_material').attr('src',f);
+			jQuery('#image_trans_material').attr('src',path);
 			jQuery('#image_trans_material').show();
 			transferuploading=1;
 		}
-		
+		else if(img=='photo_material_2t'){
+			jQuery('#image_material_2t').attr('src',path);
+			jQuery('#image_material_2t').show();
+			uploadfile2t=1;
+		}
+		else if(img=='photo_material_3t'){
+			jQuery('#image_material_3t').attr('src',path);
+			jQuery('#image_material_3t').show();
+			uploadfile3t=1;
+		}
+		else if(img=='photo_material_4t'){
+			jQuery('#image_material_4t').attr('src',path);
+			jQuery('#image_material_4t').show();
+			uploadfile4t=1;
+		}
+		else if(img=='photo_material_5t'){
+			jQuery('#image_material_5t').attr('src',path);
+			jQuery('#image_material_5t').show();
+			uploadfile5t=1;
+		}
 		if(filetrasfer!=''){
 			var uid=localStorage.getItem('Staff_ID');	
 			resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -667,9 +885,29 @@ function selPic2(img) {
 					if(img=='photo_trans_material'){
 						jQuery('#photo_trans_material').val(r.response);
 						transferuploading=0;
+						jQuery('#exist_photo_trans_material').val('');
 					}
-					
-					if(transferuploading=='0' && formuploading=='1')
+					else if(img=='photo_material_2t'){
+						jQuery('#photo_material_2t').val(r.response);
+						uploadfile2t=0;
+						jQuery('#exist_photo_material_2t').val('');
+					}
+					else if(img=='photo_material_3t'){
+						jQuery('#photo_material_3t').val(r.response);
+						uploadfile3t=0;
+						jQuery('#exist_photo_material_3t').val('');
+					}
+					else if(img=='photo_material_4t'){
+						jQuery('#photo_material_4t').val(r.response);
+						uploadfile4t=0;
+						jQuery('#exist_photo_material_4t').val('');
+					}
+					else if(img=='photo_material_5t'){
+						jQuery('#photo_material_5t').val(r.response);
+						uploadfile5t=0;
+						jQuery('#exist_photo_material_5t').val('');
+					}
+					if(transferuploading=='0' && uploadfile2t=='0' && uploadfile3t=='0' && uploadfile4t=='0' && uploadfile5t=='0' && formuploading=='1')
 					{
 						jQuery('.uploadloader').hide();
 						jQuery("#newtransferresponseform").submit();
@@ -719,6 +957,16 @@ function selPic3(img) {
 				jQuery('#image_material_3').show();
 				uploadfile3=1;
 			}
+			else if(img=='photo_material_4'){
+				jQuery('#image_material_4').attr('src',path);
+				jQuery('#image_material_4').show();
+				uploadfile4=1;
+			}
+			else if(img=='photo_material_5'){
+				jQuery('#image_material_5').attr('src',path);
+				jQuery('#image_material_5').show();
+				uploadfile5=1;
+			}
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -753,7 +1001,15 @@ function selPic3(img) {
 							jQuery('#photo_material_3').val(r.response);
 							uploadfile3=0;
 						}
-						if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && formuploading=='1')
+						else if(img=='photo_material_4'){
+							jQuery('#photo_material_4').val(r.response);
+							uploadfile4=0;
+						}
+						else if(img=='photo_material_5'){
+							jQuery('#photo_material_5').val(r.response);
+							uploadfile5=0;
+						}
+						if(uploadfile1=='0' && uploadfile2=='0' && uploadfile3=='0' && uploadfile4=='0' && uploadfile5=='0' && formuploading=='1')
 						{
 							jQuery('.uploadloader').hide();
 							jQuery("#newmissiletagform").submit();
@@ -772,7 +1028,7 @@ function selPic3(img) {
     
     
 }
-function selPic4(img) {
+function selPic3t(img) {
 	
 	var captureSuccess = function(mediaFiles) {
 		var i, path, len;
@@ -785,11 +1041,30 @@ function selPic4(img) {
 			var job_id=gup('job_id');
 			var filetrasfer=path;
 			if(img=='photo_trans_material'){
-				jQuery('#image_trans_material').attr('src',filetrasfer);
+				jQuery('#image_trans_material').attr('src',path);
 				jQuery('#image_trans_material').show();
 				transferuploading=1;
 			}
-			
+			else if(img=='photo_material_2t'){
+				jQuery('#image_material_2t').attr('src',path);
+				jQuery('#image_material_2t').show();
+				uploadfile2t=1;
+			}
+			else if(img=='photo_material_3t'){
+				jQuery('#image_material_3t').attr('src',path);
+				jQuery('#image_material_3t').show();
+				uploadfile3t=1;
+			}
+			else if(img=='photo_material_4t'){
+				jQuery('#image_material_4t').attr('src',path);
+				jQuery('#image_material_4t').show();
+				uploadfile4t=1;
+			}
+			else if(img=='photo_material_5t'){
+				jQuery('#image_material_5t').attr('src',path);
+				jQuery('#image_material_5t').show();
+				uploadfile5t=1;
+			}
 			if(filetrasfer!=''){
 				var uid=localStorage.getItem('Staff_ID');	
 				resolveLocalFileSystemURL(filetrasfer, function(entry) {
@@ -810,14 +1085,33 @@ function selPic4(img) {
 				var ft = new FileTransfer();
 				
 				var t=ft.upload(filetrasfer2, uri, function(r){
-					
 					if(typeof img!='undefined'){
 						if(img=='photo_trans_material'){
 							jQuery('#photo_trans_material').val(r.response);
 							transferuploading=0;
+							jQuery('#exist_photo_trans_material').val('');
 						}
-						
-						if(transferuploading=='0' && formuploading=='1')
+						else if(img=='photo_material_2t'){
+							jQuery('#photo_material_2t').val(r.response);
+							uploadfile2t=0;
+							jQuery('#exist_photo_material_2t').val('');
+						}
+						else if(img=='photo_material_3t'){
+							jQuery('#photo_material_3t').val(r.response);
+							uploadfile3t=0;
+							jQuery('#exist_photo_material_3t').val('');
+						}
+						else if(img=='photo_material_4t'){
+							jQuery('#photo_material_4t').val(r.response);
+							uploadfile4t=0;
+							jQuery('#exist_photo_material_4t').val('');
+						}
+						else if(img=='photo_material_5t'){
+							jQuery('#photo_material_5t').val(r.response);
+							uploadfile5t=0;
+							jQuery('#exist_photo_material_5t').val('');
+						}
+						if(transferuploading=='0' && uploadfile2t=='0' && uploadfile3t=='0' && uploadfile4t=='0' && uploadfile5t=='0' && formuploading=='1')
 						{
 							jQuery('.uploadloader').hide();
 							jQuery("#newtransferresponseform").submit();
@@ -842,11 +1136,24 @@ function init() {
 	jQuery("#uploadphoto1").on("touchend", function(){selPic3('photo_material_1');});
 	jQuery("#uploadphoto2").on("touchend", function(){selPic3('photo_material_2');});
 	jQuery("#uploadphoto3").on("touchend", function(){selPic3('photo_material_3');});
-	jQuery("#transuploadphoto2").on("touchend", function(){selPic2('photo_trans_material');});
-	jQuery("#transuploadphoto").on("touchend", function(){selPic4('photo_trans_material');});
+	jQuery("#uploadphoto4").on("touchend", function(){selPic3('photo_material_4');});
+	jQuery("#uploadphoto5").on("touchend", function(){selPic3('photo_material_5');});
+	jQuery("#uploadphoto2t").on("touchend", function(){selPic3t('photo_material_2t');});
+	jQuery("#uploadphoto3t").on("touchend", function(){selPic3t('photo_material_3t');});
+	jQuery("#uploadphoto4t").on("touchend", function(){selPic3t('photo_material_4t');});
+	jQuery("#uploadphoto5t").on("touchend", function(){selPic3t('photo_material_5t');});
+	jQuery("#transuploadphoto2").on("touchend", function(){selPic1t('photo_trans_material');});
+	jQuery("#transuploadphoto").on("touchend", function(){selPic3t('photo_trans_material');});
 	jQuery("#uploadphoto12").on("touchend", function(){selPic1('photo_material_1');});
 	jQuery("#uploadphoto22").on("touchend", function(){selPic1('photo_material_2');});
 	jQuery("#uploadphoto32").on("touchend", function(){selPic1('photo_material_3');});
+	jQuery("#uploadphoto42").on("touchend", function(){selPic1('photo_material_4');});
+	jQuery("#uploadphoto52").on("touchend", function(){selPic1('photo_material_5');});
+	jQuery("#uploadphoto12t").on("touchend", function(){selPic1t('photo_material_1t');});
+	jQuery("#uploadphoto22t").on("touchend", function(){selPic1t('photo_material_2t');});
+	jQuery("#uploadphoto32t").on("touchend", function(){selPic1t('photo_material_3t');});
+	jQuery("#uploadphoto42t").on("touchend", function(){selPic1t('photo_material_4t');});
+	jQuery("#uploadphoto52t").on("touchend", function(){selPic1t('photo_material_5t');});
 }
 
 </script>
