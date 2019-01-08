@@ -684,7 +684,7 @@ jQuery(document).ready(function(){
 		//return false;
 		var url=siteurl+'/api/jobs/updatejobform';
 		var noerror=true;
-		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1')
+		if(uploadfile1=='1' || uploadfile2=='1' || uploadfile3=='1' || uploadfile4=='1' || uploadfile5=='1')
 		{
 			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
@@ -810,7 +810,7 @@ jQuery(document).ready(function(){
 		var url=siteurl+'/api/jobs/updatejobform';
 		var noerror=true;
 		
-		if(transferuploading=='1'){
+		if(transferuploading=='1' || uploadfile2t=='1' || uploadfile3t=='1' || uploadfile4t=='1' || uploadfile5t=='1'){
 			jQuery('.uploadloader').css({'display':'block'});
 			formuploading=1
 			noerror=false;
