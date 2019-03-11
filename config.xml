@@ -2,8 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "urbanerecycling.com"
-    versionCode = "5" 
-    version     = "1.5.0" >
+    versionCode = "6" 
+    version     = "1.6.0" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -94,6 +94,7 @@
 	<icon height="29" platform="ios" src="res/icon/ios/Icon-Small.png" width="29" />  
 	<icon height="58" platform="ios" src="res/icon/ios/Icon-Small@2x.png" width="58" />  
 	<icon height="87" platform="ios" src="res/icon/ios/Icon-Small@3x.png" width="87" />
+	<icon height="1024" platform="ios" src="res/icon/ios/Icon-1024@1x.png" width="1024" />
 	
 	<!-- iPhone and iPod touch -->
 	<splash src="res/screen/ios/Default.png" platform="ios" width="320" height="480" />
