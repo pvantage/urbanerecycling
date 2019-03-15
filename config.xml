@@ -6,7 +6,7 @@
 	android-packageName="urbanerecycling.com"
     ios-CFBundleIdentifier="urbanerecycling.com"
     versionCode = "7" 
-    version     = "1.7.2" >
+    version     = "1.7.3" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -19,6 +19,7 @@
     </author>
 	
 	<!--<preference name="phonegap-version" value="cli-6.4.0" />-->
+	<preference name="phonegap-version" value="cli-7.1.0" />
 	<plugin name="cordova-plugin-device" spec="~1.1.6" />
 	<plugin name="cordova-plugin-geolocation" spec="~2.4.3" />
 	<plugin name="cordova-plugin-camera" spec="~2.4.1" />
@@ -83,7 +84,7 @@
 	<splash src="res/screen/ios/Default-568h@2x~iphone.png"/>  
   
   	<icon height="40" platform="ios" src="res/icon/ios/Icon-40.png" width="40" />
-	<icon height="57" platform="ios" src="res/icon/ios/Icon.png" width="57" />  
+	<!--<icon height="57" platform="ios" src="res/icon/ios/Icon.png" width="57" /> --> 
 	<icon height="114" platform="ios" src="res/icon/ios/Icon@2x.png" width="114" />  
 	<icon height="80" platform="ios" src="res/icon/ios/Icon-40@3x.png" width="80" />  
 	<icon height="50" platform="ios" src="res/icon/ios/Icon-Small-50.png" width="50" />  
@@ -99,7 +100,7 @@
 	<icon height="29" platform="ios" src="res/icon/ios/Icon-Small.png" width="29" />  
 	<icon height="58" platform="ios" src="res/icon/ios/Icon-Small@2x.png" width="58" />  
 	<icon height="87" platform="ios" src="res/icon/ios/Icon-Small@3x.png" width="87" />
-	<icon height="1024" width="1024" src="res/icon/ios/Icon-1024@1x.png" />
+	<icon height="1024" width="1024" src="res/icon/ios/Icon.png" />
 	
 	
 	<!-- iPhone and iPod touch -->
