@@ -96,6 +96,7 @@
 	<icon height="58" platform="ios" src="res/icon/ios/Icon-Small@2x.png" width="58" />  
 	<icon height="87" platform="ios" src="res/icon/ios/Icon-Small@3x.png" width="87" />
 	<icon height="1024" width="1024" src="res/icon/ios/Icon-1024.png" />
+	<icon height="1024" width="1024" src="res/icon/ios/Icon-1024@1x.png" />
 	
 	
 	<!-- iPhone and iPod touch -->
