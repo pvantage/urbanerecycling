@@ -37,7 +37,7 @@
 	 </plugin>
 	 <platform name="ios">
 	  <resource-file src="GoogleService-Info.plist" />
-	  <icon src="res/icon/Icon-60@3x.png" platform="ios" width="180" height="180" />
+	  <icon src="res/icon/ios/Icon-60@3x.png" platform="ios" width="180" height="180" />
 	</platform>
 	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
 		<string>The driver's location is used to find the distance they are from our office.</string>
