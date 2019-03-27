@@ -39,23 +39,22 @@
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script type="text/javascript" src="js/config.js"></script>
 
-	<!--<script type="text/javascript">
+	<script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery('.wrapper').css({'min-height':jQuery(window).height()+'px'});
+		function setHeight() {
+		var hdr = jQuery('.launchpage').height();
+		var windowHeight = jQuery(window).height();
+		var ht=parseInt(windowHeight)-parseInt(hdr)-60;
+		jQuery('.menu_list').css({'height': ht+'px'});
+	  };
+	  setHeight();
+	  
+	  jQuery(window).resize(function() {
+		setHeight();
+	  });
 	});
 	
-	var uid=localStorage.getItem('Staff_ID');
 		
-	if(typeof uid!='undefine' && uid!='' && uid!=null){
-		checkloggedin(uid);
-	}
-	else
-	{
-		setTimeout(function(){
-			window.location='login.html';
-		},1000);
-	}
-		
-	</script>-->
+	</script>
 </body>
 </html>

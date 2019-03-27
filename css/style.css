@@ -1555,9 +1555,9 @@ ul.attachment-areas a{ color:#000;}
     text-align: center;
     max-width: 400px;
     margin: 0 auto;
-    padding: 3% 0;
-   
+    padding: 2% 0;
     width: 100%;
+    display: table;
 }
 .menu_list li {
     list-style: none;
@@ -1569,7 +1569,8 @@ ul.attachment-areas a{ color:#000;}
 .menu_list ul {
     margin: 0px;
     padding: 0px;
-  
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .menu_list li a {
@@ -1681,10 +1682,13 @@ ul.attachment-areas a{ color:#000;}
 
 @media (min-width: 320px) and (max-width: 400px) {
 	.donbtn{ font-size: 16px;}
-	
+	.top-head h1 {
+    font-size: 25px;}
 	.pop-title {
     font-size: 17px;
 }
+.inner-text ul li {
+    width: 100%;}
 .cal-submenu li a {
     padding: 0px 17px !important;
 }
