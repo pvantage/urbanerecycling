@@ -57,6 +57,11 @@ jQuery(document).ready(function(){
 	/*if(localStorage.getItem('UserRedirect')!=null){
 		window.location=localStorage.getItem('UserRedirect');
 	}*/
+	var uid=localStorage.getItem('Staff_ID');
+		
+	if(typeof uid!='undefine' && uid!='' && uid!=null){
+		checkloggedinloginpage(uid);
+	}
 	jQuery('#loginuser').submit( function(){	
 		var error=false;
 		jQuery('#loginuser input').each(function(){

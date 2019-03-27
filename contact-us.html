@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+
+<body>
+<div class="wrapper">
+<div class="top-head">
+ <div class="container">
+       <div class="pull-left">
+        <a href="index.html"><img src="images/left-pointing-arrow.png" alt="" /></a>
+       </div>
+        <div class="pull-right">
+        <h1>Contact Us</h1>
+       </div>
+       </div>
+    </div>
+  <div class="container">
+      
+   <div class="inner-text contactcontent">
+      <h2>TAMPA</h2>
+      
+        <p><strong>813.512.6998</strong><br>
+        5630 E Powhatan Avenue<br>
+        Tampa, Florida 33610</p>
+        <h2>LAKELAND</h2>
+        <p><strong>863.529.6690</strong>
+        <br>2222 S Combee Road, #2<br>
+        Lakeland, Florida 33801</p>
+        <h2><a href="//urbanerecycling.com/">www.urbanErecycling.com</a></h2>
+         <div class="innerfooter-logo">
+           <img src="images/login-logo.png" alt="footer-logo" />
+        </div>
+           </div>
+       
+  </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+         <script>
+		 jQuery(document).ready(function() {
+  function setHeight() {
+    var hdr = jQuery('.top-head').height();
+    var windowHeight = jQuery(window).height();
+	var ht=parseInt(windowHeight)-parseInt(hdr)-60;
+    jQuery('.inner-text').css({'height': ht+'px'});
+  };
+  setHeight();
+  
+  jQuery(window).resize(function() {
+    setHeight();
+  });
+});
+		</script>
+</body>
+</html>

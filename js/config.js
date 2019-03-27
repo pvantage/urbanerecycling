@@ -161,7 +161,41 @@ function checkloggedin(uid)
 	 } 
    });
 }
-
+function checkloggedinloginpage(uid)
+{
+	
+	var url=siteurl+'/api/login/checkloggedin';
+	
+	jQuery.ajax({  
+	 type: 'POST',  
+	 url: url,  
+	 //contentType: contentType,  
+	 dataType: 'json',  
+	 data: {uid:uid},  
+	 crossDomain: true,  
+	 beforeSend: function() {
+	 },		
+	 complete: function() {
+					
+	 },
+	 success: function(res) {  
+	   if(res['loggedin']!='success')
+	   {
+		//window.location='login.html';   
+	   }
+		else
+		{
+			window.location='frontpage.html';	
+		}
+	 },  
+	 error: function(response, d, a){
+		jQuery('body .showmessage').remove();
+		var html='<div class="showmessage">Server Error.</div>';
+		jQuery('body').append(html);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+	 } 
+   });
+}
 
 function codeLatLng(lat, lng) {
 	var geocoder = new google.maps.Geocoder;
