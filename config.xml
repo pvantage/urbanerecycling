@@ -6,7 +6,7 @@
 	android-packageName="urbanerecycling.com"
     ios-CFBundleIdentifier="urbanerecycling.com"
     versionCode = "7" 
-    version     = "1.7.5" >
+    version     = "1.7.6" >
 
     <!-- versionCode is optional and Android only -->
 

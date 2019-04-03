@@ -29,7 +29,7 @@
     </div>
     
   </div>
-  <div class="home-bottom-footer">
+  <div class="home-bottom-footer" style="display:none;">
       <div class="container">
          <a href="login.html">Employee Login</a>
        </div>
@@ -52,6 +52,25 @@
 	  jQuery(window).resize(function() {
 		setHeight();
 	  });
+	  var url=siteurl+'/api/login/showhideloginlink';
+	  jQuery.ajax({ 
+		 type: 'POST',  
+		 url: url,  
+		 crossDomain: true,
+		 data: {},  
+		 beforeSend: function() {
+		 },		
+		 complete: function() {
+		 },
+		 success: function(res) { 
+		   if(jQuery.trim(res)!=''){
+				if(jQuery.trim(res)=='yes'){jQuery('.home-bottom-footer').show();}
+			}
+		 },  
+		 error: function(response, d, a){
+			
+		 } 
+	   });
 	});
 	
 		
