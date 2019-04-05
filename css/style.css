@@ -1803,11 +1803,11 @@ body, html {
 .show-left-menu #outer-wrapper {
     /*left: 200px;*/
  
-    -webkit-transform: translate3d(244px,0,0);
-    -moz-transform: translate3d(244px,0,0);
-    -ms-transform: translate3d(244px,0,0);
-    -o-transform: translate3d(244px,0,0);
-    transform: translate3d(244px,0,0);
+    -webkit-transform: translate3d(240px,0,0);
+    -moz-transform: translate3d(240px,0,0);
+    -ms-transform: translate3d(240px,0,0);
+    -o-transform: translate3d(240px,0,0);
+    transform: translate3d(240px,0,0);
 }
  
 .show-right-menu #outer-wrapper {
@@ -1835,7 +1835,7 @@ body, html {
 }
  
 nav#left-menu {
-    left: -245px;
+    left: -240px;
 }
 nav#right-menu {
     left: 100%;
@@ -1874,7 +1874,7 @@ nav#right-menu {
 	}
 	
 	#inner-wrapper {
-		padding-left: 2px;
+		padding-left: 0px;
 		padding-right: 0px;
 	}
 	
