@@ -103,10 +103,10 @@
 						 success: function(res) { 
 						   if(jQuery.trim(res)!=''){
 						   		if(jQuery.trim(res)!='Done'){
-									jQuery('.messages').html(res);
+									jQuery('.messages').html('<div class="btn btn-danger">'+res+'</div>');
 								}
 								else{
-									jQuery('.messages').html('Thank you for your query. We will get back to you shortly.');
+									jQuery('.messages').html('<div class="btn btn-success">Thank you for your query. We will get back to you shortly.</div>');
 									jQuery('#contact-form')[0].reset();
 								}
 								
