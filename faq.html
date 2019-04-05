@@ -8,29 +8,46 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/font-awesome.min.css" >
 <link rel="stylesheet" href="css/style.css" >
 <link rel="stylesheet" href="css/mycss.css" >
 </head>
 
 <body>
-<div class="wrapper">
-<div class="top-head">
- <div class="container">
-       <div class="pull-left">
-        <a href="index.html"><img src="images/left-pointing-arrow.png" alt="" /></a>
-       </div>
-        <div class="pull-right">
-        <h1>FAQ</h1>
-       </div>
-       </div>
-    </div>
+
+<div id="outer-wrapper">
+  <div id="inner-wrapper">
+    <nav id="left-menu" class="off-canvas-menu">
+    <div class="nav-logo"><img src="images/nav-logo.png" alt="logo"></div>
+      <ul>
+        
+        <li><a href="our-services.html"> Our Services <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        <li><a href="items-we-recycle.html"> Items We Recycle <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        <li><a href="faq.html">FAQ <i class="fa fa-angle-right" aria-hidden="true"></i> </a></li>
+        <li><a href="contact-us.html"> Contact Us <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        <li><a href="schedule-a-pickup.html"> Schedule A Pickup <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+      </ul>
+    </nav>
+    
+    
+    <div class="wrapper">
+      <div class="navbar-dark top-head headerMain "> 
+      <a href="javascript:;"  id="left-menu-toggle" class="off-canvas-menu-toggle"> 
+      <span></span> <span></span> <span></span> </a> 
+      <a class="headerBack" href="index.html"><img src="images/home-icon.png" alt="home"></a>
+        <div class="header-title">FAQ</div>
+      </div> 
+    
+    
+    
+    
   <div class="container">
       
    <div class="inner-text">
       <h2>Do you have questions? We have answers!</h2>
-      <p><strong>Who is Urban E Recycling?</strong> Urban E Recycling, Inc., was founded and continues to be managed by an environmentally conscientious team of professionals. We love serving the Greater Tampa Bay Area. We follow a strict <strong>No Landfill</strong> policy.</p>
-      <p><strong>Is recycling my electronics free?</strong> Yes, when you use us, recycling electronics is free to the Greater Tampa Bay Area. Urban E Recycling will pick-up electronic waste from commercial & residential locations. The warehouse is also available for drop offs, during business hours.</p>
-      <p><strong>What happens to my electronics once they are picked up?</strong> Once the equipment arrives at our warehouse your items will be sorted, dismantled and then processed for recycling. All data storage media will be shredded to ensure your information is protected.</p>
+      <p><strong>Who is Urban E Recycling?</strong><br> Urban E Recycling, Inc., was founded and continues to be managed by an environmentally conscientious team of professionals. We love serving the Greater Tampa Bay Area. We follow a strict <strong>No Landfill</strong> policy.</p>
+      <p><strong>Is recycling my electronics free?</strong> <br>Yes, when you use us, recycling electronics is free to the Greater Tampa Bay Area. Urban E Recycling will pick-up electronic waste from commercial & residential locations. The warehouse is also available for drop offs, during business hours.</p>
+      <p><strong>What happens to my electronics once they are picked up?</strong> <br>Once the equipment arrives at our warehouse your items will be sorted, dismantled and then processed for recycling. All data storage media will be shredded to ensure your information is protected.</p>
       <h3><a href="javascript:;" onClick="cordova.InAppBrowser.open('https://urbanerecycling.com/faq', '_blank', 'location=yes');">For more FAQ’s please visit our website!</a></h3>
     </div>
         <div class="innerfooter-logo">
@@ -38,8 +55,11 @@
         </div>
   </div>
 </div>
+</div>
+</div>
 <script src="js/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/mobile-menu.js"></script> 
 </body>
 </html>
