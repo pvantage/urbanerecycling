@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Urbane Recycling</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/font-awesome.min.css" >
+<link rel="stylesheet" href="css/style.css" >
+<link rel="stylesheet" href="css/mycss.css" >
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="launchpage">
+      <div class="logobox indexlogo"><img src="images/logo1.png" alt="logo" /></div>
+      
+    </div>
+    <div class="menu_list">
+  
+      <ul>
+      <li class="menu-title">Menu</li>
+        <li><a href="our-services.html"><i class="fa fa-angle-right" aria-hidden="true"></i>  Our Services</a></li>
+        <li><a href="items-we-recycle.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Items We Recycle</a></li>
+        <li><a href="faq.html"><i class="fa fa-angle-right" aria-hidden="true"></i> FAQ</a></li>
+        <li><a href="contact-us.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Contact Us</a></li>
+        <li><a href="schedule-a-pickup.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Schedule A Pickup</a></li>
+      </ul>
+    </div>
+    
+  </div>
+  <div class="home-bottom-footer" style="display:none;">
+      <div class="container">
+	  		<a href="tel:813-512-6998" class="pull-left">Call: 813-512-6998</a>
+         <a href="login.html" class="pull-right">Login</a>
+       </div>
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		function setHeight() {
+		var hdr = jQuery('.launchpage').height();
+		var windowHeight = jQuery(window).height();
+		var ht=parseInt(windowHeight)-parseInt(hdr)-60;
+		jQuery('.menu_list').css({'height': ht+'px'});
+	  };
+	  setHeight();
+	  
+	  jQuery(window).resize(function() {
+		setHeight();
+	  });
+	  var url=siteurl+'/api/login/showhideloginlink';
+	  jQuery.ajax({ 
+		 type: 'POST',  
+		 url: url,  
+		 crossDomain: true,
+		 data: {},  
+		 beforeSend: function() {
+		 },		
+		 complete: function() {
+		 },
+		 success: function(res) { 
+		   if(jQuery.trim(res)!=''){
+				if(jQuery.trim(res)=='yes'){jQuery('.home-bottom-footer').show();}
+			}
+		 },  
+		 error: function(response, d, a){
+			
+		 } 
+	   });
+	});
+	
+		
+	</script>
+</body>
+</html>
