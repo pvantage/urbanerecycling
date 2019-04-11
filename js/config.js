@@ -85,7 +85,7 @@ function shownotificationpopup(){
 	 } 
    });
 }
-if(typeof uid!='undefine' && uid!='' && uid!=null){
+if(typeof uid!='undefined' && uid!='' && uid!=null){
 
 	setTimeout(function(){
 		if(jQuery.trim(uid)!='' && uid!=null && typeof uid!='undefined'){

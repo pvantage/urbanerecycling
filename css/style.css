@@ -1664,7 +1664,7 @@ margin-right:5px;
     font-size: 25px;
     padding: 0 0 15px;
 }
-.inner-text p {
+.inner-text p, p {
     color: #000;
     font-size:16px;
     line-height:28px;
@@ -1901,7 +1901,7 @@ background-color:#fff;
 margin:6px 0;	
 }
 
-.nav-logo { text-align:center; border-bottom:1px solid #28b04a; padding-bottom:10px; margin-bottom:20px;}
+.nav-logo { text-align:center; border-bottom:1px solid #28b04a; padding-bottom:10px; margin-bottom:0px;}
 
 .nav-logo img{ height:100px;}
 
@@ -1940,3 +1940,18 @@ top:0px;
 z-index:10;
 }
 .messages .btn{white-space:normal; text-align:justify;}
+
+.main-banner{ text-align:center; border-bottom:2px solid #ddd;}
+
+.thumb-banner{ text-align:center; padding-bottom:15px;}
+
+.thumb-banner img{ width:100%;}
+
+.innerfooter-logo{ border-top:1px solid #ddd; margin-top:20px;}
+
+.sub-heading{
+margin:20px 0 0 0;
+font-size:20px;
+color:#00b050;
+font-weight:600;	
+}
