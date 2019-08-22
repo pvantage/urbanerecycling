@@ -17,7 +17,7 @@
     <author href="http://www.vantagewebtech.com" email="rinku.vantage@gmail.com">
       Rinku Kamboj
     </author>
-	
+	<preference name="android-targetSdkVersion" value="28" />
 	<!--<preference name="phonegap-version" value="cli-6.4.0" />
 	<preference name="phonegap-version" value="cli-7.1.0" />-->
 	<plugin name="cordova-plugin-device" spec="~1.1.6" />
