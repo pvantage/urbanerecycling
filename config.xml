@@ -5,8 +5,8 @@
     id          = "urbanerecycling.com"
 	android-packageName="urbanerecycling.com"
     ios-CFBundleIdentifier="urbanerecycling.com"
-    versionCode = "8" 
-    version     = "1.8.3" >
+    versionCode = "9" 
+    version     = "1.9.0" >
 
     <!-- versionCode is optional and Android only -->
 
