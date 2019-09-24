@@ -125,13 +125,10 @@
 		 cache: false,
 		 data: {},  
 		 beforeSend: function() {
-		 	alert('start');
 		 },		
 		 complete: function() {
-		 	alert('start3');
 		 },
 		 success: function(res) { 
-		 	alert('start2');
 		   if(jQuery.trim(res)!=''){
 				if(jQuery.trim(res)=='yes'){jQuery('.home-bottom-footer').show();}
 			}
@@ -153,7 +150,7 @@
 			} else {
 				msg = 'Uncaught Error.\n' + jqXHR.responseText;
 			}
-			alert(msg);
+			//alert(msg);
 		 } 
 	   });
 	});
