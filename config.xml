@@ -28,13 +28,13 @@
 	<!--<plugin name="cordova.plugins.diagnostic" source="npm" />
 	<plugin name="cordova-plugin-dialogs" source="npm" />-->
 	<plugin name="cordova-plugin-ios-camera-permissions" source="npm" />
-	<!--<platform name="android">
-	  <resource-file src="google-services.json" target="google-services.json" />
+	<platform name="android">
+	  <resource-file src="platforms/android/google-services.json" target="google-services.json" />
 	</platform>
 			 
 	 <plugin name="phonegap-plugin-push" spec="~2.3.0">
 	 	<variable name="SENDER_ID" value="1:838559475873:android:ad01c8af058d97ba" />
-	 </plugin>-->
+	 </plugin>
 	 <platform name="ios">
 	  <resource-file src="GoogleService-Info.plist" />
 	  <icon src="res/icon/ios/Icon-60@3x.png" platform="ios" width="180" height="180" />
