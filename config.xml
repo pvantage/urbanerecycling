@@ -32,13 +32,13 @@
 	  <resource-file src="google-services.json" target="google-services.json" />
 	</platform>
 			 
-	 <!--<plugin name="phonegap-plugin-push" spec="~2.3.0">
+	 <plugin name="phonegap-plugin-push" spec="~2.3.0">
 	 	<variable name="SENDER_ID" value="1:838559475873:android:ad01c8af058d97ba" />
 	 </plugin>
 	 <platform name="ios">
 	  <resource-file src="GoogleService-Info.plist" />
 	  <icon src="res/icon/ios/Icon-60@3x.png" platform="ios" width="180" height="180" />
-	</platform>-->
+	</platform>
 	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
 		<string>The driver's location is used to find the distance they are from our office.</string>
 	</edit-config>
