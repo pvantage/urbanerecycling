@@ -116,10 +116,10 @@ if(typeof uid!='undefined' && uid!='' && uid!=null){
 			   }
 			 },  
 			 error: function(response, d, a){
-				jQuery('body .showmessage').remove();
+				/*jQuery('body .showmessage').remove();
 				var html='<div class="showmessage">Server Error.</div>';
 				jQuery('body').append(html);
-				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+				setTimeout(function(){jQuery('.showmessage').slideUp();},1000);*/
 			 } 
 		   });
 		}
@@ -154,10 +154,10 @@ function checkloggedin(uid)
 		}
 	 },  
 	 error: function(response, d, a){
-		jQuery('body .showmessage').remove();
+		/*jQuery('body .showmessage').remove();
 		var html='<div class="showmessage">Server Error.</div>';
 		jQuery('body').append(html);
-		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);*/
 	 } 
    });
 }
@@ -189,10 +189,10 @@ function checkloggedinloginpage(uid)
 		}
 	 },  
 	 error: function(response, d, a){
-		jQuery('body .showmessage').remove();
+		/*jQuery('body .showmessage').remove();
 		var html='<div class="showmessage">Server Error.</div>';
 		jQuery('body').append(html);
-		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);
+		setTimeout(function(){jQuery('.showmessage').slideUp();},1000);*/
 	 } 
    });
 }
