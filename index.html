@@ -102,9 +102,9 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
 <script type="text/javascript" src="js/config.js"></script> 
 <script type="text/javascript">
-	alert('start');
+	
 	jQuery(document).ready(function(){
-		alert('start2');
+		
 		function setHeight() {
 		var hdr = jQuery('.launchpage').height();
 		var windowHeight = jQuery(window).height();
@@ -123,10 +123,12 @@
 		 crossDomain: true,
 		 data: {},  
 		 beforeSend: function() {
+		 	alert('start');
 		 },		
 		 complete: function() {
 		 },
 		 success: function(res) { 
+		 	alert('start2');
 		   if(jQuery.trim(res)!=''){
 				if(jQuery.trim(res)=='yes'){jQuery('.home-bottom-footer').show();}
 			}
