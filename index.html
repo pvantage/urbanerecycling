@@ -117,7 +117,6 @@
 		setHeight();
 	  });
 	  var url=siteurl+'/api/login/showhideloginlink';
-	  alert(url);
 	  jQuery.ajax({ 
 		 type: 'POST',  
 		 url: url,  
@@ -127,6 +126,7 @@
 		 	alert('start');
 		 },		
 		 complete: function() {
+		 	alert('start3');
 		 },
 		 success: function(res) { 
 		 	alert('start2');
@@ -135,7 +135,7 @@
 			}
 		 },  
 		 error: function(response, d, a){
-			
+			alert('server error');
 		 } 
 	   });
 	});
