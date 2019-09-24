@@ -36,7 +36,7 @@
 	 	<variable name="SENDER_ID" value="1:838559475873:android:ad01c8af058d97ba" />
 	 </plugin>
 	 <platform name="ios">
-	  <resource-file src="GoogleService-Info.plist" />
+	  <!--<resource-file src="GoogleService-Info.plist" />-->
 	  <icon src="res/icon/ios/Icon-60@3x.png" platform="ios" width="180" height="180" />
 	</platform>
 	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
