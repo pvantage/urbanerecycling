@@ -18,8 +18,8 @@
       Rinku Kamboj
     </author>
 	<preference name="android-targetSdkVersion" value="28" />
-	<preference name="phonegap-version" value="cli-9.0.0" />
-	<!--<preference name="phonegap-version" value="cli-7.1.0" />-->
+	<!--<preference name="phonegap-version" value="cli-9.0.0" />
+	<preference name="phonegap-version" value="cli-7.1.0" />-->
 	<plugin name="cordova-plugin-device" spec="~2.0.3" />
 	<plugin name="cordova-plugin-geolocation" spec="~4.0.2" />
 	<plugin name="cordova-plugin-camera" spec="~4.1.0" />
@@ -36,7 +36,7 @@
 	 	<variable name="SENDER_ID" value="1:838559475873:android:ad01c8af058d97ba" />
 	 </plugin>
 	 <platform name="ios">
-	  <!--<resource-file src="GoogleService-Info.plist" />-->
+	  <resource-file src="GoogleService-Info.plist" />
 	  <icon src="res/icon/ios/Icon-60@3x.png" platform="ios" width="180" height="180" />
 	</platform>
 	<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
