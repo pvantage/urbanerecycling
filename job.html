@@ -276,7 +276,7 @@
       <div class="modal-body">
         <div class="pop-head">
           <div class="row">
-            <button type="button" class="close col-2 donbtn" data-dismiss="modal">Cancel</button>
+            <button type="button" class="close col-2 donbtn" onClick="closeattachpop();">Cancel</button>
             <div class="col-7 pop-title">Select Form</div>
           </div>
         </div>
@@ -932,7 +932,12 @@ function completetask(task_id, shownotification,job_id)
 		}
 	});
 }
+function closeattachpop(){
+	jQuery('#myModal22').modal('hide');
+	setTimeout(function(){jQuery('body').addClass('modal-open');},1500);
+}
 jQuery(document).ready(function(){
+	
 	jQuery( document ).on( "mobileinit", function() {
 		jQuery.mobile.allowCrossDomainPages = true;
 	});
@@ -1411,6 +1416,7 @@ function moveattachfile(id){
 	if(jQuery.trim(html)==''){
 		jQuery('#myModal22').modal('hide');
 	}
+	setTimeout(function(){jQuery('body').addClass('modal-open');},1500);
 }
 function removeattachfile(id){
 	jQuery(id).remove();
